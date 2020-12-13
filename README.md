@@ -10,9 +10,12 @@
 
 ## Set-up
 ---
-* Run the following commands to submit spark job (in app dir):
-```spark-submit --py-files dist/jobs.zip --files config.json main.py --job model_train```
+* Run the following commands to submit spark job (in app dir):  
+    1. Run ```make build``` to move all dependencies for spark job to dist/ folder
+    2. Run ```spark-submit --py-files dist/jobs.zip --files config.json main.py --job model_train``` to submit spark job
 
+* Running pytest:  
+    * Run ```pytest tests/``` in main folder (outside of app)
 
 ## WIP
 ---
@@ -20,5 +23,5 @@
 <ins>Completed</ins>
 * Prototyping Model Training Methodology
 
-<ins>TBD</ins>
+<ins>WIP</ins>
 * Structuring code for building pipeline for model training and deployment
