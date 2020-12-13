@@ -8,6 +8,12 @@
 
 * <ins>Goal:</ins> To build a machine learning model that can accurately predict borrowers that are likely to default on first EMI (Equated Monthly Instalments)
 
+## Set-up
+---
+* Run the following commands to submit spark job (in app dir):
+```spark-submit --py-files dist/jobs.zip --files config.json main.py --job model_train```
+
+
 ## WIP
 ---
 
