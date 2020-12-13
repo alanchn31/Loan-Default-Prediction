@@ -25,34 +25,60 @@ def _remove_duplicates(df):
     return df
 
 
+def _check_numerical_dtype(df, column, cast_float=False):
+    df_data_types = dict(df.dtypes)
+    accepted_dtypes = ['int', 'bigint', 'decimal', 'double', 'float', 
+                       'long', 'bigdecimal', 'byte', 'short']
+    if df_data_types[column] not in accepted_dtypes:
+        raise Exception("Non-numeric value found in column")
+    if cast_float:
+        if df_data_types[column] not in ['double', 'float']:
+            df = df.withColumn(column, df[column].cast(typ.DoubleType()))
+    return df
+
+
 def _impute_missing_values(df, config):
-    impute_dict = config.get("impute_cols")
+    impute_dict = config.get("impute_cols", None)
     if impute_dict == {} or impute_dict is None:
         return df
-    for col, val in impute_dict.items():
+    for column, val in impute_dict.items():
         # Specify mean/median for numerical cols
         if val == "mean" or val == "median":
-            df_data_types = dict(df.dtypes)
-            accepted_dtypes = ['int', 'bigint', 'decimal', 'double', 'float', 
-                               'long', 'bigdecimal', 'byte', 'short']
-            if df_data_types[col] not in accepted_dtypes:
-                raise Exception("Unacceptable type to impute mean/median")
-            if df_data_types[col] not in ['double', 'float']:
-                df = df.withColumn(col, df[col].cast(typ.DoubleType()))
+            df = _check_numerical_dtype(df, column, cast_float=True)
             imputer = sf.Imputer(
-                inputCols=[col], 
-                outputCols=[col],
+                inputCols=[column], 
+                outputCols=[column],
                 strategy=val
             )
             df = imputer.fit(df).transform(df)
         # Specify custom value for categorical cols
         else:
-            df = df.fillna({col: val})
+            df = df.fillna({column: val})
     return df
 
 
-def remove_outliers():
-
+def _remove_outliers(df, config):
+    """
+    Remove outliers by winsorizing selected numerical columns 
+    (clips to mean +- 1.5*IQR)
+    """
+    winsorize_cols = config.get("winsorize_cols", None)
+    if winsorize_cols == [] or winsorize_cols is None:
+        return df
+    bounds = {}
+    for wc in winsorize_cols:
+        df = _check_numerical_dtype(df, wc)
+        quantiles = df.approxQuantile(
+                        wc, [0.25, 0.75], 0.05
+                    )
+        iqr = quantiles[1] - quantiles[0]
+        bounds[wc] = [quantiles[0] - 1.5 * iqr,
+                       quantiles[1] + 1.5 * iqr]
+        df = df.withColumn(wc, fn.when(fn.col(wc) < bounds[wc][0], bounds[wc][0])
+                                 .when(fn.col(wc) > bounds[wc][1], bounds[wc][1])
+                                 .otherwise(fn.col(wc))
+        )
+    return df
 
 
 def run_job(spark, config):

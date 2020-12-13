@@ -1,4 +1,6 @@
 import pandas as pd
+import pyspark.sql.types as typ
+import pytest
 from app.jobs import model_train
 
 class TestModelTrainJob:
@@ -53,6 +55,45 @@ class TestModelTrainJob:
         ).toPandas()
 
         real_data = model_train._impute_missing_values(test_data, test_config).toPandas()
+
+        pd.testing.assert_frame_equal(real_data,
+                                      expected_data,
+                                      check_dtype=False)
+        
+
+    def test_check_numerical_dtype(self, spark_session):
+        test_data = spark_session.createDataFrame(
+            [("Male", 10)],
+            ["Gender", "Age"]
+        )
+        with pytest.raises(Exception, match="Non-numeric value found in column"):
+            model_train._check_numerical_dtype(test_data, "Gender")
+    
+
+    def test_remove_outliers(self, spark_session):
+        test_data = spark_session.createDataFrame(
+            [(1, -100),
+             (2, 20),
+             (3, 30),
+             (4, 40),
+             (5, 100)],
+             ['ID', 'Age']
+        )
+
+        test_config = {
+            "winsorize_cols": ['Age']
+        }
+
+        expected_data = spark_session.createDataFrame(
+            [(1, -10),
+             (2, 20),
+             (3, 30),
+             (4, 40),
+             (5, 70)],
+             ['ID', 'Age']
+        ).toPandas()
+
+        real_data = model_train._remove_outliers(test_data, test_config).toPandas()
 
         pd.testing.assert_frame_equal(real_data,
                                       expected_data,
