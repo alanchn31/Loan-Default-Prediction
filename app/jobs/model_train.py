@@ -1,5 +1,6 @@
 import json
 import pyspark.sql.functions as fn
+import pyspark.sql.types as typ
 import pyspark.ml.feature as sf
 from pyspark.sql import SparkSession
 from app.shared.read_schema import read_schema
@@ -26,9 +27,18 @@ def _remove_duplicates(df):
 
 def _impute_missing_values(df, config):
     impute_dict = config.get("impute_cols")
+    if impute_dict == {} or impute_dict is None:
+        return df
     for col, val in impute_dict.items():
         # Specify mean/median for numerical cols
         if val == "mean" or val == "median":
+            df_data_types = dict(df.dtypes)
+            accepted_dtypes = ['int', 'bigint', 'decimal', 'double', 'float', 
+                               'long', 'bigdecimal', 'byte', 'short']
+            if df_data_types[col] not in accepted_dtypes:
+                raise Exception("Unacceptable type to impute mean/median")
+            if df_data_types[col] not in ['double', 'float']:
+                df = df.withColumn(col, df[col].cast(typ.DoubleType()))
             imputer = sf.Imputer(
                 inputCols=[col], 
                 outputCols=[col],
@@ -39,6 +49,10 @@ def _impute_missing_values(df, config):
         else:
             df = df.fillna({col: val})
     return df
+
+
+def remove_outliers():
+
 
 
 def run_job(spark, config):
