@@ -3,10 +3,11 @@ import pyspark.sql.functions as fn
 import pyspark.sql.types as typ
 import pyspark.ml.feature as sf
 from pyspark.sql import SparkSession
-from app.shared.read_schema import read_schema
+from app.shared.utils import read_schema
+from app.shared.udfs import format_date_udf
 
 
-def _extract_data(spark, config):
+def _read_data(spark, config):
     schema_lst = config.get("schema")
     schema = read_schema(schema_lst)
     file_path = config.get('source_data_path')
@@ -57,10 +58,10 @@ def _impute_missing_values(df, config):
     return df
 
 
-def _remove_outliers(df, config):
+def _impute_outliers(df, config):
     """
-    Remove outliers by winsorizing selected numerical columns 
-    (clips to mean +- 1.5*IQR)
+    Impute outliers by winsorizing selected numerical columns 
+    (clips to (1st/3rd quantile) -+ 1.5*IQR)
     """
     winsorize_cols = config.get("winsorize_cols", None)
     if winsorize_cols == [] or winsorize_cols is None:
@@ -81,10 +82,25 @@ def _remove_outliers(df, config):
     return df
 
 
+def _convert_str_to_date(df, config):
+    """
+    Converts date string column to date column
+    (for eg: "01/01/99" to date column --> datetime(1999, 1, 1, 0, 0))
+    """
+    date_str_cols = config.get("date_str_cols", None)
+    if date_str_cols == {} or date_str_cols is None:
+        return df
+    for column, year_prefix in date_str_cols.items():
+        df = df.withColumn(column, format_date_udf(df[column], fn.lit(year_prefix)))
+        df = df.withColumn(column, fn.to_date(df[column], format='dd/MM/yyyy'))
+    return df
+
+
 def run_job(spark, config):
     """ Runs model training job"""
-    raw_df = _extract_data(spark, config)
+    raw_df = _read_data(spark, config)
     df = _remove_duplicates(raw_df)
     df = _impute_missing_values(df)
+    df = _impute_outliers(df)
     # Print output as a test, will remove later
     print(raw_df.take(5))
