@@ -12,7 +12,7 @@
 ---
 * Run the following commands to submit spark job (in app dir):  
     1. Run ```make build``` to move all dependencies for spark job to dist/ folder
-    2. Run ```spark-submit --py-files dist/jobs.zip --files config.json main.py --job model_train``` to submit spark job
+    2. Run ```spark-submit --py-files dist/jobs.zip --files config.json main.py --job prepare_data``` to submit spark job
 
 * Running pytest:  
     * Run ```make test``` (in app dir)

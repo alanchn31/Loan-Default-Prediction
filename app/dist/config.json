@@ -47,5 +47,19 @@
     "impute_cols": {"EMP_TYPE": "missing"},
     "date_str_cols": {"DOB": "19",
                       "DISBURSED_DATE": "20"
-                     }
+                     },
+    "age_cols": {"start":  "DOB",
+                 "end": "DISBURSED_DATE",
+                 "output_col": "BORROWER_AGE"
+                },
+    "tenure_cols": ["CREDIT_HIST_LEN", "AVG_LOAN_TENURE"],
+    "str_replace_cols": {
+        "SCORE_CATEGORY": {
+            "pattern": "Not Scored: (.*)",
+            "replacement": "Not Scored"
+        }
+    },
+    "drop_cols": ["ID", "MANUFACTURER_ID", "BRANCH_ID", "SUPPLIER_ID",
+                  "PINCODE", "EMPLOYEE_CODE_ID", "DISBURSED_DATE",
+                  "DOB"]
 }

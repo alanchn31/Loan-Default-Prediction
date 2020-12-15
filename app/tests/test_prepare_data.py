@@ -1,12 +1,13 @@
 import pandas as pd
 import pyspark.sql.types as typ
 import pytest
-from jobs.model_train import (_remove_duplicates, _impute_missing_values,
-                              _check_numerical_dtype, _impute_outliers,
-                              _convert_str_to_date)
+from jobs.prepare_data import (_remove_duplicates, _impute_missing_values,
+                               _check_numerical_dtype, _impute_outliers,
+                               _convert_str_to_date, _get_age,
+                               _extract_time_period_mths, _replace_str_regex)
 from datetime import date
 
-class TestModelTrainJob:
+class TestPrepareDataJob:
     def test_remove_duplicates(self, spark_session):
         test_data = spark_session.createDataFrame(
             [(1, 25, "Male"),
@@ -125,6 +126,96 @@ class TestModelTrainJob:
         )
 
         real_data = _convert_str_to_date(test_data, test_config).toPandas()
+
+        pd.testing.assert_frame_equal(real_data,
+                                      expected_data,
+                                      check_dtype=False)
+    
+
+    def test_get_age(self, spark_session):
+        test_data = spark_session.createDataFrame(
+            [(date(1984, 1, 1), date(2018, 8, 3)),     #34
+             (date(1977, 12, 9),  date(2018, 9, 26)),  #49
+             (date(2000, 6, 1), date(2018, 9, 16))],   #18
+             ['DOB', 'DISBURSED_DATE']
+        )
+
+        test_config = {
+            "age_cols": {
+                 "start": "DOB",
+                 "end": "DISBURSED_DATE",
+                 "output_col": "BORROWER_AGE"
+                }
+        }
+
+        expected_data = pd.DataFrame(
+            [(date(1984, 1, 1), date(2018, 8, 3), 34),
+             (date(1977, 12, 9),  date(2018, 9, 26), 40),
+             (date(2000, 6, 1), date(2018, 9, 16), 18)],
+             columns=['DOB', 'DISBURSED_DATE', 'BORROWER_AGE']
+        )
+
+        real_data = _get_age(test_data, test_config).toPandas()
+
+        pd.testing.assert_frame_equal(real_data,
+                                      expected_data,
+                                      check_dtype=False)
+    
+
+    def test_extract_time_period_mths(self, spark_session):
+        test_data = spark_session.createDataFrame(
+            [("1yrs 7mon", "0yrs 0mon"),
+            ("2yrs 2mon", "1yrs 0mon")],
+             ["AVG_LOAN_TENURE", "CREDIT_HIST_LEN"]
+        )
+
+        test_config = {
+            "tenure_cols": ["CREDIT_HIST_LEN", "AVG_LOAN_TENURE"]
+        }
+
+        expected_data = pd.DataFrame(
+            [(19, 0),
+             (26, 12)],
+             columns=["AVG_LOAN_TENURE", "CREDIT_HIST_LEN"]
+        )
+
+        real_data = _extract_time_period_mths(test_data, test_config).toPandas()
+
+        pd.testing.assert_frame_equal(real_data,
+                                      expected_data,
+                                      check_dtype=False)
+
+    
+    def test_replace_str_regex(self, spark_session):
+        test_data = spark_session.createDataFrame(
+            [(1, 'Not Scored: No Activity seen on the customer (Inactive)'),
+             (2, 'F-Low Risk'),
+             (3, 'I-Medium Risk'),
+             (4, 'Not Scored: Only a Guarantor'),
+             (5, 'Not Scored: No Updates available in last 36 months')
+            ],
+            ['ID', 'SCORE_CATEGORY']
+        )
+
+        test_config = {
+            "str_replace_cols": {
+                "SCORE_CATEGORY": {
+                    "pattern": "Not Scored: (.*)",
+                    "replacement": "Not Scored"
+                }
+            }
+        }
+
+        expected_data = pd.DataFrame(
+            [(1, 'Not Scored'),
+             (2, 'F-Low Risk'),
+             (3, 'I-Medium Risk'),
+             (4, 'Not Scored'),
+             (5, 'Not Scored')],
+             columns=['ID', 'SCORE_CATEGORY']
+        )
+
+        real_data = _replace_str_regex(test_data, test_config).toPandas()
 
         pd.testing.assert_frame_equal(real_data,
                                       expected_data,

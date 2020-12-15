@@ -24,7 +24,8 @@ def main():
     spark = SparkSession.builder.appName(config.get("app_name")).getOrCreate()
 
     job_module = importlib.import_module(f"jobs.{args.job}")
-    job_module.run_job(spark, config)
+    df = job_module.run_job(spark, config)
+    print(df.take(5))
 
 
 if __name__ == "__main__":

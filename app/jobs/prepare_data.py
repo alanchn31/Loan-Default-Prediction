@@ -101,6 +101,55 @@ def _convert_str_to_date(df, config):
     return df
 
 
+def _get_age(df, config):
+    start_col = config["age_cols"]["start"]
+    end_col = config["age_cols"]["end"]
+    df = df.withColumn(config["age_cols"]["output_col"], 
+                       fn.floor(fn.datediff(end_col, start_col)/365.25))
+    return df
+
+
+def _extract_time_period_mths(df, config):
+    """
+    Finds the number of months from a time period string
+    for eg: 2yrs 2mon --> 26
+    """
+    tenure_cols = config.get("tenure_cols", None)
+    if tenure_cols == [] or tenure_cols is None:
+        return df
+    for column in tenure_cols:
+        df = df.withColumn(f"{column}_YRS", fn.regexp_extract(column, "(\d)(yrs)", 1))
+        df = df.withColumn(f"{column}_MTHS", fn.regexp_extract(column, "(\d)(mon)", 1))
+        df = df.withColumn(column, (fn.col(f"{column}_YRS")*12 + fn.col(f"{column}_MTHS")))
+        df = df.drop(*[f"{column}_YRS", f"{column}_MTHS"]) 
+    return df
+
+
+def _replace_str_regex(df, config):
+    """
+    Replace string in a String column using regex
+    """
+    str_replace_cols = config.get("str_replace_cols", None)
+    if str_replace_cols == [] or str_replace_cols is None:
+        return df
+    for column, val in str_replace_cols.items():
+        pattern = val["pattern"]
+        replacement = val["replacement"]
+        df = df.withColumn(column, fn.regexp_replace(column, pattern, replacement))
+    return df
+
+
+def _drop_cols(df, config):
+    """
+    drop columns that are not needed
+    """
+    drop_cols = config.get("drop_cols", None)
+    if drop_cols == [] or drop_cols is None:
+        return df
+    df = df.drop(*drop_cols)
+    return df
+
+
 def run_job(spark, config):
     """ Runs model training job"""
     raw_df = _read_data(spark, config)
@@ -108,5 +157,8 @@ def run_job(spark, config):
     df = _impute_missing_values(df, config)
     df = _impute_outliers(df, config)
     df = _convert_str_to_date(df, config)
-    # Print output as a test, will remove later
-    print(df.take(5))
+    df = _get_age(df, config)
+    df = _extract_time_period_mths(df, config)
+    df = _replace_str_regex(df, config)
+    df = _drop_cols(df, config)
+    return df
