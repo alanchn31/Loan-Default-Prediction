@@ -15,7 +15,7 @@
     2. Run ```spark-submit --py-files dist/jobs.zip --files config.json main.py --job model_train``` to submit spark job
 
 * Running pytest:  
-    * Run ```pytest tests/``` in main folder (outside of app)
+    * Run ```make test``` (in app dir)
 
 ## WIP
 ---
