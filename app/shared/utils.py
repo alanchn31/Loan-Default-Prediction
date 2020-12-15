@@ -1,5 +1,6 @@
 import pyspark.sql.types as typ
 
+
 def read_schema(schema_arg):
     d_types = {
         "StringType()": typ.StringType(),

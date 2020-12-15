@@ -1,7 +1,10 @@
 import pandas as pd
 import pyspark.sql.types as typ
 import pytest
-from app.jobs import model_train
+from jobs.model_train import (_remove_duplicates, _impute_missing_values,
+                              _check_numerical_dtype, _impute_outliers,
+                              _convert_str_to_date)
+from datetime import date
 
 class TestModelTrainJob:
     def test_remove_duplicates(self, spark_session):
@@ -21,7 +24,7 @@ class TestModelTrainJob:
              ['Age', 'Gender']
         ).toPandas()
 
-        real_data = model_train._remove_duplicates(test_data).toPandas()
+        real_data = _remove_duplicates(test_data).toPandas()
 
         pd.testing.assert_frame_equal(real_data[['Age', 'Gender']],
                                       expected_data,
@@ -54,7 +57,7 @@ class TestModelTrainJob:
              ['ID', 'Age', 'Amount', 'Gender']
         ).toPandas()
 
-        real_data = model_train._impute_missing_values(test_data, test_config).toPandas()
+        real_data = _impute_missing_values(test_data, test_config).toPandas()
 
         pd.testing.assert_frame_equal(real_data,
                                       expected_data,
@@ -67,10 +70,10 @@ class TestModelTrainJob:
             ["Gender", "Age"]
         )
         with pytest.raises(Exception, match="Non-numeric value found in column"):
-            model_train._check_numerical_dtype(test_data, "Gender")
+            _check_numerical_dtype(test_data, "Gender")
     
 
-    def test_remove_outliers(self, spark_session):
+    def test_impute_outliers(self, spark_session):
         test_data = spark_session.createDataFrame(
             [(1, -100),
              (2, 20),
@@ -93,7 +96,35 @@ class TestModelTrainJob:
              ['ID', 'Age']
         ).toPandas()
 
-        real_data = model_train._remove_outliers(test_data, test_config).toPandas()
+        real_data = _impute_outliers(test_data, test_config).toPandas()
+
+        pd.testing.assert_frame_equal(real_data,
+                                      expected_data,
+                                      check_dtype=False)
+    
+
+    def test_convert_str_to_date(self, spark_session):
+        test_data = spark_session.createDataFrame(
+            [("1/1/84", "3/8/18"),
+             ("9/12/77", "26/9/18"),
+             ("1/6/00", "16/9/18")],
+             ['DOB', 'DISBURSED_DATE']
+        )
+
+        test_config = {
+            "date_str_cols": {"DOB": "19",
+                              "DISBURSED_DATE": "20"
+                             }
+        }
+
+        expected_data = pd.DataFrame(
+            [(date(1984, 1, 1), date(2018, 8, 3)),
+             (date(1977, 12, 9), date(2018, 9, 26)),
+             (date(2000, 6, 1), date(2018, 9, 16))],
+             columns=['DOB', 'DISBURSED_DATE']
+        )
+
+        real_data = _convert_str_to_date(test_data, test_config).toPandas()
 
         pd.testing.assert_frame_equal(real_data,
                                       expected_data,

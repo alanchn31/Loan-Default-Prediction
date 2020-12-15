@@ -1,6 +1,6 @@
 {
     "app_name": "LoanDefaultPrediction",
-    "source_data_path": "data/inputs",
+    "source_data_path": "data/inputs/loan_default.csv",
     "schema": [
         "ID IntegerType()",
         "DISBURSED_VALUE IntegerType()",
@@ -43,5 +43,9 @@
         "CREDIT_HIST_LEN StringType()",
         "INQUIRIES IntegerType()",
         "DEFAULT IntegerType()"
-    ]
+    ],
+    "impute_cols": {"EMP_TYPE": "missing"},
+    "date_str_cols": {"DOB": "19",
+                      "DISBURSED_DATE": "20"
+                     }
 }
