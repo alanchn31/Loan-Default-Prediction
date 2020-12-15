@@ -3,3 +3,6 @@ build:
 	cp ./main.py ./dist
 	cp ./config.json ./dist
 	zip -r dist/jobs.zip jobs
+
+test:
+	python -m pytest  --cov tests/

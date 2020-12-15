@@ -3,8 +3,7 @@ import pyspark.sql.functions as fn
 import pyspark.sql.types as typ
 import pyspark.ml.feature as sf
 from pyspark.sql import SparkSession
-from app.shared.utils import read_schema
-from app.shared.udfs import format_date_udf
+from shared.utils import read_schema
 
 
 def _read_data(spark, config):
@@ -85,14 +84,20 @@ def _impute_outliers(df, config):
 def _convert_str_to_date(df, config):
     """
     Converts date string column to date column
-    (for eg: "01/01/99" to date column --> datetime(1999, 1, 1, 0, 0))
     """
     date_str_cols = config.get("date_str_cols", None)
     if date_str_cols == {} or date_str_cols is None:
         return df
+    
+    # Converts "1/1/99" --> "01/01/1999", then convert to date object
     for column, year_prefix in date_str_cols.items():
-        df = df.withColumn(column, format_date_udf(df[column], fn.lit(year_prefix)))
-        df = df.withColumn(column, fn.to_date(df[column], format='dd/MM/yyyy'))
+        df = df.withColumn(column, fn.to_date(column, "d/M/yy"))
+        df = df.withColumn(column, fn.when(fn.year(column) > (int(year_prefix) + 1)*100, 
+                                           fn.add_months(column, -12*100)) \
+                                     .when(fn.year(column) == 1900, 
+                                           fn.add_months(column, 12*100)) \
+                                     .otherwise(fn.col(column)))
+            
     return df
 
 
@@ -100,7 +105,8 @@ def run_job(spark, config):
     """ Runs model training job"""
     raw_df = _read_data(spark, config)
     df = _remove_duplicates(raw_df)
-    df = _impute_missing_values(df)
-    df = _impute_outliers(df)
+    df = _impute_missing_values(df, config)
+    df = _impute_outliers(df, config)
+    df = _convert_str_to_date(df, config)
     # Print output as a test, will remove later
-    print(raw_df.take(5))
+    print(df.take(5))

@@ -1,7 +1,9 @@
 import pandas as pd
 import pyspark.sql.types as typ
 import pytest
-from app.jobs import model_train
+from jobs.model_train import (_remove_duplicates, _impute_missing_values,
+                              _check_numerical_dtype, _impute_outliers,
+                              _convert_str_to_date)
 from datetime import date
 
 class TestModelTrainJob:
@@ -22,7 +24,7 @@ class TestModelTrainJob:
              ['Age', 'Gender']
         ).toPandas()
 
-        real_data = model_train._remove_duplicates(test_data).toPandas()
+        real_data = _remove_duplicates(test_data).toPandas()
 
         pd.testing.assert_frame_equal(real_data[['Age', 'Gender']],
                                       expected_data,
@@ -55,7 +57,7 @@ class TestModelTrainJob:
              ['ID', 'Age', 'Amount', 'Gender']
         ).toPandas()
 
-        real_data = model_train._impute_missing_values(test_data, test_config).toPandas()
+        real_data = _impute_missing_values(test_data, test_config).toPandas()
 
         pd.testing.assert_frame_equal(real_data,
                                       expected_data,
@@ -68,10 +70,10 @@ class TestModelTrainJob:
             ["Gender", "Age"]
         )
         with pytest.raises(Exception, match="Non-numeric value found in column"):
-            model_train._check_numerical_dtype(test_data, "Gender")
+            _check_numerical_dtype(test_data, "Gender")
     
 
-    def test_remove_outliers(self, spark_session):
+    def test_impute_outliers(self, spark_session):
         test_data = spark_session.createDataFrame(
             [(1, -100),
              (2, 20),
@@ -94,7 +96,7 @@ class TestModelTrainJob:
              ['ID', 'Age']
         ).toPandas()
 
-        real_data = model_train._impute_outliers(test_data, test_config).toPandas()
+        real_data = _impute_outliers(test_data, test_config).toPandas()
 
         pd.testing.assert_frame_equal(real_data,
                                       expected_data,
@@ -122,7 +124,7 @@ class TestModelTrainJob:
              columns=['DOB', 'DISBURSED_DATE']
         )
 
-        real_data = model_train._convert_str_to_date(test_data, test_config).toPandas()
+        real_data = _convert_str_to_date(test_data, test_config).toPandas()
 
         pd.testing.assert_frame_equal(real_data,
                                       expected_data,
