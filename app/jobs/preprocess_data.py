@@ -10,7 +10,7 @@ from transformers.get_age import GetAge
 from transformers.extract_time_period_mths import ExtractTimePeriodMths
 from transformers.replace_str_regex import ReplaceStrRegex
 from transformers.drop_columns import DropColumns
-from transformers.save_to_parquet import SaveToParquet
+from transformers.impute_cat_missing_vals import ImputeCategoricalMissingVals
 from pyspark.sql import SparkSession
 from shared.utils import read_schema
 
@@ -36,7 +36,7 @@ def run_job(spark, config, phase):
         GetAge(config['age_cols']),
         ExtractTimePeriodMths(config['tenure_cols']),
         ReplaceStrRegex(config['str_replace_cols']),
+        ImputeCategoricalMissingVals(config['impute_cat_cols']),
         DropColumns(config['drop_cols']),
-        SaveToParquet(config['processed_data_dir'] + phase),
     ]).transform(raw_df)
-    print(df.take(5))
+    df.write.parquet(config['processed_data_dir'] + f"{phase}.parquet", mode='overwrite')
