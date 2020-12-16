@@ -45,7 +45,8 @@
         "DEFAULT IntegerType()"
     ],
     "id_col": "ID",
-    "impute_cols": {"EMP_TYPE": "missing"},
+    "impute_cat_cols": {"EMP_TYPE": "missing"},
+    "impute_numerical_cols": {},
     "date_str_cols": {
         "DOB": "19",
         "DISBURSED_DATE": "20"
@@ -67,5 +68,16 @@
     "drop_cols": ["ID", "MANUFACTURER_ID", "BRANCH_ID", "SUPPLIER_ID",
                   "PINCODE", "EMPLOYEE_CODE_ID", "DISBURSED_DATE",
                   "DOB"],
-    "processed_data_dir": "data/processed/"
+    "processed_data_dir": "data/processed/",
+    "str_cat_cols": ["PROCESSED_SCORE_CATEGORY", "EMP_TYPE"],
+    "test_size": 0.2,
+    "seed": 42,
+    "cat_cols": ["REGION_ID"],
+    "target_col": "DEFAULT",
+    "model_hyperparams": {
+        "maxIter": 10,
+        "featuresCol": "features"
+    },
+    "model_path": "models/models/gbt",
+    "model_log_dir": "models/logs"
 }
