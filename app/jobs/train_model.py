@@ -86,5 +86,4 @@ def run_job(spark, config, phase):
     print(f'Model saved...')
     model = PipelineModel.load(config['model_path'])
     predictions_df = model.transform(test_df)
-    mae_cv = RegressionEvaluator(labelCol=label_col, metricName='mae').evaluate(predictions_df)
     _evaluate_results(config, predictions_df)

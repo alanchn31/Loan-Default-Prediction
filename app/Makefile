@@ -7,5 +7,8 @@ build:
 preprocess_train:
 	spark-submit --py-files dist/jobs.zip --files config.json main.py --job preprocess_data --phase train
 
+train_model:
+	spark-submit --py-files dist/jobs.zip --files config.json main.py --job train_model --phase train
+
 test:
 	python -m pytest  --cov tests/transformers
