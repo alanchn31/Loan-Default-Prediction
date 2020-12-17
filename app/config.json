@@ -79,5 +79,5 @@
         "featuresCol": "features"
     },
     "model_path": "models/models/gbt",
-    "model_log_dir": "models/logs"
+    "model_log_dir": "models/logs/"
 }

@@ -13,6 +13,10 @@ def _read_data(spark, config):
 
 
 def train_test_split(df, config):
+    """
+    Split dataset (df) into train and test data
+    using stratified split:
+    """
     fractions = df.select("DEFAULT").distinct() \
                   .withColumn("fraction", fn.lit(1-config['test_size'])).rdd.collectAsMap()
     train_df = df.stat.sampleBy(config['target_col'], fractions, config['seed'])
@@ -60,22 +64,24 @@ def _get_vector_assembler(df, config):
 
 def _evaluate_results(config, predictions):
     evaluator = BinaryClassificationEvaluator(labelCol=config['target_col'])
-    print(evaluator.evaluate(predictions, {evaluator.metricName: 'areaUnderROC'}))
-    print(evaluator.evaluate(predictions, {evaluator.metricName: 'areaUnderPR'}))
+    auc_roc = evaluator.evaluate(predictions, {evaluator.metricName: 'areaUnderROC'})
+    auc_pr = evaluator.evaluate(predictions, {evaluator.metricName: 'areaUnderPR'})
     preds_and_labels = predictions.select(['prediction', config['target_col']]) \
                                   .withColumn('label', fn.col(config['target_col']) \
                                   .cast(typ.FloatType())).orderBy('prediction')
     #select only prediction and label columns
     preds_and_labels = preds_and_labels.select(['prediction', 'label'])
     metrics = MulticlassMetrics(preds_and_labels.rdd.map(tuple))
-    print(metrics.confusionMatrix().toArray())
+    with open(config['model_log_dir'] + 'train_results.txt', 'w') as writer:
+        writer.write(f"AUC ROC: {auc_roc} \n")
+        writer.write(f"AUC PR: {auc_pr} \n")
+        writer.write(f"Confusion Matrix: {metrics.confusionMatrix().toArray()} \n")
 
 
 def run_job(spark, config, phase):
-    """ Runs Data Preparation job"""
+    """ Runs Model Training job"""
     df = _read_data(spark, config)
     train_df, test_df = train_test_split(df, config)
-    # Stratified split:
     string_indexers = _get_string_indexers(config)
     imputers = _get_missing_value_imputers(train_df, config)
     ohe_encoders = _get_one_hot_encoders(config)
