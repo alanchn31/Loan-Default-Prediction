@@ -1,14 +1,13 @@
 build:
 	rm -rf ./dist && mkdir ./dist
 	cp ./main.py ./dist
-	cp ./config.json ./dist
-	zip -r dist/jobs.zip jobs
+	cd ./src && zip -r ../dist/src.zip .
 
 preprocess_train:
-	spark-submit --py-files dist/jobs.zip --files config.json main.py --job preprocess_data --phase train
+	spark-submit --py-files dist/src.zip main.py --job preprocess_data --phase train
 
 train_model:
-	spark-submit --py-files dist/jobs.zip --files config.json main.py --job train_model --phase train
+	spark-submit --py-files dist/src.zip main.py --job train_model --phase train
 
 test:
-	python -m pytest  --cov tests/transformers
+	python -m pytest  --cov src/tests/transformers

@@ -1,7 +1,10 @@
+import os
+import sys
 import json
 import importlib
 import argparse
 from pyspark.sql import SparkSession
+
 
 def _parse_arguments():
     """
@@ -19,7 +22,7 @@ def main():
     """
     args = _parse_arguments()
 
-    with open("config.json", "r") as config_file:
+    with open("src/config.json", "r") as config_file:
         config = json.load(config_file)
 
     spark = SparkSession.builder.appName(config.get("app_name")).getOrCreate()
@@ -29,6 +32,12 @@ def main():
         job_module.run_job(spark, config, args.phase)
     else:
         job_module.run_job(spark, config)
+
+
+if os.path.exists('src.zip'):
+    sys.path.insert(0, 'src.zip')
+else:
+    sys.path.insert(0, './src')
 
 
 if __name__ == "__main__":
