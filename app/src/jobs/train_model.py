@@ -9,7 +9,10 @@ from shared.utils import check_numerical_dtype
 
 
 def _read_data(spark, config):
-    return spark.read.parquet(config['processed_data_dir'] + "train.parquet")
+    if mode == "local":
+        return spark.read.parquet(config['processed_data_dir'] + "train.parquet")
+    else:
+        return spark.read.parquet(config['s3_processed_data_dir'].format(s3_bucket) + "train.parquet")
 
 
 def train_test_split(df, config):
@@ -62,7 +65,7 @@ def _get_vector_assembler(df, config):
     return vec_assembler
 
 
-def _evaluate_results(config, predictions):
+def _evaluate_results(config, predictions, mode):
     evaluator = BinaryClassificationEvaluator(labelCol=config['target_col'])
     auc_roc = evaluator.evaluate(predictions, {evaluator.metricName: 'areaUnderROC'})
     auc_pr = evaluator.evaluate(predictions, {evaluator.metricName: 'areaUnderPR'})
@@ -72,15 +75,19 @@ def _evaluate_results(config, predictions):
     #select only prediction and label columns
     preds_and_labels = preds_and_labels.select(['prediction', 'label'])
     metrics = MulticlassMetrics(preds_and_labels.rdd.map(tuple))
+    if mode == "local":
+        model_log_path = config['model_log_dir'] + 'train_results.txt'
+    else:
+        model_log_path = config['s3_model_log_dir'].format(s3_bucket) + 'train_results.txt'
     with open(config['model_log_dir'] + 'train_results.txt', 'w') as writer:
         writer.write(f"AUC ROC: {auc_roc} \n")
         writer.write(f"AUC PR: {auc_pr} \n")
         writer.write(f"Confusion Matrix: {metrics.confusionMatrix().toArray()} \n")
 
 
-def run_job(spark, config, phase):
+def run_job(spark, config, mode, s3_bucket=None, phase=None):
     """ Runs Model Training job"""
-    df = _read_data(spark, config)
+    df = _read_data(spark, config, mode)
     train_df, test_df = train_test_split(df, config)
     string_indexers = _get_string_indexers(config)
     imputers = _get_missing_value_imputers(train_df, config)
@@ -89,10 +96,13 @@ def run_job(spark, config, phase):
     gbt_clf = GBTClassifier(**config['model_hyperparams'], labelCol='DEFAULT')
     stages = string_indexers + imputers + ohe_encoders + [vec_assembler] + [gbt_clf]
     pipeline = Pipeline(stages=stages).fit(train_df)
-    model_path = config['model_path']
+    if mode == "local":
+        model_path = config['model_path']
+    else:
+        model_path = config['s3_model_path'].format(s3_bucket)
     print('Saving model to {}'.format(model_path))
     pipeline.write().overwrite().save(model_path)
     print('Model saved...')
     model = PipelineModel.load(model_path)
     predictions_df = model.transform(test_df)
-    _evaluate_results(config, predictions_df)
+    _evaluate_results(config, predictions_df, mode)

@@ -1,6 +1,7 @@
 {
     "app_name": "LoanDefaultPrediction",
     "source_data_path": "src/data/inputs/loan_default.csv",
+    "s3_source_data_path": "s3a://{}/data/inputs/loan_default.csv",
     "schema": [
         "ID IntegerType()",
         "DISBURSED_VALUE IntegerType()",
@@ -68,7 +69,8 @@
     "drop_cols": ["ID", "MANUFACTURER_ID", "BRANCH_ID", "SUPPLIER_ID",
                   "PINCODE", "EMPLOYEE_CODE_ID", "DISBURSED_DATE",
                   "DOB"],
-    "processed_data_dir": "data/processed/",
+    "processed_data_dir": "src/data/processed/",
+    "s3_processed_data_dir": "s3a://{}/data/processed/",
     "str_cat_cols": ["SCORE_CATEGORY", "EMP_TYPE"],
     "test_size": 0.2,
     "seed": 42,
@@ -79,5 +81,7 @@
         "featuresCol": "features"
     },
     "model_path": "models/models/gbt",
-    "model_log_dir": "models/logs/"
+    "model_log_dir": "models/logs/",
+    "s3_model_path": "s3a://{}/models/models/gbt",
+    "s3_model_log_dir": "s3a://{}/models/logs/"
 }

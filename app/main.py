@@ -13,7 +13,37 @@ def _parse_arguments():
     parser = argparse.ArgumentParser()
     parser.add_argument("--job", required=True)
     parser.add_argument("--phase", required=False)
+    parser.add_argument("--mode", required=True)
+    parser.add_argument("--awsKey", required=False)
+    parser.add_argument("--awsSecretKey", required=False)
+    parser.add_argument("--s3Bucket", required=False)
     return parser.parse_args()
+
+
+def create_spark_session(config, mode, aws_key, aws_secret_key):
+    """
+    Description: Creates spark session.
+    Returns:
+        spark session object
+    """
+    if mode == "local":
+         spark = SparkSession.builder \
+                        .appName(config.get("app_name")) \
+                        .getOrCreate()
+    else:
+        spark = SparkSession.builder \
+                            .config("spark.executor.heartbeatInterval", "40s") \
+                            .appName(config.get("app_name")) \
+                            .getOrCreate()
+        
+        spark.sparkContext._jsc.hadoopConfiguration().set("fs.s3a.impl",
+                                                        "org.apache.hadoop.fs.s3a.S3AFileSystem")
+        spark.sparkContext._jsc.hadoopConfiguration().set("fs.s3a.access.key", aws_key)
+        spark.sparkContext._jsc.hadoopConfiguration().set("fs.s3a.secret.key", aws_secret_key)
+        spark.sparkContext._jsc.hadoopConfiguration().set("fs.s3a.endpoint", "s3.amazonaws.com")
+        spark.sparkContext._jsc.hadoopConfiguration().set("fs.s3a.connection.timeout", "1000")
+        spark.sparkContext._jsc.hadoopConfiguration().set("fs.s3a.connection.maximum", "5000")
+    return spark
 
 
 def main():
@@ -25,13 +55,13 @@ def main():
     with open("src/config.json", "r") as config_file:
         config = json.load(config_file)
 
-    spark = SparkSession.builder.appName(config.get("app_name")).getOrCreate()
+    spark = create_spark_session(config, args.mode, args.awsKey, args.awsSecretKey)
 
     job_module = importlib.import_module(f"jobs.{args.job}")
     if args.phase:
-        job_module.run_job(spark, config, args.phase)
+        job_module.run_job(spark, config, args.mode, args.s3Bucket, args.phase)
     else:
-        job_module.run_job(spark, config)
+        job_module.run_job(spark, config, args.mode)
 
 
 if os.path.exists('src.zip'):

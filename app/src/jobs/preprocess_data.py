@@ -15,18 +15,22 @@ from pyspark.sql import SparkSession
 from shared.utils import read_schema
 
 
-def _read_data(spark, config):
+def _read_data(spark, config, mode, s3_bucket):
     schema_lst = config.get("schema")
     schema = read_schema(schema_lst)
-    file_path = config.get('source_data_path')
+    if mode == "local":
+        file_path = config.get('source_data_path')
+    else:
+        file_path = config.get('s3_source_data_path').format(s3_bucket)
+        print(file_path)
     return spark.read.csv(file_path,
                           header=True,
                           schema=schema)
 
 
-def run_job(spark, config, phase):
+def run_job(spark, config, mode, s3_bucket=None, phase=None):
     """ Runs Data Preparation job"""
-    raw_df = _read_data(spark, config)
+    raw_df = _read_data(spark, config, mode, s3_bucket)
     phase = 'train' if "DEFAULT" in raw_df.columns else 'test'
     df = Pipe([
         IF(IF.Predicate.has_column('DEFAULT'), then=[
@@ -39,4 +43,8 @@ def run_job(spark, config, phase):
         ImputeCategoricalMissingVals(config['impute_cat_cols']),
         DropColumns(config['drop_cols']),
     ]).transform(raw_df)
-    df.write.parquet(config['processed_data_dir'] + f"{phase}.parquet", mode='overwrite')
+    if mode == "local":
+        df.write.parquet(config['processed_data_dir'] + f"{phase}.parquet", mode='overwrite')
+    else:
+        df.write.parquet(config['s3_processed_data_dir'].format(s3_bucket) + f"{phase}.parquet", 
+                        mode='overwrite')
