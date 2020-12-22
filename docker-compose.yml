@@ -1,6 +1,7 @@
 version: "3.7"
 services:
   hivemetastore:
+    container_name: "hivemetastore"
     image: postgres:11.5
     hostname: hivemetastore
     environment:
@@ -14,17 +15,9 @@ services:
       interval: 20s
       timeout: 10s
       retries: 5
-    networks:
-      spark_net:
-        ipv4_address: 172.28.1.4
-    extra_hosts:
-      - "master:172.28.1.1"
-      - "worker1:172.28.1.2"
-      - "worker2:172.28.1.3"
-      - "zeppelin:172.28.1.5"
-      - "livy:172.28.1.6"
 
   master:
+    container_name: "master"
     # image: panovvv/hadoop-hive-spark:2.5
     build:
         context: .
@@ -61,19 +54,13 @@ services:
       - 10000:10000
     volumes:
       - ./data:/data
-    networks:
-      spark_net:
-        ipv4_address: 172.28.1.1
-    extra_hosts:
-      - "worker1:172.28.1.2"
-      - "worker2:172.28.1.3"
-      - "hivemetastore:172.28.1.4"
-      - "zeppelin:172.28.1.5"
-      - "livy:172.28.1.6"
 
   worker1:
-    image: panovvv/hadoop-hive-spark:2.5
-#    build: '../hadoop-hive-spark-docker'
+    container_name: "worker1"
+    # image: panovvv/hadoop-hive-spark:2.5
+    build:
+        context: .
+        dockerfile: ./docker/worker/Dockerfile
     hostname: worker1
     # depends_on:
     #   - hivemetastore
@@ -95,19 +82,13 @@ services:
       - 8081:8081
     volumes:
       - ./data:/data
-    networks:
-      spark_net:
-        ipv4_address: 172.28.1.2
-    extra_hosts:
-      - "master:172.28.1.1"
-      - "worker2:172.28.1.3"
-      - "hivemetastore:172.28.1.4"
-      - "zeppelin:172.28.1.5"
-      - "livy:172.28.1.6"
 
   worker2:
-    image: panovvv/hadoop-hive-spark:2.5
-#    build: '../hadoop-hive-spark-docker'
+    container_name: "worker2"
+    # image: panovvv/hadoop-hive-spark:2.5
+    build:
+        context: .
+        dockerfile: ./docker/worker/Dockerfile
     hostname: worker2
     # depends_on:
     #   - hivemetastore
@@ -130,19 +111,10 @@ services:
       - 8082:8082
     volumes:
       - ./data:/data
-    networks:
-      spark_net:
-        ipv4_address: 172.28.1.3
-    extra_hosts:
-      - "master:172.28.1.1"
-      - "worker1:172.28.1.2"
-      - "hivemetastore:172.28.1.4"
-      - "zeppelin:172.28.1.5"
-      - "livy:172.28.1.6"
 
   livy:
+    container_name: "livy"
     image: panovvv/livy:2.5
-#    build: '../livy-docker'
     hostname: livy
     depends_on:
       - master
@@ -167,19 +139,10 @@ services:
       - 1-65535
     ports:
       - 8998:8998
-    networks:
-      spark_net:
-        ipv4_address: 172.28.1.6
-    extra_hosts:
-      - "master:172.28.1.1"
-      - "worker1:172.28.1.2"
-      - "worker2:172.28.1.3"
-      - "hivemetastore:172.28.1.4"
-      - "zeppelin:172.28.1.5"
 
   zeppelin:
+    container_name: "zeppelin"
     image: panovvv/zeppelin-bigdata:2.5
-#    build: '../zeppelin-bigdata-docker'
     hostname: zeppelin
     depends_on:
       - master
@@ -196,15 +159,6 @@ services:
       - 8890
     ports:
       - 8890:8890
-    networks:
-      spark_net:
-        ipv4_address: 172.28.1.5
-    extra_hosts:
-      - "master:172.28.1.1"
-      - "worker1:172.28.1.2"
-      - "worker2:172.28.1.3"
-      - "hivemetastore:172.28.1.4"
-      - "livy:172.28.1.6"
   postgres:
         image: postgres:9.6
         environment:
@@ -234,7 +188,6 @@ services:
       - ./airflow/logs:/usr/local/airflow/logs
   webserver:
     container_name: "webserver"
-    # image: puckel/docker-airflow:1.10.9
     build:
         context: .
         dockerfile: ./docker/airflow/Dockerfile
@@ -250,6 +203,7 @@ services:
       - ./airflow/dags:/usr/local/airflow/dags
       - ./airflow/plugins:/usr/local/airflow/plugins
       - ./airflow/logs:/usr/local/airflow/logs  
+      - ./airflow/dist:/usr/local/airflow/dist
     ports:
       - "9001:8080"
     command: webserver
@@ -258,13 +212,6 @@ services:
       interval: 30s
       timeout: 30s
       retries: 3         
-
-networks:
-  spark_net:
-    ipam:
-      driver: default
-      config:
-        - subnet: 172.28.0.0/16
 
 
 

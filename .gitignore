@@ -9,3 +9,4 @@ venv/
 init.sql/
 livy_batches/
 zeppelin_notebooks/
+airflow/logs/
