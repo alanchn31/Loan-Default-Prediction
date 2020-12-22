@@ -1,0 +1,279 @@
+[2020-12-22 15:02:29,795] {taskinstance.py:655} INFO - Dependencies all met for <TaskInstance: loan_prediction_train_model.preprocess_data 2020-12-22T15:00:43.230845+00:00 [queued]>
+[2020-12-22 15:02:29,812] {taskinstance.py:655} INFO - Dependencies all met for <TaskInstance: loan_prediction_train_model.preprocess_data 2020-12-22T15:00:43.230845+00:00 [queued]>
+[2020-12-22 15:02:29,813] {taskinstance.py:866} INFO - 
+--------------------------------------------------------------------------------
+[2020-12-22 15:02:29,813] {taskinstance.py:867} INFO - Starting attempt 2 of 6
+[2020-12-22 15:02:29,813] {taskinstance.py:868} INFO - 
+--------------------------------------------------------------------------------
+[2020-12-22 15:02:29,827] {taskinstance.py:887} INFO - Executing <Task(LivyBatchOperator): preprocess_data> on 2020-12-22T15:00:43.230845+00:00
+[2020-12-22 15:02:29,837] {standard_task_runner.py:53} INFO - Started process 9522 to run task
+[2020-12-22 15:02:29,977] {logging_mixin.py:112} INFO - Running %s on host %s <TaskInstance: loan_prediction_train_model.preprocess_data 2020-12-22T15:00:43.230845+00:00 [running]> 6e29624e1b8e
+[2020-12-22 15:02:30,030] {logging_mixin.py:112} INFO - [2020-12-22 15:02:30,029] {batch.py:214} INFO - Submitting the batch to Livy... Payload:
+{
+  "file": "s3a://alanchn31-loan-default-prediction/dist/main.py",
+  "args": [
+    "--job",
+    "preprocess_data",
+    "--phase",
+    "train",
+    "--mode",
+    "aws",
+    "--awsKey",
+    "AKIAUW4FKHTMR2UR3INH",
+    "--awsSecretKey",
+    "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",
+    "--s3Bucket",
+    "alanchn31-loan-default-prediction"
+  ],
+  "pyFiles": [
+    "s3a://alanchn31-loan-default-prediction/dist/src.zip"
+  ],
+  "files": [
+    "s3a://alanchn31-loan-default-prediction/dist/config.json"
+  ],
+  "name": "preprocess_data_scheduled__2020-12-22T15:00:43.230845+00:00"
+}
+[2020-12-22 15:02:30,047] {logging_mixin.py:112} INFO - [2020-12-22 15:02:30,046] {base_hook.py:84} INFO - Using connection to: id: livy. Host: ec2-3-236-26-7.compute-1.amazonaws.com, Port: 8998, Schema: None, Login: None, Password: None, extra: None
+[2020-12-22 15:02:30,059] {logging_mixin.py:112} INFO - [2020-12-22 15:02:30,059] {http_hook.py:136} INFO - Sending 'POST' to url: http://ec2-3-236-26-7.compute-1.amazonaws.com:8998/batches
+[2020-12-22 15:02:30,123] {logging_mixin.py:112} INFO - [2020-12-22 15:02:30,123] {batch.py:166} INFO - Batch successfully submitted with id = 6.
+[2020-12-22 15:02:30,124] {logging_mixin.py:112} INFO - [2020-12-22 15:02:30,124] {batch.py:80} INFO - Getting batch 6 status...
+[2020-12-22 15:02:30,144] {logging_mixin.py:112} INFO - [2020-12-22 15:02:30,144] {base_hook.py:84} INFO - Using connection to: id: livy. Host: ec2-3-236-26-7.compute-1.amazonaws.com, Port: 8998, Schema: None, Login: None, Password: None, extra: None
+[2020-12-22 15:02:30,146] {logging_mixin.py:112} INFO - [2020-12-22 15:02:30,146] {http_hook.py:136} INFO - Sending 'GET' to url: http://ec2-3-236-26-7.compute-1.amazonaws.com:8998/batches/6
+[2020-12-22 15:02:30,169] {logging_mixin.py:112} INFO - [2020-12-22 15:02:30,169] {batch.py:90} INFO - Batch 6 has not finished yet (state is 'starting')
+[2020-12-22 15:02:50,195] {logging_mixin.py:112} INFO - [2020-12-22 15:02:50,195] {batch.py:80} INFO - Getting batch 6 status...
+[2020-12-22 15:02:50,209] {logging_mixin.py:112} INFO - [2020-12-22 15:02:50,209] {base_hook.py:84} INFO - Using connection to: id: livy. Host: ec2-3-236-26-7.compute-1.amazonaws.com, Port: 8998, Schema: None, Login: None, Password: None, extra: None
+[2020-12-22 15:02:50,210] {logging_mixin.py:112} INFO - [2020-12-22 15:02:50,210] {http_hook.py:136} INFO - Sending 'GET' to url: http://ec2-3-236-26-7.compute-1.amazonaws.com:8998/batches/6
+[2020-12-22 15:02:50,222] {logging_mixin.py:112} INFO - [2020-12-22 15:02:50,222] {batch.py:90} INFO - Batch 6 has not finished yet (state is 'running')
+[2020-12-22 15:03:10,242] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,242] {batch.py:80} INFO - Getting batch 6 status...
+[2020-12-22 15:03:10,249] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,249] {base_hook.py:84} INFO - Using connection to: id: livy. Host: ec2-3-236-26-7.compute-1.amazonaws.com, Port: 8998, Schema: None, Login: None, Password: None, extra: None
+[2020-12-22 15:03:10,250] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,250] {http_hook.py:136} INFO - Sending 'GET' to url: http://ec2-3-236-26-7.compute-1.amazonaws.com:8998/batches/6
+[2020-12-22 15:03:10,260] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,259] {batch.py:299} INFO - --------------------------------------------------Full log for batch 6--------------------------------------------------
+[2020-12-22 15:03:10,270] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,270] {base_hook.py:84} INFO - Using connection to: id: livy. Host: ec2-3-236-26-7.compute-1.amazonaws.com, Port: 8998, Schema: None, Login: None, Password: None, extra: None
+[2020-12-22 15:03:10,272] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,271] {http_hook.py:136} INFO - Sending 'GET' to url: http://ec2-3-236-26-7.compute-1.amazonaws.com:8998/batches/6/log?from=0&size=100
+[2020-12-22 15:03:10,284] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,284] {batch.py:309} INFO - stdout: 
+[2020-12-22 15:03:10,285] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,285] {batch.py:309} INFO - 2020-12-22 15:02:39,875 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/jackson-core-2.6.7.jar
+[2020-12-22 15:03:10,285] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,285] {batch.py:309} INFO - 2020-12-22 15:02:39,877 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/jackson-databind-2.6.7.3.jar
+[2020-12-22 15:03:10,285] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,285] {batch.py:309} INFO - 2020-12-22 15:02:39,880 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/jackson-dataformat-yaml-2.6.7.jar
+[2020-12-22 15:03:10,285] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,285] {batch.py:309} INFO - 2020-12-22 15:02:39,882 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/jackson-module-jaxb-annotations-2.6.7.jar
+[2020-12-22 15:03:10,285] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,285] {batch.py:309} INFO - 2020-12-22 15:02:39,885 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/jackson-module-paranamer-2.7.9.jar
+[2020-12-22 15:03:10,286] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,286] {batch.py:309} INFO - 2020-12-22 15:02:39,886 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/jackson-module-scala_2.11-2.6.7.1.jar
+[2020-12-22 15:03:10,286] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,286] {batch.py:309} INFO - 2020-12-22 15:02:39,887 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/janino-3.0.9.jar
+[2020-12-22 15:03:10,286] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,286] {batch.py:309} INFO - 2020-12-22 15:02:39,890 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/javassist-3.18.1-GA.jar
+[2020-12-22 15:03:10,286] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,286] {batch.py:309} INFO - 2020-12-22 15:02:39,891 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/javax.annotation-api-1.2.jar
+[2020-12-22 15:03:10,286] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,286] {batch.py:309} INFO - 2020-12-22 15:02:39,894 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/javax.inject-2.4.0-b34.jar
+[2020-12-22 15:03:10,287] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,287] {batch.py:309} INFO - 2020-12-22 15:02:39,895 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/javax.servlet-api-3.1.0.jar
+[2020-12-22 15:03:10,287] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,287] {batch.py:309} INFO - 2020-12-22 15:02:39,898 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/javax.ws.rs-api-2.0.1.jar
+[2020-12-22 15:03:10,288] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,287] {batch.py:309} INFO - 2020-12-22 15:02:39,899 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/jcl-over-slf4j-1.7.16.jar
+[2020-12-22 15:03:10,288] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,288] {batch.py:309} INFO - 2020-12-22 15:02:39,901 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/jersey-client-2.22.2.jar
+[2020-12-22 15:03:10,288] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,288] {batch.py:309} INFO - 2020-12-22 15:02:39,902 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/jersey-common-2.22.2.jar
+[2020-12-22 15:03:10,288] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,288] {batch.py:309} INFO - 2020-12-22 15:02:39,906 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/jersey-container-servlet-2.22.2.jar
+[2020-12-22 15:03:10,289] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,288] {batch.py:309} INFO - 2020-12-22 15:02:39,907 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/jersey-container-servlet-core-2.22.2.jar
+[2020-12-22 15:03:10,289] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,289] {batch.py:309} INFO - 2020-12-22 15:02:39,908 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/jersey-guava-2.22.2.jar
+[2020-12-22 15:03:10,289] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,289] {batch.py:309} INFO - 2020-12-22 15:02:39,910 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/jersey-media-jaxb-2.22.2.jar
+[2020-12-22 15:03:10,289] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,289] {batch.py:309} INFO - 2020-12-22 15:02:39,911 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/jersey-server-2.22.2.jar
+[2020-12-22 15:03:10,289] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,289] {batch.py:309} INFO - 2020-12-22 15:02:39,913 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/joda-time-2.9.3.jar
+[2020-12-22 15:03:10,289] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,289] {batch.py:309} INFO - 2020-12-22 15:02:39,914 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/json4s-ast_2.11-3.5.3.jar
+[2020-12-22 15:03:10,290] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,290] {batch.py:309} INFO - 2020-12-22 15:02:39,922 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/json4s-core_2.11-3.5.3.jar
+[2020-12-22 15:03:10,290] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,290] {batch.py:309} INFO - 2020-12-22 15:02:39,923 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/json4s-jackson_2.11-3.5.3.jar
+[2020-12-22 15:03:10,290] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,290] {batch.py:309} INFO - 2020-12-22 15:02:39,925 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/json4s-scalap_2.11-3.5.3.jar
+[2020-12-22 15:03:10,290] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,290] {batch.py:309} INFO - 2020-12-22 15:02:39,929 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/jsr305-1.3.9.jar
+[2020-12-22 15:03:10,290] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,290] {batch.py:309} INFO - 2020-12-22 15:02:39,931 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/jtransforms-2.4.0.jar
+[2020-12-22 15:03:10,291] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,290] {batch.py:309} INFO - 2020-12-22 15:02:39,934 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/jul-to-slf4j-1.7.16.jar
+[2020-12-22 15:03:10,291] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,291] {batch.py:309} INFO - 2020-12-22 15:02:39,935 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/kryo-shaded-4.0.2.jar
+[2020-12-22 15:03:10,291] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,291] {batch.py:309} INFO - 2020-12-22 15:02:39,938 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/kubernetes-client-4.6.1.jar
+[2020-12-22 15:03:10,291] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,291] {batch.py:309} INFO - 2020-12-22 15:02:39,939 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/kubernetes-model-4.6.1.jar
+[2020-12-22 15:03:10,291] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,291] {batch.py:309} INFO - 2020-12-22 15:02:39,942 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/kubernetes-model-common-4.6.1.jar
+[2020-12-22 15:03:10,292] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,292] {batch.py:309} INFO - 2020-12-22 15:02:39,943 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/leveldbjni-all-1.8.jar
+[2020-12-22 15:03:10,292] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,292] {batch.py:309} INFO - 2020-12-22 15:02:39,944 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/logging-interceptor-3.12.0.jar
+[2020-12-22 15:03:10,292] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,292] {batch.py:309} INFO - 2020-12-22 15:02:39,947 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/lz4-java-1.4.0.jar
+[2020-12-22 15:03:10,292] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,292] {batch.py:309} INFO - 2020-12-22 15:02:39,952 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/machinist_2.11-0.6.1.jar
+[2020-12-22 15:03:10,292] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,292] {batch.py:309} INFO - 2020-12-22 15:02:39,953 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/macro-compat_2.11-1.1.1.jar
+[2020-12-22 15:03:10,293] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,292] {batch.py:309} INFO - 2020-12-22 15:02:39,956 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/mesos-1.4.0-shaded-protobuf.jar
+[2020-12-22 15:03:10,293] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,293] {batch.py:309} INFO - 2020-12-22 15:02:39,957 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/metrics-core-3.1.5.jar
+[2020-12-22 15:03:10,293] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,293] {batch.py:309} INFO - 2020-12-22 15:02:39,958 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/metrics-graphite-3.1.5.jar
+[2020-12-22 15:03:10,293] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,293] {batch.py:309} INFO - 2020-12-22 15:02:39,961 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/metrics-json-3.1.5.jar
+[2020-12-22 15:03:10,293] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,293] {batch.py:309} INFO - 2020-12-22 15:02:39,963 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/metrics-jvm-3.1.5.jar
+[2020-12-22 15:03:10,294] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,293] {batch.py:309} INFO - 2020-12-22 15:02:39,966 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/minlog-1.3.0.jar
+[2020-12-22 15:03:10,294] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,294] {batch.py:309} INFO - 2020-12-22 15:02:39,972 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/netty-3.9.9.Final.jar
+[2020-12-22 15:03:10,294] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,294] {batch.py:309} INFO - 2020-12-22 15:02:39,973 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/netty-all-4.1.42.Final.jar
+[2020-12-22 15:03:10,294] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,294] {batch.py:309} INFO - 2020-12-22 15:02:39,976 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/objenesis-2.5.1.jar
+[2020-12-22 15:03:10,294] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,294] {batch.py:309} INFO - 2020-12-22 15:02:39,978 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/okhttp-3.12.0.jar
+[2020-12-22 15:03:10,294] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,294] {batch.py:309} INFO - 2020-12-22 15:02:39,979 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/okio-1.15.0.jar
+[2020-12-22 15:03:10,294] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,294] {batch.py:309} INFO - 2020-12-22 15:02:39,982 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/opencsv-2.3.jar
+[2020-12-22 15:03:10,295] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,295] {batch.py:309} INFO - 2020-12-22 15:02:39,984 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/orc-core-1.5.5-nohive.jar
+[2020-12-22 15:03:10,295] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,295] {batch.py:309} INFO - 2020-12-22 15:02:39,986 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/orc-mapreduce-1.5.5-nohive.jar
+[2020-12-22 15:03:10,295] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,295] {batch.py:309} INFO - 2020-12-22 15:02:39,988 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/orc-shims-1.5.5.jar
+[2020-12-22 15:03:10,295] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,295] {batch.py:309} INFO - 2020-12-22 15:02:39,993 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/oro-2.0.8.jar
+[2020-12-22 15:03:10,295] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,295] {batch.py:309} INFO - 2020-12-22 15:02:39,995 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/osgi-resource-locator-1.0.1.jar
+[2020-12-22 15:03:10,296] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,295] {batch.py:309} INFO - 2020-12-22 15:02:39,996 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/paranamer-2.8.jar
+[2020-12-22 15:03:10,296] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,296] {batch.py:309} INFO - 2020-12-22 15:02:39,998 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/parquet-column-1.10.1.jar
+[2020-12-22 15:03:10,296] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,296] {batch.py:309} INFO - 2020-12-22 15:02:40,000 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/parquet-common-1.10.1.jar
+[2020-12-22 15:03:10,296] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,296] {batch.py:309} INFO - 2020-12-22 15:02:40,014 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/parquet-encoding-1.10.1.jar
+[2020-12-22 15:03:10,296] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,296] {batch.py:309} INFO - 2020-12-22 15:02:40,016 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/parquet-format-2.4.0.jar
+[2020-12-22 15:03:10,297] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,297] {batch.py:309} INFO - 2020-12-22 15:02:40,018 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/parquet-hadoop-1.10.1.jar
+[2020-12-22 15:03:10,297] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,297] {batch.py:309} INFO - 2020-12-22 15:02:40,019 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/parquet-jackson-1.10.1.jar
+[2020-12-22 15:03:10,297] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,297] {batch.py:309} INFO - 2020-12-22 15:02:40,021 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/py4j-0.10.7.jar
+[2020-12-22 15:03:10,297] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,297] {batch.py:309} INFO - 2020-12-22 15:02:40,025 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/pyrolite-4.13.jar
+[2020-12-22 15:03:10,297] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,297] {batch.py:309} INFO - 2020-12-22 15:02:40,027 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/scala-compiler-2.11.12.jar
+[2020-12-22 15:03:10,298] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,298] {batch.py:309} INFO - 2020-12-22 15:02:40,030 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/scala-library-2.11.12.jar
+[2020-12-22 15:03:10,298] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,298] {batch.py:309} INFO - 2020-12-22 15:02:40,031 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/scala-parser-combinators_2.11-1.1.0.jar
+[2020-12-22 15:03:10,298] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,298] {batch.py:309} INFO - 2020-12-22 15:02:40,034 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/scala-reflect-2.11.12.jar
+[2020-12-22 15:03:10,298] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,298] {batch.py:309} INFO - 2020-12-22 15:02:40,035 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/scala-xml_2.11-1.0.5.jar
+[2020-12-22 15:03:10,299] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,299] {batch.py:309} INFO - 2020-12-22 15:02:40,038 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/shapeless_2.11-2.3.2.jar
+[2020-12-22 15:03:10,299] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,299] {batch.py:309} INFO - 2020-12-22 15:02:40,040 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/shims-0.7.45.jar
+[2020-12-22 15:03:10,299] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,299] {batch.py:309} INFO - 2020-12-22 15:02:40,042 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/snakeyaml-1.15.jar
+[2020-12-22 15:03:10,299] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,299] {batch.py:309} INFO - 2020-12-22 15:02:40,043 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/snappy-java-1.1.7.3.jar
+[2020-12-22 15:03:10,299] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,299] {batch.py:309} INFO - 2020-12-22 15:02:40,046 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/spark-catalyst_2.11-2.4.5.jar
+[2020-12-22 15:03:10,300] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,299] {batch.py:309} INFO - 2020-12-22 15:02:40,049 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/spark-core_2.11-2.4.5.jar
+[2020-12-22 15:03:10,300] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,300] {batch.py:309} INFO - 2020-12-22 15:02:40,053 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/spark-graphx_2.11-2.4.5.jar
+[2020-12-22 15:03:10,300] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,300] {batch.py:309} INFO - 2020-12-22 15:02:40,055 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/spark-hive_2.11-2.4.5.jar
+[2020-12-22 15:03:10,300] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,300] {batch.py:309} INFO - 2020-12-22 15:02:40,056 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/spark-kubernetes_2.11-2.4.5.jar
+[2020-12-22 15:03:10,300] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,300] {batch.py:309} INFO - 2020-12-22 15:02:40,060 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/spark-kvstore_2.11-2.4.5.jar
+[2020-12-22 15:03:10,301] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,300] {batch.py:309} INFO - 2020-12-22 15:02:40,064 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/spark-launcher_2.11-2.4.5.jar
+[2020-12-22 15:03:10,301] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,301] {batch.py:309} INFO - 2020-12-22 15:02:40,066 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/spark-mesos_2.11-2.4.5.jar
+[2020-12-22 15:03:10,301] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,301] {batch.py:309} INFO - 2020-12-22 15:02:40,069 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/spark-mllib-local_2.11-2.4.5.jar
+[2020-12-22 15:03:10,301] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,301] {batch.py:309} INFO - 2020-12-22 15:02:40,070 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/spark-mllib_2.11-2.4.5.jar
+[2020-12-22 15:03:10,301] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,301] {batch.py:309} INFO - 2020-12-22 15:02:40,075 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/spark-network-common_2.11-2.4.5.jar
+[2020-12-22 15:03:10,301] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,301] {batch.py:309} INFO - 2020-12-22 15:02:40,077 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/spark-network-shuffle_2.11-2.4.5.jar
+[2020-12-22 15:03:10,302] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,301] {batch.py:309} INFO - 2020-12-22 15:02:40,079 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/spark-repl_2.11-2.4.5.jar
+[2020-12-22 15:03:10,302] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,302] {batch.py:309} INFO - 2020-12-22 15:02:40,083 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/spark-sketch_2.11-2.4.5.jar
+[2020-12-22 15:03:10,302] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,302] {batch.py:309} INFO - 2020-12-22 15:02:40,084 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/spark-sql_2.11-2.4.5.jar
+[2020-12-22 15:03:10,302] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,302] {batch.py:309} INFO - 2020-12-22 15:02:40,086 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/spark-streaming_2.11-2.4.5.jar
+[2020-12-22 15:03:10,302] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,302] {batch.py:309} INFO - 2020-12-22 15:02:40,090 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/spark-tags_2.11-2.4.5-tests.jar
+[2020-12-22 15:03:10,302] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,302] {batch.py:309} INFO - 2020-12-22 15:02:40,091 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/spark-tags_2.11-2.4.5.jar
+[2020-12-22 15:03:10,303] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,302] {batch.py:309} INFO - 2020-12-22 15:02:40,096 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/spark-unsafe_2.11-2.4.5.jar
+[2020-12-22 15:03:10,303] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,303] {batch.py:309} INFO - 2020-12-22 15:02:40,100 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/spark-yarn_2.11-2.4.5.jar
+[2020-12-22 15:03:10,303] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,303] {batch.py:309} INFO - 2020-12-22 15:02:40,102 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/spire-macros_2.11-0.13.0.jar
+[2020-12-22 15:03:10,303] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,303] {batch.py:309} INFO - 2020-12-22 15:02:40,106 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/spire_2.11-0.13.0.jar
+[2020-12-22 15:03:10,303] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,303] {batch.py:309} INFO - 2020-12-22 15:02:40,107 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/stream-2.7.0.jar
+[2020-12-22 15:03:10,304] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,303] {batch.py:309} INFO - 2020-12-22 15:02:40,108 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/univocity-parsers-2.7.3.jar
+[2020-12-22 15:03:10,304] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,304] {batch.py:309} INFO - 2020-12-22 15:02:40,110 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/validation-api-1.1.0.Final.jar
+[2020-12-22 15:03:10,304] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,304] {batch.py:309} INFO - 2020-12-22 15:02:40,111 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/xbean-asm6-shaded-4.8.jar
+[2020-12-22 15:03:10,304] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,304] {batch.py:309} INFO - 2020-12-22 15:02:40,112 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/xz-1.5.jar
+[2020-12-22 15:03:10,311] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,311] {base_hook.py:84} INFO - Using connection to: id: livy. Host: ec2-3-236-26-7.compute-1.amazonaws.com, Port: 8998, Schema: None, Login: None, Password: None, extra: None
+[2020-12-22 15:03:10,312] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,312] {http_hook.py:136} INFO - Sending 'GET' to url: http://ec2-3-236-26-7.compute-1.amazonaws.com:8998/batches/6/log?from=100&size=100
+[2020-12-22 15:03:10,322] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,322] {batch.py:309} INFO - 2020-12-22 15:02:40,113 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/zjsonpatch-0.3.0.jar
+[2020-12-22 15:03:10,322] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,322] {batch.py:309} INFO - 2020-12-22 15:02:40,114 INFO yarn.Client: Source and destination file systems are the same. Not copying hdfs://master:9000/spark-jars/zstd-jni-1.3.2-2.jar
+[2020-12-22 15:03:10,322] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,322] {batch.py:309} INFO - 2020-12-22 15:02:40,119 INFO yarn.Client: Uploading resource s3a://alanchn31-loan-default-prediction/dist/config.json -> hdfs://master:9000/user/root/.sparkStaging/application_1608647635904_0007/config.json
+[2020-12-22 15:03:10,323] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,322] {batch.py:309} INFO - 2020-12-22 15:02:40,360 INFO yarn.Client: Uploading resource file:/usr/spark/python/lib/pyspark.zip -> hdfs://master:9000/user/root/.sparkStaging/application_1608647635904_0007/pyspark.zip
+[2020-12-22 15:03:10,323] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,323] {batch.py:309} INFO - 2020-12-22 15:02:40,432 INFO yarn.Client: Uploading resource file:/usr/spark/python/lib/py4j-0.10.7-src.zip -> hdfs://master:9000/user/root/.sparkStaging/application_1608647635904_0007/py4j-0.10.7-src.zip
+[2020-12-22 15:03:10,323] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,323] {batch.py:309} INFO - 2020-12-22 15:02:40,482 INFO yarn.Client: Uploading resource s3a://alanchn31-loan-default-prediction/dist/src.zip -> hdfs://master:9000/user/root/.sparkStaging/application_1608647635904_0007/src.zip
+[2020-12-22 15:03:10,323] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,323] {batch.py:309} INFO - 2020-12-22 15:02:40,936 INFO yarn.Client: Uploading resource file:/tmp/spark-dd88c4cb-0607-4214-ac94-6f8f189afd58/__spark_conf__4643276692843159086.zip -> hdfs://master:9000/user/root/.sparkStaging/application_1608647635904_0007/__spark_conf__.zip
+[2020-12-22 15:03:10,323] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,323] {batch.py:309} INFO - 2020-12-22 15:02:41,025 INFO spark.SecurityManager: Changing view acls to: root
+[2020-12-22 15:03:10,324] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,324] {batch.py:309} INFO - 2020-12-22 15:02:41,025 INFO spark.SecurityManager: Changing modify acls to: root
+[2020-12-22 15:03:10,324] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,324] {batch.py:309} INFO - 2020-12-22 15:02:41,034 INFO spark.SecurityManager: Changing view acls groups to: 
+[2020-12-22 15:03:10,324] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,324] {batch.py:309} INFO - 2020-12-22 15:02:41,034 INFO spark.SecurityManager: Changing modify acls groups to: 
+[2020-12-22 15:03:10,324] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,324] {batch.py:309} INFO - 2020-12-22 15:02:41,035 INFO spark.SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(root); groups with view permissions: Set(); users  with modify permissions: Set(root); groups with modify permissions: Set()
+[2020-12-22 15:03:10,324] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,324] {batch.py:309} INFO - 2020-12-22 15:02:42,441 INFO yarn.Client: Submitting application application_1608647635904_0007 to ResourceManager
+[2020-12-22 15:03:10,325] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,324] {batch.py:309} INFO - 2020-12-22 15:02:42,500 INFO impl.YarnClientImpl: Submitted application application_1608647635904_0007
+[2020-12-22 15:03:10,325] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,325] {batch.py:309} INFO - 2020-12-22 15:02:42,503 INFO cluster.SchedulerExtensionServices: Starting Yarn extension services with app application_1608647635904_0007 and attemptId None
+[2020-12-22 15:03:10,325] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,325] {batch.py:309} INFO - 2020-12-22 15:02:43,510 INFO yarn.Client: Application report for application_1608647635904_0007 (state: ACCEPTED)
+[2020-12-22 15:03:10,325] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,325] {batch.py:309} INFO - 2020-12-22 15:02:43,513 INFO yarn.Client: 
+[2020-12-22 15:03:10,325] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,325] {batch.py:309} INFO - 	 client token: N/A
+[2020-12-22 15:03:10,325] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,325] {batch.py:309} INFO - 	 diagnostics: AM container is launched, waiting for AM container to Register with RM
+[2020-12-22 15:03:10,326] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,326] {batch.py:309} INFO - 	 ApplicationMaster host: N/A
+[2020-12-22 15:03:10,326] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,326] {batch.py:309} INFO - 	 ApplicationMaster RPC port: -1
+[2020-12-22 15:03:10,326] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,326] {batch.py:309} INFO - 	 queue: root.root
+[2020-12-22 15:03:10,326] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,326] {batch.py:309} INFO - 	 start time: 1608649362464
+[2020-12-22 15:03:10,326] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,326] {batch.py:309} INFO - 	 final status: UNDEFINED
+[2020-12-22 15:03:10,327] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,327] {batch.py:309} INFO - 	 tracking URL: http://master:8088/proxy/application_1608647635904_0007/
+[2020-12-22 15:03:10,327] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,327] {batch.py:309} INFO - 	 user: root
+[2020-12-22 15:03:10,327] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,327] {batch.py:309} INFO - 2020-12-22 15:02:44,518 INFO yarn.Client: Application report for application_1608647635904_0007 (state: ACCEPTED)
+[2020-12-22 15:03:10,327] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,327] {batch.py:309} INFO - 2020-12-22 15:02:45,524 INFO yarn.Client: Application report for application_1608647635904_0007 (state: ACCEPTED)
+[2020-12-22 15:03:10,328] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,328] {batch.py:309} INFO - 2020-12-22 15:02:46,530 INFO yarn.Client: Application report for application_1608647635904_0007 (state: ACCEPTED)
+[2020-12-22 15:03:10,328] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,328] {batch.py:309} INFO - 2020-12-22 15:02:47,386 INFO cluster.YarnClientSchedulerBackend: Add WebUI Filter. org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter, Map(PROXY_HOSTS -> master, PROXY_URI_BASES -> http://master:8088/proxy/application_1608647635904_0007), /proxy/application_1608647635904_0007
+[2020-12-22 15:03:10,328] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,328] {batch.py:309} INFO - 2020-12-22 15:02:47,533 INFO yarn.Client: Application report for application_1608647635904_0007 (state: RUNNING)
+[2020-12-22 15:03:10,328] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,328] {batch.py:309} INFO - 2020-12-22 15:02:47,533 INFO yarn.Client: 
+[2020-12-22 15:03:10,328] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,328] {batch.py:309} INFO - 	 client token: N/A
+[2020-12-22 15:03:10,330] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,328] {batch.py:309} INFO - 	 diagnostics: N/A
+[2020-12-22 15:03:10,330] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,330] {batch.py:309} INFO - 	 ApplicationMaster host: 172.18.0.6
+[2020-12-22 15:03:10,330] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,330] {batch.py:309} INFO - 	 ApplicationMaster RPC port: -1
+[2020-12-22 15:03:10,330] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,330] {batch.py:309} INFO - 	 queue: root.root
+[2020-12-22 15:03:10,330] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,330] {batch.py:309} INFO - 	 start time: 1608649362464
+[2020-12-22 15:03:10,331] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,331] {batch.py:309} INFO - 	 final status: UNDEFINED
+[2020-12-22 15:03:10,331] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,331] {batch.py:309} INFO - 	 tracking URL: http://master:8088/proxy/application_1608647635904_0007/
+[2020-12-22 15:03:10,331] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,331] {batch.py:309} INFO - 	 user: root
+[2020-12-22 15:03:10,331] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,331] {batch.py:309} INFO - 2020-12-22 15:02:47,535 INFO cluster.YarnClientSchedulerBackend: Application application_1608647635904_0007 has started running.
+[2020-12-22 15:03:10,331] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,331] {batch.py:309} INFO - 2020-12-22 15:02:47,547 INFO util.Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 7002.
+[2020-12-22 15:03:10,331] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,331] {batch.py:309} INFO - 2020-12-22 15:02:47,549 INFO netty.NettyBlockTransferService: Server created on livy:7002
+[2020-12-22 15:03:10,332] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,332] {batch.py:309} INFO - 2020-12-22 15:02:47,551 INFO storage.BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+[2020-12-22 15:03:10,332] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,332] {batch.py:309} INFO - 2020-12-22 15:02:47,590 INFO storage.BlockManagerMaster: Registering BlockManager BlockManagerId(driver, livy, 7002, None)
+[2020-12-22 15:03:10,332] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,332] {batch.py:309} INFO - 2020-12-22 15:02:47,594 INFO storage.BlockManagerMasterEndpoint: Registering block manager livy:7002 with 366.3 MB RAM, BlockManagerId(driver, livy, 7002, None)
+[2020-12-22 15:03:10,332] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,332] {batch.py:309} INFO - 2020-12-22 15:02:47,601 INFO storage.BlockManagerMaster: Registered BlockManager BlockManagerId(driver, livy, 7002, None)
+[2020-12-22 15:03:10,332] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,332] {batch.py:309} INFO - 2020-12-22 15:02:47,602 INFO storage.BlockManager: Initialized BlockManager: BlockManagerId(driver, livy, 7002, None)
+[2020-12-22 15:03:10,332] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,332] {batch.py:309} INFO - 2020-12-22 15:02:47,753 INFO cluster.YarnSchedulerBackend$YarnSchedulerEndpoint: ApplicationMaster registered as NettyRpcEndpointRef(spark-client://YarnAM)
+[2020-12-22 15:03:10,333] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,333] {batch.py:309} INFO - 2020-12-22 15:02:47,904 INFO ui.JettyUtils: Adding filter org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter to /metrics/json.
+[2020-12-22 15:03:10,333] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,333] {batch.py:309} INFO - 2020-12-22 15:02:47,919 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@5085fbf{/metrics/json,null,AVAILABLE,@Spark}
+[2020-12-22 15:03:10,333] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,333] {batch.py:309} INFO - 2020-12-22 15:02:48,208 INFO scheduler.EventLoggingListener: Logging events to hdfs:/log/spark/application_1608647635904_0007
+[2020-12-22 15:03:10,333] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,333] {batch.py:309} INFO - 2020-12-22 15:02:56,142 INFO cluster.YarnSchedulerBackend$YarnDriverEndpoint: Registered executor NettyRpcEndpointRef(spark-client://Executor) (172.18.0.8:44378) with ID 1
+[2020-12-22 15:03:10,334] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,334] {batch.py:309} INFO - 2020-12-22 15:02:56,496 INFO storage.BlockManagerMasterEndpoint: Registering block manager worker1:7002 with 366.3 MB RAM, BlockManagerId(1, worker1, 7002, None)
+[2020-12-22 15:03:10,334] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,334] {batch.py:309} INFO - 2020-12-22 15:02:56,891 INFO cluster.YarnSchedulerBackend$YarnDriverEndpoint: Registered executor NettyRpcEndpointRef(spark-client://Executor) (172.18.0.6:36368) with ID 2
+[2020-12-22 15:03:10,334] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,334] {batch.py:309} INFO - 2020-12-22 15:02:56,927 INFO cluster.YarnClientSchedulerBackend: SchedulerBackend is ready for scheduling beginning after reached minRegisteredResourcesRatio: 0.8
+[2020-12-22 15:03:10,334] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,334] {batch.py:309} INFO - 2020-12-22 15:02:57,317 INFO storage.BlockManagerMasterEndpoint: Registering block manager worker2:7002 with 366.3 MB RAM, BlockManagerId(2, worker2, 7002, None)
+[2020-12-22 15:03:10,335] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,334] {batch.py:309} INFO - 2020-12-22 15:02:57,331 INFO internal.SharedState: Setting hive.metastore.warehouse.dir ('null') to the value of spark.sql.warehouse.dir ('file:/spark-warehouse').
+[2020-12-22 15:03:10,335] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,335] {batch.py:309} INFO - 2020-12-22 15:02:57,332 INFO internal.SharedState: Warehouse path is 'file:/spark-warehouse'.
+[2020-12-22 15:03:10,335] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,335] {batch.py:309} INFO - 2020-12-22 15:02:57,343 INFO ui.JettyUtils: Adding filter org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter to /SQL.
+[2020-12-22 15:03:10,335] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,335] {batch.py:309} INFO - 2020-12-22 15:02:57,356 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@10ef0002{/SQL,null,AVAILABLE,@Spark}
+[2020-12-22 15:03:10,336] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,335] {batch.py:309} INFO - 2020-12-22 15:02:57,357 INFO ui.JettyUtils: Adding filter org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter to /SQL/json.
+[2020-12-22 15:03:10,336] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,336] {batch.py:309} INFO - 2020-12-22 15:02:57,360 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@6ef2071{/SQL/json,null,AVAILABLE,@Spark}
+[2020-12-22 15:03:10,336] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,336] {batch.py:309} INFO - 2020-12-22 15:02:57,360 INFO ui.JettyUtils: Adding filter org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter to /SQL/execution.
+[2020-12-22 15:03:10,336] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,336] {batch.py:309} INFO - 2020-12-22 15:02:57,365 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@5300ce61{/SQL/execution,null,AVAILABLE,@Spark}
+[2020-12-22 15:03:10,336] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,336] {batch.py:309} INFO - 2020-12-22 15:02:57,367 INFO ui.JettyUtils: Adding filter org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter to /SQL/execution/json.
+[2020-12-22 15:03:10,337] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,337] {batch.py:309} INFO - 2020-12-22 15:02:57,373 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@1f45a838{/SQL/execution/json,null,AVAILABLE,@Spark}
+[2020-12-22 15:03:10,337] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,337] {batch.py:309} INFO - 2020-12-22 15:02:57,374 INFO ui.JettyUtils: Adding filter org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter to /static/sql.
+[2020-12-22 15:03:10,337] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,337] {batch.py:309} INFO - 2020-12-22 15:02:57,378 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@68e1fd32{/static/sql,null,AVAILABLE,@Spark}
+[2020-12-22 15:03:10,338] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,337] {batch.py:309} INFO - 2020-12-22 15:02:58,035 INFO state.StateStoreCoordinatorRef: Registered StateStoreCoordinator endpoint
+[2020-12-22 15:03:10,338] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,338] {batch.py:309} INFO - Traceback (most recent call last):
+[2020-12-22 15:03:10,338] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,338] {batch.py:309} INFO -   File "/tmp/spark-4cb3cbff-6d07-4b4b-bdbe-a7cfc5065365/main.py", line 87, in <module>
+[2020-12-22 15:03:10,338] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,338] {batch.py:309} INFO -     main()
+[2020-12-22 15:03:10,339] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,338] {batch.py:309} INFO -   File "/tmp/spark-4cb3cbff-6d07-4b4b-bdbe-a7cfc5065365/main.py", line 65, in main
+[2020-12-22 15:03:10,339] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,339] {batch.py:309} INFO -     path_to_config_file = path.join(spark_files_dir, config_files[0])
+[2020-12-22 15:03:10,339] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,339] {batch.py:309} INFO - NameError: name 'path' is not defined
+[2020-12-22 15:03:10,339] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,339] {batch.py:309} INFO - 2020-12-22 15:02:58,119 INFO spark.SparkContext: Invoking stop() from shutdown hook
+[2020-12-22 15:03:10,339] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,339] {batch.py:309} INFO - 2020-12-22 15:02:58,130 INFO server.AbstractConnector: Stopped Spark@1c2a5821{HTTP/1.1,[http/1.1]}{0.0.0.0:4040}
+[2020-12-22 15:03:10,340] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,340] {batch.py:309} INFO - 2020-12-22 15:02:58,142 INFO ui.SparkUI: Stopped Spark web UI at http://livy:4040
+[2020-12-22 15:03:10,340] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,340] {batch.py:309} INFO - 2020-12-22 15:02:58,151 INFO cluster.YarnClientSchedulerBackend: Interrupting monitor thread
+[2020-12-22 15:03:10,340] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,340] {batch.py:309} INFO - 2020-12-22 15:02:58,208 INFO cluster.YarnClientSchedulerBackend: Shutting down all executors
+[2020-12-22 15:03:10,341] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,340] {batch.py:309} INFO - 2020-12-22 15:02:58,214 INFO cluster.YarnSchedulerBackend$YarnDriverEndpoint: Asking each executor to shut down
+[2020-12-22 15:03:10,341] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,341] {batch.py:309} INFO - 2020-12-22 15:02:58,234 INFO cluster.SchedulerExtensionServices: Stopping SchedulerExtensionServices
+[2020-12-22 15:03:10,341] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,341] {batch.py:309} INFO - (serviceOption=None,
+[2020-12-22 15:03:10,341] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,341] {batch.py:309} INFO -  services=List(),
+[2020-12-22 15:03:10,342] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,342] {batch.py:309} INFO -  started=false)
+[2020-12-22 15:03:10,342] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,342] {batch.py:309} INFO - 2020-12-22 15:02:58,239 INFO cluster.YarnClientSchedulerBackend: Stopped
+[2020-12-22 15:03:10,342] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,342] {batch.py:309} INFO - 2020-12-22 15:02:58,302 INFO spark.MapOutputTrackerMasterEndpoint: MapOutputTrackerMasterEndpoint stopped!
+[2020-12-22 15:03:10,342] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,342] {batch.py:309} INFO - 2020-12-22 15:02:58,323 INFO memory.MemoryStore: MemoryStore cleared
+[2020-12-22 15:03:10,343] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,342] {batch.py:309} INFO - 2020-12-22 15:02:58,324 INFO storage.BlockManager: BlockManager stopped
+[2020-12-22 15:03:10,343] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,343] {batch.py:309} INFO - 2020-12-22 15:02:58,336 INFO storage.BlockManagerMaster: BlockManagerMaster stopped
+[2020-12-22 15:03:10,343] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,343] {batch.py:309} INFO - 2020-12-22 15:02:58,339 INFO scheduler.OutputCommitCoordinator$OutputCommitCoordinatorEndpoint: OutputCommitCoordinator stopped!
+[2020-12-22 15:03:10,343] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,343] {batch.py:309} INFO - 2020-12-22 15:02:58,362 INFO spark.SparkContext: Successfully stopped SparkContext
+[2020-12-22 15:03:10,344] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,344] {batch.py:309} INFO - 2020-12-22 15:02:58,362 INFO util.ShutdownHookManager: Shutdown hook called
+[2020-12-22 15:03:10,344] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,344] {batch.py:309} INFO - 2020-12-22 15:02:58,363 INFO util.ShutdownHookManager: Deleting directory /tmp/spark-dd88c4cb-0607-4214-ac94-6f8f189afd58
+[2020-12-22 15:03:10,344] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,344] {batch.py:309} INFO - 2020-12-22 15:02:58,371 INFO util.ShutdownHookManager: Deleting directory /tmp/spark-dd88c4cb-0607-4214-ac94-6f8f189afd58/pyspark-715406d2-9108-4bfd-a97a-0b0203027be6
+[2020-12-22 15:03:10,344] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,344] {batch.py:309} INFO - 2020-12-22 15:02:58,373 INFO util.ShutdownHookManager: Deleting directory /tmp/spark-4cb3cbff-6d07-4b4b-bdbe-a7cfc5065365
+[2020-12-22 15:03:10,345] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,344] {batch.py:309} INFO - 2020-12-22 15:02:58,380 INFO impl.MetricsSystemImpl: Stopping s3a-file-system metrics system...
+[2020-12-22 15:03:10,345] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,345] {batch.py:309} INFO - 2020-12-22 15:02:58,380 INFO impl.MetricsSystemImpl: s3a-file-system metrics system stopped.
+[2020-12-22 15:03:10,352] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,352] {base_hook.py:84} INFO - Using connection to: id: livy. Host: ec2-3-236-26-7.compute-1.amazonaws.com, Port: 8998, Schema: None, Login: None, Password: None, extra: None
+[2020-12-22 15:03:10,353] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,353] {http_hook.py:136} INFO - Sending 'GET' to url: http://ec2-3-236-26-7.compute-1.amazonaws.com:8998/batches/6/log?from=200&size=100
+[2020-12-22 15:03:10,360] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,360] {batch.py:309} INFO - 2020-12-22 15:02:58,383 INFO impl.MetricsSystemImpl: s3a-file-system metrics system shutdown complete.
+[2020-12-22 15:03:10,360] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,360] {batch.py:309} INFO - 
+stderr: 
+[2020-12-22 15:03:10,360] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,360] {batch.py:309} INFO - 
+YARN Diagnostics: 
+[2020-12-22 15:03:10,360] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,360] {batch.py:318} INFO - --------------------------------------------------End of full log for batch 6--------------------------------------------------
+[2020-12-22 15:03:10,361] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,360] {batch.py:335} INFO - Closing batch with id = 6
+[2020-12-22 15:03:10,367] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,367] {base_hook.py:84} INFO - Using connection to: id: livy. Host: ec2-3-236-26-7.compute-1.amazonaws.com, Port: 8998, Schema: None, Login: None, Password: None, extra: None
+[2020-12-22 15:03:10,368] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,368] {http_hook.py:136} INFO - Sending 'DELETE' to url: http://ec2-3-236-26-7.compute-1.amazonaws.com:8998/batches/6
+[2020-12-22 15:03:10,377] {logging_mixin.py:112} INFO - [2020-12-22 15:03:10,377] {batch.py:340} INFO - Batch 6 has been closed
+[2020-12-22 15:03:10,385] {taskinstance.py:1128} ERROR - Batch 6 failed with state 'dead'
+Traceback (most recent call last):
+  File "/opt/bitnami/python/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 966, in _run_raw_task
+    result = task_copy.execute(context=context)
+  File "/usr/local/airflow/plugins/airflow_livy/batch.py", line 173, in execute
+    ).execute(context)
+  File "/opt/bitnami/python/lib/python3.6/site-packages/airflow/sensors/base_sensor_operator.py", line 107, in execute
+    while not self.poke(context):
+  File "/usr/local/airflow/plugins/airflow_livy/batch.py", line 96, in poke
+    raise AirflowException(f"Batch {self.batch_id} failed with state '{state}'")
+airflow.exceptions.AirflowException: Batch 6 failed with state 'dead'
+[2020-12-22 15:03:10,387] {taskinstance.py:1151} INFO - Marking task as UP_FOR_RETRY
+[2020-12-22 15:03:14,961] {logging_mixin.py:112} INFO - [2020-12-22 15:03:14,960] {local_task_job.py:103} INFO - Task exited with return code 1

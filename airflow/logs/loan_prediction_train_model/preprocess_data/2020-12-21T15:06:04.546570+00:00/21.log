@@ -1,0 +1,128 @@
+[2020-12-21 15:46:20,677] {taskinstance.py:655} INFO - Dependencies all met for <TaskInstance: loan_prediction_train_model.preprocess_data 2020-12-21T15:06:04.546570+00:00 [queued]>
+[2020-12-21 15:46:20,697] {taskinstance.py:655} INFO - Dependencies all met for <TaskInstance: loan_prediction_train_model.preprocess_data 2020-12-21T15:06:04.546570+00:00 [queued]>
+[2020-12-21 15:46:20,698] {taskinstance.py:866} INFO - 
+--------------------------------------------------------------------------------
+[2020-12-21 15:46:20,700] {taskinstance.py:867} INFO - Starting attempt 21 of 24
+[2020-12-21 15:46:20,701] {taskinstance.py:868} INFO - 
+--------------------------------------------------------------------------------
+[2020-12-21 15:46:20,715] {taskinstance.py:887} INFO - Executing <Task(LivyBatchOperator): preprocess_data> on 2020-12-21T15:06:04.546570+00:00
+[2020-12-21 15:46:20,719] {standard_task_runner.py:53} INFO - Started process 14044 to run task
+[2020-12-21 15:46:20,804] {logging_mixin.py:112} INFO - Running %s on host %s <TaskInstance: loan_prediction_train_model.preprocess_data 2020-12-21T15:06:04.546570+00:00 [running]> dcb43f18a24b
+[2020-12-21 15:46:20,829] {logging_mixin.py:112} INFO - [2020-12-21 15:46:20,828] {batch.py:214} INFO - Submitting the batch to Livy... Payload:
+{
+  "file": "s3a://alanchn31-loan-default-prediction/dist/main.py",
+  "args": [
+    "-job=preprocess_data",
+    "-phase=train",
+    "-mode=aws",
+    "-awsKey=AKIAUW4FKHTMR2UR3INH",
+    "-awsSecretKey=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",
+    "-s3Bucket=alanchn31-loan-default-prediction"
+  ],
+  "pyFiles": [
+    "s3a://alanchn31-loan-default-prediction/dist/src.zip"
+  ],
+  "name": "preprocess_data_scheduled__2020-12-21T15:06:04.546570+00:00"
+}
+[2020-12-21 15:46:20,841] {logging_mixin.py:112} INFO - [2020-12-21 15:46:20,840] {base_hook.py:84} INFO - Using connection to: id: livy. Host: 3.238.254.96, Port: 8998, Schema: None, Login: None, Password: None, extra: None
+[2020-12-21 15:46:20,845] {logging_mixin.py:112} INFO - [2020-12-21 15:46:20,845] {http_hook.py:136} INFO - Sending 'POST' to url: http://3.238.254.96:8998/batches
+[2020-12-21 15:46:20,872] {logging_mixin.py:112} INFO - [2020-12-21 15:46:20,872] {batch.py:166} INFO - Batch successfully submitted with id = 11.
+[2020-12-21 15:46:20,874] {logging_mixin.py:112} INFO - [2020-12-21 15:46:20,874] {batch.py:80} INFO - Getting batch 11 status...
+[2020-12-21 15:46:20,885] {logging_mixin.py:112} INFO - [2020-12-21 15:46:20,885] {base_hook.py:84} INFO - Using connection to: id: livy. Host: 3.238.254.96, Port: 8998, Schema: None, Login: None, Password: None, extra: None
+[2020-12-21 15:46:20,888] {logging_mixin.py:112} INFO - [2020-12-21 15:46:20,888] {http_hook.py:136} INFO - Sending 'GET' to url: http://3.238.254.96:8998/batches/11
+[2020-12-21 15:46:20,902] {logging_mixin.py:112} INFO - [2020-12-21 15:46:20,901] {batch.py:90} INFO - Batch 11 has not finished yet (state is 'starting')
+[2020-12-21 15:46:40,921] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,920] {batch.py:80} INFO - Getting batch 11 status...
+[2020-12-21 15:46:40,931] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,931] {base_hook.py:84} INFO - Using connection to: id: livy. Host: 3.238.254.96, Port: 8998, Schema: None, Login: None, Password: None, extra: None
+[2020-12-21 15:46:40,932] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,932] {http_hook.py:136} INFO - Sending 'GET' to url: http://3.238.254.96:8998/batches/11
+[2020-12-21 15:46:40,941] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,941] {batch.py:299} INFO - --------------------------------------------------Full log for batch 11--------------------------------------------------
+[2020-12-21 15:46:40,949] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,948] {base_hook.py:84} INFO - Using connection to: id: livy. Host: 3.238.254.96, Port: 8998, Schema: None, Login: None, Password: None, extra: None
+[2020-12-21 15:46:40,951] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,951] {http_hook.py:136} INFO - Sending 'GET' to url: http://3.238.254.96:8998/batches/11/log?from=0&size=100
+[2020-12-21 15:46:40,961] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,960] {batch.py:309} INFO - stdout: 
+[2020-12-21 15:46:40,963] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,963] {batch.py:309} INFO - 2020-12-21 15:46:23,970 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[2020-12-21 15:46:40,963] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,963] {batch.py:309} INFO - Exception in thread "main" java.nio.file.AccessDeniedException: alanchn31-loan-default-prediction: org.apache.hadoop.fs.s3a.auth.NoAuthWithAWSException: No AWS Credentials provided by SimpleAWSCredentialsProvider EnvironmentVariableCredentialsProvider InstanceProfileCredentialsProvider : com.amazonaws.SdkClientException: The requested metadata is not found at http://169.254.169.254/latest/meta-data/iam/security-credentials/
+[2020-12-21 15:46:40,963] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,963] {batch.py:309} INFO - 	at org.apache.hadoop.fs.s3a.S3AUtils.translateException(S3AUtils.java:187)
+[2020-12-21 15:46:40,964] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,964] {batch.py:309} INFO - 	at org.apache.hadoop.fs.s3a.Invoker.once(Invoker.java:111)
+[2020-12-21 15:46:40,964] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,964] {batch.py:309} INFO - 	at org.apache.hadoop.fs.s3a.Invoker.lambda$retry$3(Invoker.java:265)
+[2020-12-21 15:46:40,964] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,964] {batch.py:309} INFO - 	at org.apache.hadoop.fs.s3a.Invoker.retryUntranslated(Invoker.java:322)
+[2020-12-21 15:46:40,965] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,964] {batch.py:309} INFO - 	at org.apache.hadoop.fs.s3a.Invoker.retry(Invoker.java:261)
+[2020-12-21 15:46:40,965] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,965] {batch.py:309} INFO - 	at org.apache.hadoop.fs.s3a.Invoker.retry(Invoker.java:236)
+[2020-12-21 15:46:40,965] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,965] {batch.py:309} INFO - 	at org.apache.hadoop.fs.s3a.S3AFileSystem.verifyBucketExists(S3AFileSystem.java:375)
+[2020-12-21 15:46:40,965] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,965] {batch.py:309} INFO - 	at org.apache.hadoop.fs.s3a.S3AFileSystem.initialize(S3AFileSystem.java:311)
+[2020-12-21 15:46:40,966] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,966] {batch.py:309} INFO - 	at org.apache.hadoop.fs.FileSystem.createFileSystem(FileSystem.java:3303)
+[2020-12-21 15:46:40,966] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,966] {batch.py:309} INFO - 	at org.apache.hadoop.fs.FileSystem.access$200(FileSystem.java:124)
+[2020-12-21 15:46:40,966] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,966] {batch.py:309} INFO - 	at org.apache.hadoop.fs.FileSystem$Cache.getInternal(FileSystem.java:3352)
+[2020-12-21 15:46:40,967] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,967] {batch.py:309} INFO - 	at org.apache.hadoop.fs.FileSystem$Cache.get(FileSystem.java:3320)
+[2020-12-21 15:46:40,967] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,967] {batch.py:309} INFO - 	at org.apache.hadoop.fs.FileSystem.get(FileSystem.java:479)
+[2020-12-21 15:46:40,968] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,967] {batch.py:309} INFO - 	at org.apache.spark.deploy.DependencyUtils$.org$apache$spark$deploy$DependencyUtils$$resolveGlobPath(DependencyUtils.scala:191)
+[2020-12-21 15:46:40,968] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,968] {batch.py:309} INFO - 	at org.apache.spark.deploy.DependencyUtils$$anonfun$resolveGlobPaths$2.apply(DependencyUtils.scala:147)
+[2020-12-21 15:46:40,968] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,968] {batch.py:309} INFO - 	at org.apache.spark.deploy.DependencyUtils$$anonfun$resolveGlobPaths$2.apply(DependencyUtils.scala:145)
+[2020-12-21 15:46:40,969] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,968] {batch.py:309} INFO - 	at scala.collection.TraversableLike$$anonfun$flatMap$1.apply(TraversableLike.scala:241)
+[2020-12-21 15:46:40,969] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,969] {batch.py:309} INFO - 	at scala.collection.TraversableLike$$anonfun$flatMap$1.apply(TraversableLike.scala:241)
+[2020-12-21 15:46:40,969] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,969] {batch.py:309} INFO - 	at scala.collection.IndexedSeqOptimized$class.foreach(IndexedSeqOptimized.scala:33)
+[2020-12-21 15:46:40,970] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,969] {batch.py:309} INFO - 	at scala.collection.mutable.WrappedArray.foreach(WrappedArray.scala:35)
+[2020-12-21 15:46:40,970] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,970] {batch.py:309} INFO - 	at scala.collection.TraversableLike$class.flatMap(TraversableLike.scala:241)
+[2020-12-21 15:46:40,970] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,970] {batch.py:309} INFO - 	at scala.collection.AbstractTraversable.flatMap(Traversable.scala:104)
+[2020-12-21 15:46:40,971] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,970] {batch.py:309} INFO - 	at org.apache.spark.deploy.DependencyUtils$.resolveGlobPaths(DependencyUtils.scala:145)
+[2020-12-21 15:46:40,971] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,971] {batch.py:309} INFO - 	at org.apache.spark.deploy.SparkSubmit$$anonfun$prepareSubmitEnvironment$5.apply(SparkSubmit.scala:345)
+[2020-12-21 15:46:40,971] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,971] {batch.py:309} INFO - 	at org.apache.spark.deploy.SparkSubmit$$anonfun$prepareSubmitEnvironment$5.apply(SparkSubmit.scala:345)
+[2020-12-21 15:46:40,971] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,971] {batch.py:309} INFO - 	at scala.Option.map(Option.scala:146)
+[2020-12-21 15:46:40,972] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,972] {batch.py:309} INFO - 	at org.apache.spark.deploy.SparkSubmit.prepareSubmitEnvironment(SparkSubmit.scala:345)
+[2020-12-21 15:46:40,972] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,972] {batch.py:309} INFO - 	at org.apache.spark.deploy.SparkSubmit.org$apache$spark$deploy$SparkSubmit$$runMain(SparkSubmit.scala:774)
+[2020-12-21 15:46:40,972] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,972] {batch.py:309} INFO - 	at org.apache.spark.deploy.SparkSubmit.doRunMain$1(SparkSubmit.scala:161)
+[2020-12-21 15:46:40,972] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,972] {batch.py:309} INFO - 	at org.apache.spark.deploy.SparkSubmit.submit(SparkSubmit.scala:184)
+[2020-12-21 15:46:40,973] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,973] {batch.py:309} INFO - 	at org.apache.spark.deploy.SparkSubmit.doSubmit(SparkSubmit.scala:86)
+[2020-12-21 15:46:40,973] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,973] {batch.py:309} INFO - 	at org.apache.spark.deploy.SparkSubmit$$anon$2.doSubmit(SparkSubmit.scala:920)
+[2020-12-21 15:46:40,973] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,973] {batch.py:309} INFO - 	at org.apache.spark.deploy.SparkSubmit$.main(SparkSubmit.scala:929)
+[2020-12-21 15:46:40,974] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,973] {batch.py:309} INFO - 	at org.apache.spark.deploy.SparkSubmit.main(SparkSubmit.scala)
+[2020-12-21 15:46:40,974] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,974] {batch.py:309} INFO - Caused by: org.apache.hadoop.fs.s3a.auth.NoAuthWithAWSException: No AWS Credentials provided by SimpleAWSCredentialsProvider EnvironmentVariableCredentialsProvider InstanceProfileCredentialsProvider : com.amazonaws.SdkClientException: The requested metadata is not found at http://169.254.169.254/latest/meta-data/iam/security-credentials/
+[2020-12-21 15:46:40,974] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,974] {batch.py:309} INFO - 	at org.apache.hadoop.fs.s3a.AWSCredentialProviderList.getCredentials(AWSCredentialProviderList.java:159)
+[2020-12-21 15:46:40,975] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,974] {batch.py:309} INFO - 	at com.amazonaws.http.AmazonHttpClient$RequestExecutor.getCredentialsFromContext(AmazonHttpClient.java:1166)
+[2020-12-21 15:46:40,975] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,975] {batch.py:309} INFO - 	at com.amazonaws.http.AmazonHttpClient$RequestExecutor.runBeforeRequestHandlers(AmazonHttpClient.java:762)
+[2020-12-21 15:46:40,975] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,975] {batch.py:309} INFO - 	at com.amazonaws.http.AmazonHttpClient$RequestExecutor.doExecute(AmazonHttpClient.java:724)
+[2020-12-21 15:46:40,975] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,975] {batch.py:309} INFO - 	at com.amazonaws.http.AmazonHttpClient$RequestExecutor.executeWithTimer(AmazonHttpClient.java:717)
+[2020-12-21 15:46:40,976] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,976] {batch.py:309} INFO - 	at com.amazonaws.http.AmazonHttpClient$RequestExecutor.execute(AmazonHttpClient.java:699)
+[2020-12-21 15:46:40,976] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,976] {batch.py:309} INFO - 	at com.amazonaws.http.AmazonHttpClient$RequestExecutor.access$500(AmazonHttpClient.java:667)
+[2020-12-21 15:46:40,976] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,976] {batch.py:309} INFO - 	at com.amazonaws.http.AmazonHttpClient$RequestExecutionBuilderImpl.execute(AmazonHttpClient.java:649)
+[2020-12-21 15:46:40,977] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,976] {batch.py:309} INFO - 	at com.amazonaws.http.AmazonHttpClient.execute(AmazonHttpClient.java:513)
+[2020-12-21 15:46:40,977] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,977] {batch.py:309} INFO - 	at com.amazonaws.services.s3.AmazonS3Client.invoke(AmazonS3Client.java:4368)
+[2020-12-21 15:46:40,977] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,977] {batch.py:309} INFO - 	at com.amazonaws.services.s3.AmazonS3Client.getBucketRegionViaHeadRequest(AmazonS3Client.java:5129)
+[2020-12-21 15:46:40,977] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,977] {batch.py:309} INFO - 	at com.amazonaws.services.s3.AmazonS3Client.fetchRegionFromCache(AmazonS3Client.java:5103)
+[2020-12-21 15:46:40,978] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,978] {batch.py:309} INFO - 	at com.amazonaws.services.s3.AmazonS3Client.invoke(AmazonS3Client.java:4352)
+[2020-12-21 15:46:40,978] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,978] {batch.py:309} INFO - 	at com.amazonaws.services.s3.AmazonS3Client.invoke(AmazonS3Client.java:4315)
+[2020-12-21 15:46:40,978] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,978] {batch.py:309} INFO - 	at com.amazonaws.services.s3.AmazonS3Client.headBucket(AmazonS3Client.java:1344)
+[2020-12-21 15:46:40,979] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,978] {batch.py:309} INFO - 	at com.amazonaws.services.s3.AmazonS3Client.doesBucketExist(AmazonS3Client.java:1284)
+[2020-12-21 15:46:40,979] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,979] {batch.py:309} INFO - 	at org.apache.hadoop.fs.s3a.S3AFileSystem.lambda$verifyBucketExists$1(S3AFileSystem.java:376)
+[2020-12-21 15:46:40,979] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,979] {batch.py:309} INFO - 	at org.apache.hadoop.fs.s3a.Invoker.once(Invoker.java:109)
+[2020-12-21 15:46:40,979] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,979] {batch.py:309} INFO - 	... 32 more
+[2020-12-21 15:46:40,980] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,979] {batch.py:309} INFO - Caused by: com.amazonaws.SdkClientException: The requested metadata is not found at http://169.254.169.254/latest/meta-data/iam/security-credentials/
+[2020-12-21 15:46:40,980] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,980] {batch.py:309} INFO - 	at com.amazonaws.internal.EC2CredentialsUtils.readResource(EC2CredentialsUtils.java:125)
+[2020-12-21 15:46:40,980] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,980] {batch.py:309} INFO - 	at com.amazonaws.internal.EC2CredentialsUtils.readResource(EC2CredentialsUtils.java:87)
+[2020-12-21 15:46:40,981] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,981] {batch.py:309} INFO - 	at com.amazonaws.auth.InstanceProfileCredentialsProvider$InstanceMetadataCredentialsEndpointProvider.getCredentialsEndpoint(InstanceProfileCredentialsProvider.java:189)
+[2020-12-21 15:46:40,981] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,981] {batch.py:309} INFO - 	at com.amazonaws.auth.EC2CredentialsFetcher.fetchCredentials(EC2CredentialsFetcher.java:122)
+[2020-12-21 15:46:40,981] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,981] {batch.py:309} INFO - 	at com.amazonaws.auth.EC2CredentialsFetcher.getCredentials(EC2CredentialsFetcher.java:82)
+[2020-12-21 15:46:40,982] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,981] {batch.py:309} INFO - 	at com.amazonaws.auth.InstanceProfileCredentialsProvider.getCredentials(InstanceProfileCredentialsProvider.java:164)
+[2020-12-21 15:46:40,983] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,982] {batch.py:309} INFO - 	at org.apache.hadoop.fs.s3a.AWSCredentialProviderList.getCredentials(AWSCredentialProviderList.java:137)
+[2020-12-21 15:46:40,983] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,983] {batch.py:309} INFO - 	... 49 more
+[2020-12-21 15:46:40,983] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,983] {batch.py:309} INFO - 
+stderr: 
+[2020-12-21 15:46:40,984] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,984] {batch.py:309} INFO - 
+YARN Diagnostics: 
+[2020-12-21 15:46:40,984] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,984] {batch.py:309} INFO - spark-submit start failed
+[2020-12-21 15:46:40,984] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,984] {batch.py:318} INFO - --------------------------------------------------End of full log for batch 11--------------------------------------------------
+[2020-12-21 15:46:40,985] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,985] {batch.py:335} INFO - Closing batch with id = 11
+[2020-12-21 15:46:40,993] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,993] {base_hook.py:84} INFO - Using connection to: id: livy. Host: 3.238.254.96, Port: 8998, Schema: None, Login: None, Password: None, extra: None
+[2020-12-21 15:46:40,994] {logging_mixin.py:112} INFO - [2020-12-21 15:46:40,994] {http_hook.py:136} INFO - Sending 'DELETE' to url: http://3.238.254.96:8998/batches/11
+[2020-12-21 15:46:41,003] {logging_mixin.py:112} INFO - [2020-12-21 15:46:41,003] {batch.py:340} INFO - Batch 11 has been closed
+[2020-12-21 15:46:41,012] {taskinstance.py:1128} ERROR - Batch 11 failed with state 'dead'
+Traceback (most recent call last):
+  File "/opt/bitnami/python/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 966, in _run_raw_task
+    result = task_copy.execute(context=context)
+  File "/usr/local/airflow/plugins/airflow_livy/batch.py", line 173, in execute
+    ).execute(context)
+  File "/opt/bitnami/python/lib/python3.6/site-packages/airflow/sensors/base_sensor_operator.py", line 107, in execute
+    while not self.poke(context):
+  File "/usr/local/airflow/plugins/airflow_livy/batch.py", line 96, in poke
+    raise AirflowException(f"Batch {self.batch_id} failed with state '{state}'")
+airflow.exceptions.AirflowException: Batch 11 failed with state 'dead'
+[2020-12-21 15:46:41,014] {taskinstance.py:1151} INFO - Marking task as UP_FOR_RETRY
+[2020-12-21 15:46:45,709] {logging_mixin.py:112} INFO - [2020-12-21 15:46:45,709] {local_task_job.py:103} INFO - Task exited with return code 1

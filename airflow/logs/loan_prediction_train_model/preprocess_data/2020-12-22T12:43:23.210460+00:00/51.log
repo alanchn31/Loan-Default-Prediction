@@ -1,0 +1,273 @@
+[2020-12-22 14:26:27,615] {taskinstance.py:655} INFO - Dependencies all met for <TaskInstance: loan_prediction_train_model.preprocess_data 2020-12-22T12:43:23.210460+00:00 [queued]>
+[2020-12-22 14:26:27,630] {taskinstance.py:655} INFO - Dependencies all met for <TaskInstance: loan_prediction_train_model.preprocess_data 2020-12-22T12:43:23.210460+00:00 [queued]>
+[2020-12-22 14:26:27,633] {taskinstance.py:866} INFO - 
+--------------------------------------------------------------------------------
+[2020-12-22 14:26:27,633] {taskinstance.py:867} INFO - Starting attempt 51 of 54
+[2020-12-22 14:26:27,633] {taskinstance.py:868} INFO - 
+--------------------------------------------------------------------------------
+[2020-12-22 14:26:27,649] {taskinstance.py:887} INFO - Executing <Task(LivyBatchOperator): preprocess_data> on 2020-12-22T12:43:23.210460+00:00
+[2020-12-22 14:26:27,654] {standard_task_runner.py:53} INFO - Started process 63331 to run task
+[2020-12-22 14:26:27,715] {logging_mixin.py:112} INFO - Running %s on host %s <TaskInstance: loan_prediction_train_model.preprocess_data 2020-12-22T12:43:23.210460+00:00 [running]> dcb43f18a24b
+[2020-12-22 14:26:27,742] {logging_mixin.py:112} INFO - [2020-12-22 14:26:27,741] {batch.py:214} INFO - Submitting the batch to Livy... Payload:
+{
+  "file": "s3a://alanchn31-loan-default-prediction/dist/main.py",
+  "args": [
+    "--job",
+    "preprocess_data",
+    "--phase",
+    "train",
+    "--mode",
+    "aws",
+    "--awsKey",
+    "AKIAUW4FKHTMR2UR3INH",
+    "--awsSecretKey",
+    "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",
+    "--s3Bucket",
+    "alanchn31-loan-default-prediction"
+  ],
+  "pyFiles": [
+    "s3a://alanchn31-loan-default-prediction/dist/src.zip"
+  ],
+  "name": "preprocess_data_scheduled__2020-12-22T12:43:23.210460+00:00"
+}
+[2020-12-22 14:26:27,752] {logging_mixin.py:112} INFO - [2020-12-22 14:26:27,751] {base_hook.py:84} INFO - Using connection to: id: livy. Host: http://ec2-3-236-26-7.compute-1.amazonaws.com, Port: 8998, Schema: None, Login: None, Password: None, extra: None
+[2020-12-22 14:26:27,754] {logging_mixin.py:112} INFO - [2020-12-22 14:26:27,754] {http_hook.py:136} INFO - Sending 'POST' to url: http://ec2-3-236-26-7.compute-1.amazonaws.com:8998/batches
+[2020-12-22 14:26:27,775] {logging_mixin.py:112} INFO - [2020-12-22 14:26:27,774] {batch.py:166} INFO - Batch successfully submitted with id = 47.
+[2020-12-22 14:26:27,775] {logging_mixin.py:112} INFO - [2020-12-22 14:26:27,775] {batch.py:80} INFO - Getting batch 47 status...
+[2020-12-22 14:26:27,785] {logging_mixin.py:112} INFO - [2020-12-22 14:26:27,785] {base_hook.py:84} INFO - Using connection to: id: livy. Host: http://ec2-3-236-26-7.compute-1.amazonaws.com, Port: 8998, Schema: None, Login: None, Password: None, extra: None
+[2020-12-22 14:26:27,786] {logging_mixin.py:112} INFO - [2020-12-22 14:26:27,786] {http_hook.py:136} INFO - Sending 'GET' to url: http://ec2-3-236-26-7.compute-1.amazonaws.com:8998/batches/47
+[2020-12-22 14:26:27,795] {logging_mixin.py:112} INFO - [2020-12-22 14:26:27,794] {batch.py:90} INFO - Batch 47 has not finished yet (state is 'starting')
+[2020-12-22 14:26:47,812] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,812] {batch.py:80} INFO - Getting batch 47 status...
+[2020-12-22 14:26:47,820] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,820] {base_hook.py:84} INFO - Using connection to: id: livy. Host: http://ec2-3-236-26-7.compute-1.amazonaws.com, Port: 8998, Schema: None, Login: None, Password: None, extra: None
+[2020-12-22 14:26:47,821] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,821] {http_hook.py:136} INFO - Sending 'GET' to url: http://ec2-3-236-26-7.compute-1.amazonaws.com:8998/batches/47
+[2020-12-22 14:26:47,831] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,831] {batch.py:299} INFO - --------------------------------------------------Full log for batch 47--------------------------------------------------
+[2020-12-22 14:26:47,839] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,839] {base_hook.py:84} INFO - Using connection to: id: livy. Host: http://ec2-3-236-26-7.compute-1.amazonaws.com, Port: 8998, Schema: None, Login: None, Password: None, extra: None
+[2020-12-22 14:26:47,843] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,843] {http_hook.py:136} INFO - Sending 'GET' to url: http://ec2-3-236-26-7.compute-1.amazonaws.com:8998/batches/47/log?from=0&size=100
+[2020-12-22 14:26:47,854] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,854] {batch.py:309} INFO - stdout: 
+[2020-12-22 14:26:47,854] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,854] {batch.py:309} INFO - 2020-12-22 14:26:32,535 INFO spark.SecurityManager: Changing modify acls to: root
+[2020-12-22 14:26:47,854] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,854] {batch.py:309} INFO - 2020-12-22 14:26:32,535 INFO spark.SecurityManager: Changing view acls groups to: 
+[2020-12-22 14:26:47,854] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,854] {batch.py:309} INFO - 2020-12-22 14:26:32,536 INFO spark.SecurityManager: Changing modify acls groups to: 
+[2020-12-22 14:26:47,855] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,855] {batch.py:309} INFO - 2020-12-22 14:26:32,536 INFO spark.SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(root); groups with view permissions: Set(); users  with modify permissions: Set(root); groups with modify permissions: Set()
+[2020-12-22 14:26:47,855] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,855] {batch.py:309} INFO - 2020-12-22 14:26:32,929 INFO util.Utils: Successfully started service 'sparkDriver' on port 7001.
+[2020-12-22 14:26:47,855] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,855] {batch.py:309} INFO - 2020-12-22 14:26:32,966 INFO spark.SparkEnv: Registering MapOutputTracker
+[2020-12-22 14:26:47,855] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,855] {batch.py:309} INFO - 2020-12-22 14:26:33,000 INFO spark.SparkEnv: Registering BlockManagerMaster
+[2020-12-22 14:26:47,855] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,855] {batch.py:309} INFO - 2020-12-22 14:26:33,004 INFO storage.BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+[2020-12-22 14:26:47,855] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,855] {batch.py:309} INFO - 2020-12-22 14:26:33,004 INFO storage.BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+[2020-12-22 14:26:47,856] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,855] {batch.py:309} INFO - 2020-12-22 14:26:33,016 INFO storage.DiskBlockManager: Created local directory at /tmp/blockmgr-5ef15d47-b4ab-4377-9164-443c3dfc1d63
+[2020-12-22 14:26:47,856] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,856] {batch.py:309} INFO - 2020-12-22 14:26:33,035 INFO memory.MemoryStore: MemoryStore started with capacity 366.3 MB
+[2020-12-22 14:26:47,856] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,856] {batch.py:309} INFO - 2020-12-22 14:26:33,264 INFO spark.SparkEnv: Registering OutputCommitCoordinator
+[2020-12-22 14:26:47,856] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,856] {batch.py:309} INFO - 2020-12-22 14:26:33,444 INFO util.log: Logging initialized @5465ms
+[2020-12-22 14:26:47,856] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,856] {batch.py:309} INFO - 2020-12-22 14:26:33,615 INFO server.Server: jetty-9.3.z-SNAPSHOT, build timestamp: 2018-06-05T17:11:56Z, git hash: 84205aa28f11a4f31f2a3b86d1bba2cc8ab69827
+[2020-12-22 14:26:47,856] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,856] {batch.py:309} INFO - 2020-12-22 14:26:33,678 INFO server.Server: Started @5700ms
+[2020-12-22 14:26:47,856] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,856] {batch.py:309} INFO - 2020-12-22 14:26:33,717 INFO server.AbstractConnector: Started ServerConnector@2ea6b46c{HTTP/1.1,[http/1.1]}{0.0.0.0:4040}
+[2020-12-22 14:26:47,857] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,856] {batch.py:309} INFO - 2020-12-22 14:26:33,718 INFO util.Utils: Successfully started service 'SparkUI' on port 4040.
+[2020-12-22 14:26:47,857] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,857] {batch.py:309} INFO - 2020-12-22 14:26:33,761 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@503011d1{/jobs,null,AVAILABLE,@Spark}
+[2020-12-22 14:26:47,857] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,857] {batch.py:309} INFO - 2020-12-22 14:26:33,766 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@49dfd1da{/jobs/json,null,AVAILABLE,@Spark}
+[2020-12-22 14:26:47,857] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,857] {batch.py:309} INFO - 2020-12-22 14:26:33,767 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@4cb99e3b{/jobs/job,null,AVAILABLE,@Spark}
+[2020-12-22 14:26:47,857] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,857] {batch.py:309} INFO - 2020-12-22 14:26:33,768 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@28d56cd{/jobs/job/json,null,AVAILABLE,@Spark}
+[2020-12-22 14:26:47,857] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,857] {batch.py:309} INFO - 2020-12-22 14:26:33,772 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@69bb8306{/stages,null,AVAILABLE,@Spark}
+[2020-12-22 14:26:47,858] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,858] {batch.py:309} INFO - 2020-12-22 14:26:33,774 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@5e5dceea{/stages/json,null,AVAILABLE,@Spark}
+[2020-12-22 14:26:47,858] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,858] {batch.py:309} INFO - 2020-12-22 14:26:33,776 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@5e95cb5c{/stages/stage,null,AVAILABLE,@Spark}
+[2020-12-22 14:26:47,858] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,858] {batch.py:309} INFO - 2020-12-22 14:26:33,778 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@334a770e{/stages/stage/json,null,AVAILABLE,@Spark}
+[2020-12-22 14:26:47,858] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,858] {batch.py:309} INFO - 2020-12-22 14:26:33,780 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@43f58510{/stages/pool,null,AVAILABLE,@Spark}
+[2020-12-22 14:26:47,858] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,858] {batch.py:309} INFO - 2020-12-22 14:26:33,782 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@43184d2e{/stages/pool/json,null,AVAILABLE,@Spark}
+[2020-12-22 14:26:47,858] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,858] {batch.py:309} INFO - 2020-12-22 14:26:33,790 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@46555e8e{/storage,null,AVAILABLE,@Spark}
+[2020-12-22 14:26:47,859] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,858] {batch.py:309} INFO - 2020-12-22 14:26:33,793 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@2647a34d{/storage/json,null,AVAILABLE,@Spark}
+[2020-12-22 14:26:47,859] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,859] {batch.py:309} INFO - 2020-12-22 14:26:33,794 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@49f56f90{/storage/rdd,null,AVAILABLE,@Spark}
+[2020-12-22 14:26:47,859] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,859] {batch.py:309} INFO - 2020-12-22 14:26:33,795 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@48853abd{/storage/rdd/json,null,AVAILABLE,@Spark}
+[2020-12-22 14:26:47,859] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,859] {batch.py:309} INFO - 2020-12-22 14:26:33,798 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@24c8ac0d{/environment,null,AVAILABLE,@Spark}
+[2020-12-22 14:26:47,859] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,859] {batch.py:309} INFO - 2020-12-22 14:26:33,800 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@3f0e3e12{/environment/json,null,AVAILABLE,@Spark}
+[2020-12-22 14:26:47,859] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,859] {batch.py:309} INFO - 2020-12-22 14:26:33,802 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@5de54f8c{/executors,null,AVAILABLE,@Spark}
+[2020-12-22 14:26:47,859] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,859] {batch.py:309} INFO - 2020-12-22 14:26:33,804 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@3c54d65f{/executors/json,null,AVAILABLE,@Spark}
+[2020-12-22 14:26:47,860] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,860] {batch.py:309} INFO - 2020-12-22 14:26:33,805 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@5d9dbd1c{/executors/threadDump,null,AVAILABLE,@Spark}
+[2020-12-22 14:26:47,860] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,860] {batch.py:309} INFO - 2020-12-22 14:26:33,806 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@13ade613{/executors/threadDump/json,null,AVAILABLE,@Spark}
+[2020-12-22 14:26:47,860] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,860] {batch.py:309} INFO - 2020-12-22 14:26:33,821 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@64c342c5{/static,null,AVAILABLE,@Spark}
+[2020-12-22 14:26:47,860] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,860] {batch.py:309} INFO - 2020-12-22 14:26:33,823 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@36025f03{/,null,AVAILABLE,@Spark}
+[2020-12-22 14:26:47,860] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,860] {batch.py:309} INFO - 2020-12-22 14:26:33,832 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@372d7373{/api,null,AVAILABLE,@Spark}
+[2020-12-22 14:26:47,860] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,860] {batch.py:309} INFO - 2020-12-22 14:26:33,833 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@2c8230d8{/jobs/job/kill,null,AVAILABLE,@Spark}
+[2020-12-22 14:26:47,861] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,860] {batch.py:309} INFO - 2020-12-22 14:26:33,837 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@5f872917{/stages/stage/kill,null,AVAILABLE,@Spark}
+[2020-12-22 14:26:47,861] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,861] {batch.py:309} INFO - 2020-12-22 14:26:33,840 INFO ui.SparkUI: Bound SparkUI to 0.0.0.0, and started at http://livy:4040
+[2020-12-22 14:26:47,861] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,861] {batch.py:309} INFO - 2020-12-22 14:26:35,125 INFO client.RMProxy: Connecting to ResourceManager at master/172.20.0.8:8032
+[2020-12-22 14:26:47,861] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,861] {batch.py:309} INFO - 2020-12-22 14:26:35,506 INFO yarn.Client: Requesting a new application from cluster with 2 NodeManagers
+[2020-12-22 14:26:47,861] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,861] {batch.py:309} INFO - 2020-12-22 14:26:35,590 INFO conf.Configuration: resource-types.xml not found
+[2020-12-22 14:26:47,861] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,861] {batch.py:309} INFO - 2020-12-22 14:26:35,591 INFO resource.ResourceUtils: Unable to find 'resource-types.xml'.
+[2020-12-22 14:26:47,861] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,861] {batch.py:309} INFO - 2020-12-22 14:26:35,613 INFO yarn.Client: Verifying our application has not requested more than the maximum memory capability of the cluster (4096 MB per container)
+[2020-12-22 14:26:47,862] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,861] {batch.py:309} INFO - 2020-12-22 14:26:35,613 INFO yarn.Client: Will allocate AM container, with 896 MB memory including 384 MB overhead
+[2020-12-22 14:26:47,862] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,862] {batch.py:309} INFO - 2020-12-22 14:26:35,614 INFO yarn.Client: Setting up container launch context for our AM
+[2020-12-22 14:26:47,862] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,862] {batch.py:309} INFO - 2020-12-22 14:26:35,618 INFO yarn.Client: Setting up the launch environment for our AM container
+[2020-12-22 14:26:47,862] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,862] {batch.py:309} INFO - 2020-12-22 14:26:35,627 INFO yarn.Client: Preparing resources for our AM container
+[2020-12-22 14:26:47,862] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,862] {batch.py:309} INFO - 2020-12-22 14:26:35,685 INFO yarn.Client: Uploading resource file:/usr/spark/python/lib/pyspark.zip -> hdfs://master:9000/user/root/.sparkStaging/application_1608640367429_0003/pyspark.zip
+[2020-12-22 14:26:47,862] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,862] {batch.py:309} INFO - 2020-12-22 14:26:35,817 WARN hdfs.DataStreamer: DataStreamer Exception
+[2020-12-22 14:26:47,862] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,862] {batch.py:309} INFO - org.apache.hadoop.ipc.RemoteException(java.io.IOException): File /user/root/.sparkStaging/application_1608640367429_0003/pyspark.zip could only be written to 0 of the 1 minReplication nodes. There are 0 datanode(s) running and 0 node(s) are excluded in this operation.
+[2020-12-22 14:26:47,863] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,863] {batch.py:309} INFO - 	at org.apache.hadoop.hdfs.server.blockmanagement.BlockManager.chooseTarget4NewBlock(BlockManager.java:2135)
+[2020-12-22 14:26:47,863] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,863] {batch.py:309} INFO - 	at org.apache.hadoop.hdfs.server.namenode.FSDirWriteFileOp.chooseTargetForNewBlock(FSDirWriteFileOp.java:294)
+[2020-12-22 14:26:47,863] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,863] {batch.py:309} INFO - 	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.getAdditionalBlock(FSNamesystem.java:2771)
+[2020-12-22 14:26:47,863] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,863] {batch.py:309} INFO - 	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.addBlock(NameNodeRpcServer.java:876)
+[2020-12-22 14:26:47,863] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,863] {batch.py:309} INFO - 	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.addBlock(ClientNamenodeProtocolServerSideTranslatorPB.java:567)
+[2020-12-22 14:26:47,863] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,863] {batch.py:309} INFO - 	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+[2020-12-22 14:26:47,864] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,863] {batch.py:309} INFO - 	at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:524)
+[2020-12-22 14:26:47,864] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,864] {batch.py:309} INFO - 	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:1025)
+[2020-12-22 14:26:47,864] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,864] {batch.py:309} INFO - 	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:876)
+[2020-12-22 14:26:47,864] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,864] {batch.py:309} INFO - 	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:822)
+[2020-12-22 14:26:47,864] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,864] {batch.py:309} INFO - 	at java.security.AccessController.doPrivileged(Native Method)
+[2020-12-22 14:26:47,864] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,864] {batch.py:309} INFO - 	at javax.security.auth.Subject.doAs(Subject.java:422)
+[2020-12-22 14:26:47,865] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,864] {batch.py:309} INFO - 	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1730)
+[2020-12-22 14:26:47,865] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,865] {batch.py:309} INFO - 	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2682)
+[2020-12-22 14:26:47,865] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,865] {batch.py:309} INFO - 
+[2020-12-22 14:26:47,865] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,865] {batch.py:309} INFO - 	at org.apache.hadoop.ipc.Client.getRpcResponse(Client.java:1511)
+[2020-12-22 14:26:47,865] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,865] {batch.py:309} INFO - 	at org.apache.hadoop.ipc.Client.call(Client.java:1457)
+[2020-12-22 14:26:47,865] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,865] {batch.py:309} INFO - 	at org.apache.hadoop.ipc.Client.call(Client.java:1367)
+[2020-12-22 14:26:47,865] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,865] {batch.py:309} INFO - 	at org.apache.hadoop.ipc.ProtobufRpcEngine$Invoker.invoke(ProtobufRpcEngine.java:228)
+[2020-12-22 14:26:47,866] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,865] {batch.py:309} INFO - 	at org.apache.hadoop.ipc.ProtobufRpcEngine$Invoker.invoke(ProtobufRpcEngine.java:116)
+[2020-12-22 14:26:47,866] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,866] {batch.py:309} INFO - 	at com.sun.proxy.$Proxy24.addBlock(Unknown Source)
+[2020-12-22 14:26:47,866] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,866] {batch.py:309} INFO - 	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolTranslatorPB.addBlock(ClientNamenodeProtocolTranslatorPB.java:513)
+[2020-12-22 14:26:47,866] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,866] {batch.py:309} INFO - 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[2020-12-22 14:26:47,866] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,866] {batch.py:309} INFO - 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+[2020-12-22 14:26:47,867] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,866] {batch.py:309} INFO - 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[2020-12-22 14:26:47,867] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,867] {batch.py:309} INFO - 	at java.lang.reflect.Method.invoke(Method.java:498)
+[2020-12-22 14:26:47,867] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,867] {batch.py:309} INFO - 	at org.apache.hadoop.io.retry.RetryInvocationHandler.invokeMethod(RetryInvocationHandler.java:422)
+[2020-12-22 14:26:47,867] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,867] {batch.py:309} INFO - 	at org.apache.hadoop.io.retry.RetryInvocationHandler$Call.invokeMethod(RetryInvocationHandler.java:165)
+[2020-12-22 14:26:47,867] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,867] {batch.py:309} INFO - 	at org.apache.hadoop.io.retry.RetryInvocationHandler$Call.invoke(RetryInvocationHandler.java:157)
+[2020-12-22 14:26:47,867] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,867] {batch.py:309} INFO - 	at org.apache.hadoop.io.retry.RetryInvocationHandler$Call.invokeOnce(RetryInvocationHandler.java:95)
+[2020-12-22 14:26:47,867] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,867] {batch.py:309} INFO - 	at org.apache.hadoop.io.retry.RetryInvocationHandler.invoke(RetryInvocationHandler.java:359)
+[2020-12-22 14:26:47,868] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,867] {batch.py:309} INFO - 	at com.sun.proxy.$Proxy25.addBlock(Unknown Source)
+[2020-12-22 14:26:47,868] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,868] {batch.py:309} INFO - 	at org.apache.hadoop.hdfs.DFSOutputStream.addBlock(DFSOutputStream.java:1081)
+[2020-12-22 14:26:47,868] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,868] {batch.py:309} INFO - 	at org.apache.hadoop.hdfs.DataStreamer.locateFollowingBlock(DataStreamer.java:1865)
+[2020-12-22 14:26:47,868] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,868] {batch.py:309} INFO - 	at org.apache.hadoop.hdfs.DataStreamer.nextBlockOutputStream(DataStreamer.java:1668)
+[2020-12-22 14:26:47,868] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,868] {batch.py:309} INFO - 	at org.apache.hadoop.hdfs.DataStreamer.run(DataStreamer.java:716)
+[2020-12-22 14:26:47,868] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,868] {batch.py:309} INFO - 2020-12-22 14:26:35,830 INFO yarn.Client: Deleted staging directory hdfs://master:9000/user/root/.sparkStaging/application_1608640367429_0003
+[2020-12-22 14:26:47,868] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,868] {batch.py:309} INFO - 2020-12-22 14:26:35,831 ERROR spark.SparkContext: Error initializing SparkContext.
+[2020-12-22 14:26:47,869] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,868] {batch.py:309} INFO - org.apache.hadoop.ipc.RemoteException(java.io.IOException): File /user/root/.sparkStaging/application_1608640367429_0003/pyspark.zip could only be written to 0 of the 1 minReplication nodes. There are 0 datanode(s) running and 0 node(s) are excluded in this operation.
+[2020-12-22 14:26:47,869] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,869] {batch.py:309} INFO - 	at org.apache.hadoop.hdfs.server.blockmanagement.BlockManager.chooseTarget4NewBlock(BlockManager.java:2135)
+[2020-12-22 14:26:47,869] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,869] {batch.py:309} INFO - 	at org.apache.hadoop.hdfs.server.namenode.FSDirWriteFileOp.chooseTargetForNewBlock(FSDirWriteFileOp.java:294)
+[2020-12-22 14:26:47,869] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,869] {batch.py:309} INFO - 	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.getAdditionalBlock(FSNamesystem.java:2771)
+[2020-12-22 14:26:47,869] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,869] {batch.py:309} INFO - 	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.addBlock(NameNodeRpcServer.java:876)
+[2020-12-22 14:26:47,869] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,869] {batch.py:309} INFO - 	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.addBlock(ClientNamenodeProtocolServerSideTranslatorPB.java:567)
+[2020-12-22 14:26:47,876] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,876] {base_hook.py:84} INFO - Using connection to: id: livy. Host: http://ec2-3-236-26-7.compute-1.amazonaws.com, Port: 8998, Schema: None, Login: None, Password: None, extra: None
+[2020-12-22 14:26:47,877] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,877] {http_hook.py:136} INFO - Sending 'GET' to url: http://ec2-3-236-26-7.compute-1.amazonaws.com:8998/batches/47/log?from=100&size=100
+[2020-12-22 14:26:47,886] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,886] {batch.py:309} INFO - 	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+[2020-12-22 14:26:47,887] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,887] {batch.py:309} INFO - 	at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:524)
+[2020-12-22 14:26:47,887] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,887] {batch.py:309} INFO - 	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:1025)
+[2020-12-22 14:26:47,887] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,887] {batch.py:309} INFO - 	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:876)
+[2020-12-22 14:26:47,887] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,887] {batch.py:309} INFO - 	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:822)
+[2020-12-22 14:26:47,887] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,887] {batch.py:309} INFO - 	at java.security.AccessController.doPrivileged(Native Method)
+[2020-12-22 14:26:47,887] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,887] {batch.py:309} INFO - 	at javax.security.auth.Subject.doAs(Subject.java:422)
+[2020-12-22 14:26:47,888] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,887] {batch.py:309} INFO - 	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1730)
+[2020-12-22 14:26:47,888] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,888] {batch.py:309} INFO - 	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2682)
+[2020-12-22 14:26:47,888] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,888] {batch.py:309} INFO - 
+[2020-12-22 14:26:47,888] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,888] {batch.py:309} INFO - 	at org.apache.hadoop.ipc.Client.getRpcResponse(Client.java:1511)
+[2020-12-22 14:26:47,888] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,888] {batch.py:309} INFO - 	at org.apache.hadoop.ipc.Client.call(Client.java:1457)
+[2020-12-22 14:26:47,888] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,888] {batch.py:309} INFO - 	at org.apache.hadoop.ipc.Client.call(Client.java:1367)
+[2020-12-22 14:26:47,888] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,888] {batch.py:309} INFO - 	at org.apache.hadoop.ipc.ProtobufRpcEngine$Invoker.invoke(ProtobufRpcEngine.java:228)
+[2020-12-22 14:26:47,889] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,889] {batch.py:309} INFO - 	at org.apache.hadoop.ipc.ProtobufRpcEngine$Invoker.invoke(ProtobufRpcEngine.java:116)
+[2020-12-22 14:26:47,889] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,889] {batch.py:309} INFO - 	at com.sun.proxy.$Proxy24.addBlock(Unknown Source)
+[2020-12-22 14:26:47,889] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,889] {batch.py:309} INFO - 	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolTranslatorPB.addBlock(ClientNamenodeProtocolTranslatorPB.java:513)
+[2020-12-22 14:26:47,889] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,889] {batch.py:309} INFO - 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[2020-12-22 14:26:47,889] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,889] {batch.py:309} INFO - 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+[2020-12-22 14:26:47,890] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,889] {batch.py:309} INFO - 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[2020-12-22 14:26:47,890] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,890] {batch.py:309} INFO - 	at java.lang.reflect.Method.invoke(Method.java:498)
+[2020-12-22 14:26:47,890] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,890] {batch.py:309} INFO - 	at org.apache.hadoop.io.retry.RetryInvocationHandler.invokeMethod(RetryInvocationHandler.java:422)
+[2020-12-22 14:26:47,890] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,890] {batch.py:309} INFO - 	at org.apache.hadoop.io.retry.RetryInvocationHandler$Call.invokeMethod(RetryInvocationHandler.java:165)
+[2020-12-22 14:26:47,890] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,890] {batch.py:309} INFO - 	at org.apache.hadoop.io.retry.RetryInvocationHandler$Call.invoke(RetryInvocationHandler.java:157)
+[2020-12-22 14:26:47,890] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,890] {batch.py:309} INFO - 	at org.apache.hadoop.io.retry.RetryInvocationHandler$Call.invokeOnce(RetryInvocationHandler.java:95)
+[2020-12-22 14:26:47,890] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,890] {batch.py:309} INFO - 	at org.apache.hadoop.io.retry.RetryInvocationHandler.invoke(RetryInvocationHandler.java:359)
+[2020-12-22 14:26:47,891] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,891] {batch.py:309} INFO - 	at com.sun.proxy.$Proxy25.addBlock(Unknown Source)
+[2020-12-22 14:26:47,891] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,891] {batch.py:309} INFO - 	at org.apache.hadoop.hdfs.DFSOutputStream.addBlock(DFSOutputStream.java:1081)
+[2020-12-22 14:26:47,891] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,891] {batch.py:309} INFO - 	at org.apache.hadoop.hdfs.DataStreamer.locateFollowingBlock(DataStreamer.java:1865)
+[2020-12-22 14:26:47,891] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,891] {batch.py:309} INFO - 	at org.apache.hadoop.hdfs.DataStreamer.nextBlockOutputStream(DataStreamer.java:1668)
+[2020-12-22 14:26:47,891] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,891] {batch.py:309} INFO - 	at org.apache.hadoop.hdfs.DataStreamer.run(DataStreamer.java:716)
+[2020-12-22 14:26:47,891] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,891] {batch.py:309} INFO - 2020-12-22 14:26:35,841 INFO server.AbstractConnector: Stopped Spark@2ea6b46c{HTTP/1.1,[http/1.1]}{0.0.0.0:4040}
+[2020-12-22 14:26:47,892] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,891] {batch.py:309} INFO - 2020-12-22 14:26:35,844 INFO ui.SparkUI: Stopped Spark web UI at http://livy:4040
+[2020-12-22 14:26:47,892] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,892] {batch.py:309} INFO - 2020-12-22 14:26:35,855 WARN cluster.YarnSchedulerBackend$YarnSchedulerEndpoint: Attempted to request executors before the AM has registered!
+[2020-12-22 14:26:47,892] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,892] {batch.py:309} INFO - 2020-12-22 14:26:35,860 INFO cluster.YarnClientSchedulerBackend: Stopped
+[2020-12-22 14:26:47,892] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,892] {batch.py:309} INFO - 2020-12-22 14:26:35,868 INFO spark.MapOutputTrackerMasterEndpoint: MapOutputTrackerMasterEndpoint stopped!
+[2020-12-22 14:26:47,892] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,892] {batch.py:309} INFO - 2020-12-22 14:26:35,874 INFO memory.MemoryStore: MemoryStore cleared
+[2020-12-22 14:26:47,892] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,892] {batch.py:309} INFO - 2020-12-22 14:26:35,875 INFO storage.BlockManager: BlockManager stopped
+[2020-12-22 14:26:47,892] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,892] {batch.py:309} INFO - 2020-12-22 14:26:35,883 INFO storage.BlockManagerMaster: BlockManagerMaster stopped
+[2020-12-22 14:26:47,893] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,892] {batch.py:309} INFO - 2020-12-22 14:26:35,884 WARN metrics.MetricsSystem: Stopping a MetricsSystem that is not running
+[2020-12-22 14:26:47,893] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,893] {batch.py:309} INFO - 2020-12-22 14:26:35,887 INFO scheduler.OutputCommitCoordinator$OutputCommitCoordinatorEndpoint: OutputCommitCoordinator stopped!
+[2020-12-22 14:26:47,893] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,893] {batch.py:309} INFO - 2020-12-22 14:26:35,897 INFO spark.SparkContext: Successfully stopped SparkContext
+[2020-12-22 14:26:47,893] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,893] {batch.py:309} INFO - Traceback (most recent call last):
+[2020-12-22 14:26:47,893] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,893] {batch.py:309} INFO -   File "/tmp/spark-68e66898-a11f-4698-b60e-0cc314d8ef3e/main.py", line 87, in <module>
+[2020-12-22 14:26:47,893] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,893] {batch.py:309} INFO -     main()
+[2020-12-22 14:26:47,893] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,893] {batch.py:309} INFO -   File "/tmp/spark-68e66898-a11f-4698-b60e-0cc314d8ef3e/main.py", line 56, in main
+[2020-12-22 14:26:47,894] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,894] {batch.py:309} INFO -     spark = create_spark_session(args.mode, args.awsKey, args.awsSecretKey)
+[2020-12-22 14:26:47,894] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,894] {batch.py:309} INFO -   File "/tmp/spark-68e66898-a11f-4698-b60e-0cc314d8ef3e/main.py", line 37, in create_spark_session
+[2020-12-22 14:26:47,894] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,894] {batch.py:309} INFO -     .appName("LoanDefaultPrediction") \
+[2020-12-22 14:26:47,894] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,894] {batch.py:309} INFO -   File "/usr/spark/python/lib/pyspark.zip/pyspark/sql/session.py", line 173, in getOrCreate
+[2020-12-22 14:26:47,894] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,894] {batch.py:309} INFO -   File "/usr/spark/python/lib/pyspark.zip/pyspark/context.py", line 367, in getOrCreate
+[2020-12-22 14:26:47,894] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,894] {batch.py:309} INFO -   File "/usr/spark/python/lib/pyspark.zip/pyspark/context.py", line 136, in __init__
+[2020-12-22 14:26:47,895] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,894] {batch.py:309} INFO -   File "/usr/spark/python/lib/pyspark.zip/pyspark/context.py", line 198, in _do_init
+[2020-12-22 14:26:47,895] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,895] {batch.py:309} INFO -   File "/usr/spark/python/lib/pyspark.zip/pyspark/context.py", line 306, in _initialize_context
+[2020-12-22 14:26:47,895] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,895] {batch.py:309} INFO -   File "/usr/spark/python/lib/py4j-0.10.7-src.zip/py4j/java_gateway.py", line 1525, in __call__
+[2020-12-22 14:26:47,895] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,895] {batch.py:309} INFO -   File "/usr/spark/python/lib/py4j-0.10.7-src.zip/py4j/protocol.py", line 328, in get_return_value
+[2020-12-22 14:26:47,895] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,895] {batch.py:309} INFO - py4j.protocol.Py4JJavaError: An error occurred while calling None.org.apache.spark.api.java.JavaSparkContext.
+[2020-12-22 14:26:47,895] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,895] {batch.py:309} INFO - : org.apache.hadoop.ipc.RemoteException(java.io.IOException): File /user/root/.sparkStaging/application_1608640367429_0003/pyspark.zip could only be written to 0 of the 1 minReplication nodes. There are 0 datanode(s) running and 0 node(s) are excluded in this operation.
+[2020-12-22 14:26:47,895] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,895] {batch.py:309} INFO - 	at org.apache.hadoop.hdfs.server.blockmanagement.BlockManager.chooseTarget4NewBlock(BlockManager.java:2135)
+[2020-12-22 14:26:47,896] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,896] {batch.py:309} INFO - 	at org.apache.hadoop.hdfs.server.namenode.FSDirWriteFileOp.chooseTargetForNewBlock(FSDirWriteFileOp.java:294)
+[2020-12-22 14:26:47,896] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,896] {batch.py:309} INFO - 	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.getAdditionalBlock(FSNamesystem.java:2771)
+[2020-12-22 14:26:47,896] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,896] {batch.py:309} INFO - 	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.addBlock(NameNodeRpcServer.java:876)
+[2020-12-22 14:26:47,896] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,896] {batch.py:309} INFO - 	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.addBlock(ClientNamenodeProtocolServerSideTranslatorPB.java:567)
+[2020-12-22 14:26:47,896] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,896] {batch.py:309} INFO - 	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+[2020-12-22 14:26:47,896] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,896] {batch.py:309} INFO - 	at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:524)
+[2020-12-22 14:26:47,897] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,897] {batch.py:309} INFO - 	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:1025)
+[2020-12-22 14:26:47,897] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,897] {batch.py:309} INFO - 	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:876)
+[2020-12-22 14:26:47,897] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,897] {batch.py:309} INFO - 	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:822)
+[2020-12-22 14:26:47,897] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,897] {batch.py:309} INFO - 	at java.security.AccessController.doPrivileged(Native Method)
+[2020-12-22 14:26:47,897] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,897] {batch.py:309} INFO - 	at javax.security.auth.Subject.doAs(Subject.java:422)
+[2020-12-22 14:26:47,897] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,897] {batch.py:309} INFO - 	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1730)
+[2020-12-22 14:26:47,898] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,898] {batch.py:309} INFO - 	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2682)
+[2020-12-22 14:26:47,898] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,898] {batch.py:309} INFO - 
+[2020-12-22 14:26:47,898] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,898] {batch.py:309} INFO - 	at org.apache.hadoop.ipc.Client.getRpcResponse(Client.java:1511)
+[2020-12-22 14:26:47,898] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,898] {batch.py:309} INFO - 	at org.apache.hadoop.ipc.Client.call(Client.java:1457)
+[2020-12-22 14:26:47,898] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,898] {batch.py:309} INFO - 	at org.apache.hadoop.ipc.Client.call(Client.java:1367)
+[2020-12-22 14:26:47,898] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,898] {batch.py:309} INFO - 	at org.apache.hadoop.ipc.ProtobufRpcEngine$Invoker.invoke(ProtobufRpcEngine.java:228)
+[2020-12-22 14:26:47,899] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,899] {batch.py:309} INFO - 	at org.apache.hadoop.ipc.ProtobufRpcEngine$Invoker.invoke(ProtobufRpcEngine.java:116)
+[2020-12-22 14:26:47,899] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,899] {batch.py:309} INFO - 	at com.sun.proxy.$Proxy24.addBlock(Unknown Source)
+[2020-12-22 14:26:47,899] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,899] {batch.py:309} INFO - 	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolTranslatorPB.addBlock(ClientNamenodeProtocolTranslatorPB.java:513)
+[2020-12-22 14:26:47,899] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,899] {batch.py:309} INFO - 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[2020-12-22 14:26:47,899] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,899] {batch.py:309} INFO - 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+[2020-12-22 14:26:47,899] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,899] {batch.py:309} INFO - 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[2020-12-22 14:26:47,900] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,899] {batch.py:309} INFO - 	at java.lang.reflect.Method.invoke(Method.java:498)
+[2020-12-22 14:26:47,900] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,900] {batch.py:309} INFO - 	at org.apache.hadoop.io.retry.RetryInvocationHandler.invokeMethod(RetryInvocationHandler.java:422)
+[2020-12-22 14:26:47,900] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,900] {batch.py:309} INFO - 	at org.apache.hadoop.io.retry.RetryInvocationHandler$Call.invokeMethod(RetryInvocationHandler.java:165)
+[2020-12-22 14:26:47,900] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,900] {batch.py:309} INFO - 	at org.apache.hadoop.io.retry.RetryInvocationHandler$Call.invoke(RetryInvocationHandler.java:157)
+[2020-12-22 14:26:47,900] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,900] {batch.py:309} INFO - 	at org.apache.hadoop.io.retry.RetryInvocationHandler$Call.invokeOnce(RetryInvocationHandler.java:95)
+[2020-12-22 14:26:47,900] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,900] {batch.py:309} INFO - 	at org.apache.hadoop.io.retry.RetryInvocationHandler.invoke(RetryInvocationHandler.java:359)
+[2020-12-22 14:26:47,900] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,900] {batch.py:309} INFO - 	at com.sun.proxy.$Proxy25.addBlock(Unknown Source)
+[2020-12-22 14:26:47,901] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,901] {batch.py:309} INFO - 	at org.apache.hadoop.hdfs.DFSOutputStream.addBlock(DFSOutputStream.java:1081)
+[2020-12-22 14:26:47,901] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,901] {batch.py:309} INFO - 	at org.apache.hadoop.hdfs.DataStreamer.locateFollowingBlock(DataStreamer.java:1865)
+[2020-12-22 14:26:47,901] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,901] {batch.py:309} INFO - 	at org.apache.hadoop.hdfs.DataStreamer.nextBlockOutputStream(DataStreamer.java:1668)
+[2020-12-22 14:26:47,901] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,901] {batch.py:309} INFO - 	at org.apache.hadoop.hdfs.DataStreamer.run(DataStreamer.java:716)
+[2020-12-22 14:26:47,901] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,901] {batch.py:309} INFO - 
+[2020-12-22 14:26:47,901] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,901] {batch.py:309} INFO - 2020-12-22 14:26:35,936 INFO util.ShutdownHookManager: Shutdown hook called
+[2020-12-22 14:26:47,902] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,901] {batch.py:309} INFO - 2020-12-22 14:26:35,937 INFO util.ShutdownHookManager: Deleting directory /tmp/spark-6ec9b751-4152-47e1-a1a0-85a6e6be941f
+[2020-12-22 14:26:47,902] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,902] {batch.py:309} INFO - 2020-12-22 14:26:35,940 INFO util.ShutdownHookManager: Deleting directory /tmp/spark-68e66898-a11f-4698-b60e-0cc314d8ef3e
+[2020-12-22 14:26:47,902] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,902] {batch.py:309} INFO - 2020-12-22 14:26:36,046 INFO impl.MetricsSystemImpl: Stopping s3a-file-system metrics system...
+[2020-12-22 14:26:47,902] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,902] {batch.py:309} INFO - 2020-12-22 14:26:36,047 INFO impl.MetricsSystemImpl: s3a-file-system metrics system stopped.
+[2020-12-22 14:26:47,909] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,909] {base_hook.py:84} INFO - Using connection to: id: livy. Host: http://ec2-3-236-26-7.compute-1.amazonaws.com, Port: 8998, Schema: None, Login: None, Password: None, extra: None
+[2020-12-22 14:26:47,910] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,910] {http_hook.py:136} INFO - Sending 'GET' to url: http://ec2-3-236-26-7.compute-1.amazonaws.com:8998/batches/47/log?from=200&size=100
+[2020-12-22 14:26:47,919] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,919] {batch.py:309} INFO - 2020-12-22 14:26:36,047 INFO impl.MetricsSystemImpl: s3a-file-system metrics system shutdown complete.
+[2020-12-22 14:26:47,921] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,920] {batch.py:309} INFO - 
+stderr: 
+[2020-12-22 14:26:47,921] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,921] {batch.py:309} INFO - 
+YARN Diagnostics: 
+[2020-12-22 14:26:47,921] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,921] {batch.py:309} INFO - spark-submit start failed
+[2020-12-22 14:26:47,921] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,921] {batch.py:318} INFO - --------------------------------------------------End of full log for batch 47--------------------------------------------------
+[2020-12-22 14:26:47,921] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,921] {batch.py:335} INFO - Closing batch with id = 47
+[2020-12-22 14:26:47,932] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,931] {base_hook.py:84} INFO - Using connection to: id: livy. Host: http://ec2-3-236-26-7.compute-1.amazonaws.com, Port: 8998, Schema: None, Login: None, Password: None, extra: None
+[2020-12-22 14:26:47,932] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,932] {http_hook.py:136} INFO - Sending 'DELETE' to url: http://ec2-3-236-26-7.compute-1.amazonaws.com:8998/batches/47
+[2020-12-22 14:26:47,945] {logging_mixin.py:112} INFO - [2020-12-22 14:26:47,944] {batch.py:340} INFO - Batch 47 has been closed
+[2020-12-22 14:26:47,959] {taskinstance.py:1128} ERROR - Batch 47 failed with state 'dead'
+Traceback (most recent call last):
+  File "/opt/bitnami/python/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 966, in _run_raw_task
+    result = task_copy.execute(context=context)
+  File "/usr/local/airflow/plugins/airflow_livy/batch.py", line 173, in execute
+    ).execute(context)
+  File "/opt/bitnami/python/lib/python3.6/site-packages/airflow/sensors/base_sensor_operator.py", line 107, in execute
+    while not self.poke(context):
+  File "/usr/local/airflow/plugins/airflow_livy/batch.py", line 96, in poke
+    raise AirflowException(f"Batch {self.batch_id} failed with state '{state}'")
+airflow.exceptions.AirflowException: Batch 47 failed with state 'dead'
+[2020-12-22 14:26:47,960] {taskinstance.py:1151} INFO - Marking task as UP_FOR_RETRY
+[2020-12-22 14:26:52,656] {logging_mixin.py:112} INFO - [2020-12-22 14:26:52,655] {local_task_job.py:103} INFO - Task exited with return code 1

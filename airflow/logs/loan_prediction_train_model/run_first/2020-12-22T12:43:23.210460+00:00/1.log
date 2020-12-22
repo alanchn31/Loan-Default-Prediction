@@ -1,0 +1,26 @@
+[2020-12-22 12:43:25,483] {taskinstance.py:655} INFO - Dependencies all met for <TaskInstance: loan_prediction_train_model.run_first 2020-12-22T12:43:23.210460+00:00 [queued]>
+[2020-12-22 12:43:25,498] {taskinstance.py:655} INFO - Dependencies all met for <TaskInstance: loan_prediction_train_model.run_first 2020-12-22T12:43:23.210460+00:00 [queued]>
+[2020-12-22 12:43:25,499] {taskinstance.py:866} INFO - 
+--------------------------------------------------------------------------------
+[2020-12-22 12:43:25,500] {taskinstance.py:867} INFO - Starting attempt 1 of 6
+[2020-12-22 12:43:25,500] {taskinstance.py:868} INFO - 
+--------------------------------------------------------------------------------
+[2020-12-22 12:43:25,515] {taskinstance.py:887} INFO - Executing <Task(BashOperator): run_first> on 2020-12-22T12:43:23.210460+00:00
+[2020-12-22 12:43:25,519] {standard_task_runner.py:53} INFO - Started process 7110 to run task
+[2020-12-22 12:43:25,581] {logging_mixin.py:112} INFO - Running %s on host %s <TaskInstance: loan_prediction_train_model.run_first 2020-12-22T12:43:23.210460+00:00 [running]> dcb43f18a24b
+[2020-12-22 12:43:25,602] {bash_operator.py:82} INFO - Tmp dir root location: 
+ /tmp
+[2020-12-22 12:43:25,604] {bash_operator.py:105} INFO - Temporary script location: /tmp/airflowtmp6ujoan2s/run_firstawu7t591
+[2020-12-22 12:43:25,604] {bash_operator.py:115} INFO - Running command: cwd
+[2020-12-22 12:43:25,610] {bash_operator.py:122} INFO - Output:
+[2020-12-22 12:43:25,614] {bash_operator.py:126} INFO - /tmp/airflowtmp6ujoan2s/run_firstawu7t591: line 1: cwd: command not found
+[2020-12-22 12:43:25,615] {bash_operator.py:130} INFO - Command exited with return code 127
+[2020-12-22 12:43:25,626] {taskinstance.py:1128} ERROR - Bash command failed
+Traceback (most recent call last):
+  File "/opt/bitnami/python/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 966, in _run_raw_task
+    result = task_copy.execute(context=context)
+  File "/opt/bitnami/python/lib/python3.6/site-packages/airflow/operators/bash_operator.py", line 134, in execute
+    raise AirflowException("Bash command failed")
+airflow.exceptions.AirflowException: Bash command failed
+[2020-12-22 12:43:25,630] {taskinstance.py:1151} INFO - Marking task as UP_FOR_RETRY
+[2020-12-22 12:43:35,494] {logging_mixin.py:112} INFO - [2020-12-22 12:43:35,494] {local_task_job.py:103} INFO - Task exited with return code 1

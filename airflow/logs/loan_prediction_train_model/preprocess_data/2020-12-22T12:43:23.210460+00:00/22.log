@@ -1,0 +1,81 @@
+[2020-12-22 13:28:24,398] {taskinstance.py:655} INFO - Dependencies all met for <TaskInstance: loan_prediction_train_model.preprocess_data 2020-12-22T12:43:23.210460+00:00 [queued]>
+[2020-12-22 13:28:24,415] {taskinstance.py:655} INFO - Dependencies all met for <TaskInstance: loan_prediction_train_model.preprocess_data 2020-12-22T12:43:23.210460+00:00 [queued]>
+[2020-12-22 13:28:24,417] {taskinstance.py:866} INFO - 
+--------------------------------------------------------------------------------
+[2020-12-22 13:28:24,417] {taskinstance.py:867} INFO - Starting attempt 22 of 24
+[2020-12-22 13:28:24,417] {taskinstance.py:868} INFO - 
+--------------------------------------------------------------------------------
+[2020-12-22 13:28:24,429] {taskinstance.py:887} INFO - Executing <Task(LivyBatchOperator): preprocess_data> on 2020-12-22T12:43:23.210460+00:00
+[2020-12-22 13:28:24,433] {standard_task_runner.py:53} INFO - Started process 34774 to run task
+[2020-12-22 13:28:24,489] {logging_mixin.py:112} INFO - Running %s on host %s <TaskInstance: loan_prediction_train_model.preprocess_data 2020-12-22T12:43:23.210460+00:00 [running]> dcb43f18a24b
+[2020-12-22 13:28:24,513] {logging_mixin.py:112} INFO - [2020-12-22 13:28:24,513] {batch.py:214} INFO - Submitting the batch to Livy... Payload:
+{
+  "file": "s3a://alanchn31-loan-default-prediction/dist/main.py",
+  "args": [
+    "--job",
+    "preprocess_data",
+    "--phase",
+    "train",
+    "--mode",
+    "aws",
+    "--awsKey",
+    "AKIAUW4FKHTMR2UR3INH",
+    "--awsSecretKey",
+    "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",
+    "--s3Bucket",
+    "alanchn31-loan-default-prediction"
+  ],
+  "pyFiles": [
+    "s3a://alanchn31-loan-default-prediction/dist/src.zip"
+  ],
+  "name": "preprocess_data_scheduled__2020-12-22T12:43:23.210460+00:00"
+}
+[2020-12-22 13:28:24,522] {logging_mixin.py:112} INFO - [2020-12-22 13:28:24,521] {base_hook.py:84} INFO - Using connection to: id: livy. Host: http://ec2-3-236-26-7.compute-1.amazonaws.com, Port: 8998, Schema: None, Login: None, Password: None, extra: None
+[2020-12-22 13:28:24,524] {logging_mixin.py:112} INFO - [2020-12-22 13:28:24,524] {http_hook.py:136} INFO - Sending 'POST' to url: http://ec2-3-236-26-7.compute-1.amazonaws.com:8998/batches
+[2020-12-22 13:28:24,548] {logging_mixin.py:112} INFO - [2020-12-22 13:28:24,548] {batch.py:166} INFO - Batch successfully submitted with id = 18.
+[2020-12-22 13:28:24,550] {logging_mixin.py:112} INFO - [2020-12-22 13:28:24,550] {batch.py:80} INFO - Getting batch 18 status...
+[2020-12-22 13:28:24,559] {logging_mixin.py:112} INFO - [2020-12-22 13:28:24,559] {base_hook.py:84} INFO - Using connection to: id: livy. Host: http://ec2-3-236-26-7.compute-1.amazonaws.com, Port: 8998, Schema: None, Login: None, Password: None, extra: None
+[2020-12-22 13:28:24,561] {logging_mixin.py:112} INFO - [2020-12-22 13:28:24,561] {http_hook.py:136} INFO - Sending 'GET' to url: http://ec2-3-236-26-7.compute-1.amazonaws.com:8998/batches/18
+[2020-12-22 13:28:24,589] {logging_mixin.py:112} INFO - [2020-12-22 13:28:24,589] {batch.py:90} INFO - Batch 18 has not finished yet (state is 'starting')
+[2020-12-22 13:28:44,610] {logging_mixin.py:112} INFO - [2020-12-22 13:28:44,610] {batch.py:80} INFO - Getting batch 18 status...
+[2020-12-22 13:28:44,619] {logging_mixin.py:112} INFO - [2020-12-22 13:28:44,619] {base_hook.py:84} INFO - Using connection to: id: livy. Host: http://ec2-3-236-26-7.compute-1.amazonaws.com, Port: 8998, Schema: None, Login: None, Password: None, extra: None
+[2020-12-22 13:28:44,621] {logging_mixin.py:112} INFO - [2020-12-22 13:28:44,621] {http_hook.py:136} INFO - Sending 'GET' to url: http://ec2-3-236-26-7.compute-1.amazonaws.com:8998/batches/18
+[2020-12-22 13:28:44,638] {logging_mixin.py:112} INFO - [2020-12-22 13:28:44,638] {batch.py:299} INFO - --------------------------------------------------Full log for batch 18--------------------------------------------------
+[2020-12-22 13:28:44,656] {logging_mixin.py:112} INFO - [2020-12-22 13:28:44,656] {base_hook.py:84} INFO - Using connection to: id: livy. Host: http://ec2-3-236-26-7.compute-1.amazonaws.com, Port: 8998, Schema: None, Login: None, Password: None, extra: None
+[2020-12-22 13:28:44,659] {logging_mixin.py:112} INFO - [2020-12-22 13:28:44,658] {http_hook.py:136} INFO - Sending 'GET' to url: http://ec2-3-236-26-7.compute-1.amazonaws.com:8998/batches/18/log?from=0&size=100
+[2020-12-22 13:28:44,670] {logging_mixin.py:112} INFO - [2020-12-22 13:28:44,670] {batch.py:309} INFO - stdout: 
+[2020-12-22 13:28:44,672] {logging_mixin.py:112} INFO - [2020-12-22 13:28:44,672] {batch.py:309} INFO - 2020-12-22 13:28:26,811 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[2020-12-22 13:28:44,673] {logging_mixin.py:112} INFO - [2020-12-22 13:28:44,673] {batch.py:309} INFO - Traceback (most recent call last):
+[2020-12-22 13:28:44,675] {logging_mixin.py:112} INFO - [2020-12-22 13:28:44,675] {batch.py:309} INFO -   File "/tmp/spark-9f4bfa78-1b1d-4b01-ac62-7ac2861d443d/main.py", line 74, in <module>
+[2020-12-22 13:28:44,675] {logging_mixin.py:112} INFO - [2020-12-22 13:28:44,675] {batch.py:309} INFO -     main()
+[2020-12-22 13:28:44,675] {logging_mixin.py:112} INFO - [2020-12-22 13:28:44,675] {batch.py:309} INFO -   File "/tmp/spark-9f4bfa78-1b1d-4b01-ac62-7ac2861d443d/main.py", line 55, in main
+[2020-12-22 13:28:44,675] {logging_mixin.py:112} INFO - [2020-12-22 13:28:44,675] {batch.py:309} INFO -     with open("src/config.json", "r") as config_file:
+[2020-12-22 13:28:44,675] {logging_mixin.py:112} INFO - [2020-12-22 13:28:44,675] {batch.py:309} INFO - FileNotFoundError: [Errno 2] No such file or directory: 'src/config.json'
+[2020-12-22 13:28:44,676] {logging_mixin.py:112} INFO - [2020-12-22 13:28:44,676] {batch.py:309} INFO - 2020-12-22 13:28:29,789 INFO util.ShutdownHookManager: Shutdown hook called
+[2020-12-22 13:28:44,676] {logging_mixin.py:112} INFO - [2020-12-22 13:28:44,676] {batch.py:309} INFO - 2020-12-22 13:28:29,791 INFO util.ShutdownHookManager: Deleting directory /tmp/spark-9f4bfa78-1b1d-4b01-ac62-7ac2861d443d
+[2020-12-22 13:28:44,676] {logging_mixin.py:112} INFO - [2020-12-22 13:28:44,676] {batch.py:309} INFO - 2020-12-22 13:28:29,799 INFO impl.MetricsSystemImpl: Stopping s3a-file-system metrics system...
+[2020-12-22 13:28:44,676] {logging_mixin.py:112} INFO - [2020-12-22 13:28:44,676] {batch.py:309} INFO - 2020-12-22 13:28:29,799 INFO impl.MetricsSystemImpl: s3a-file-system metrics system stopped.
+[2020-12-22 13:28:44,676] {logging_mixin.py:112} INFO - [2020-12-22 13:28:44,676] {batch.py:309} INFO - 2020-12-22 13:28:29,800 INFO impl.MetricsSystemImpl: s3a-file-system metrics system shutdown complete.
+[2020-12-22 13:28:44,676] {logging_mixin.py:112} INFO - [2020-12-22 13:28:44,676] {batch.py:309} INFO - 
+stderr: 
+[2020-12-22 13:28:44,676] {logging_mixin.py:112} INFO - [2020-12-22 13:28:44,676] {batch.py:309} INFO - 
+YARN Diagnostics: 
+[2020-12-22 13:28:44,677] {logging_mixin.py:112} INFO - [2020-12-22 13:28:44,677] {batch.py:309} INFO - spark-submit start failed
+[2020-12-22 13:28:44,677] {logging_mixin.py:112} INFO - [2020-12-22 13:28:44,677] {batch.py:318} INFO - --------------------------------------------------End of full log for batch 18--------------------------------------------------
+[2020-12-22 13:28:44,677] {logging_mixin.py:112} INFO - [2020-12-22 13:28:44,677] {batch.py:335} INFO - Closing batch with id = 18
+[2020-12-22 13:28:44,689] {logging_mixin.py:112} INFO - [2020-12-22 13:28:44,689] {base_hook.py:84} INFO - Using connection to: id: livy. Host: http://ec2-3-236-26-7.compute-1.amazonaws.com, Port: 8998, Schema: None, Login: None, Password: None, extra: None
+[2020-12-22 13:28:44,691] {logging_mixin.py:112} INFO - [2020-12-22 13:28:44,691] {http_hook.py:136} INFO - Sending 'DELETE' to url: http://ec2-3-236-26-7.compute-1.amazonaws.com:8998/batches/18
+[2020-12-22 13:28:44,699] {logging_mixin.py:112} INFO - [2020-12-22 13:28:44,699] {batch.py:340} INFO - Batch 18 has been closed
+[2020-12-22 13:28:44,711] {taskinstance.py:1128} ERROR - Batch 18 failed with state 'dead'
+Traceback (most recent call last):
+  File "/opt/bitnami/python/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 966, in _run_raw_task
+    result = task_copy.execute(context=context)
+  File "/usr/local/airflow/plugins/airflow_livy/batch.py", line 173, in execute
+    ).execute(context)
+  File "/opt/bitnami/python/lib/python3.6/site-packages/airflow/sensors/base_sensor_operator.py", line 107, in execute
+    while not self.poke(context):
+  File "/usr/local/airflow/plugins/airflow_livy/batch.py", line 96, in poke
+    raise AirflowException(f"Batch {self.batch_id} failed with state '{state}'")
+airflow.exceptions.AirflowException: Batch 18 failed with state 'dead'
+[2020-12-22 13:28:44,715] {taskinstance.py:1151} INFO - Marking task as UP_FOR_RETRY
+[2020-12-22 13:28:49,443] {logging_mixin.py:112} INFO - [2020-12-22 13:28:49,443] {local_task_job.py:103} INFO - Task exited with return code 1

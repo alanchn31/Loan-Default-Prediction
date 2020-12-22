@@ -1,0 +1,19 @@
+[2020-12-22 12:44:30,290] {taskinstance.py:655} INFO - Dependencies all met for <TaskInstance: loan_prediction_train_model.run_first 2020-12-22T12:43:23.210460+00:00 [queued]>
+[2020-12-22 12:44:30,307] {taskinstance.py:655} INFO - Dependencies all met for <TaskInstance: loan_prediction_train_model.run_first 2020-12-22T12:43:23.210460+00:00 [queued]>
+[2020-12-22 12:44:30,308] {taskinstance.py:866} INFO - 
+--------------------------------------------------------------------------------
+[2020-12-22 12:44:30,308] {taskinstance.py:867} INFO - Starting attempt 2 of 6
+[2020-12-22 12:44:30,309] {taskinstance.py:868} INFO - 
+--------------------------------------------------------------------------------
+[2020-12-22 12:44:30,322] {taskinstance.py:887} INFO - Executing <Task(BashOperator): run_first> on 2020-12-22T12:43:23.210460+00:00
+[2020-12-22 12:44:30,328] {standard_task_runner.py:53} INFO - Started process 7778 to run task
+[2020-12-22 12:44:30,402] {logging_mixin.py:112} INFO - Running %s on host %s <TaskInstance: loan_prediction_train_model.run_first 2020-12-22T12:43:23.210460+00:00 [running]> dcb43f18a24b
+[2020-12-22 12:44:30,420] {bash_operator.py:82} INFO - Tmp dir root location: 
+ /tmp
+[2020-12-22 12:44:30,422] {bash_operator.py:105} INFO - Temporary script location: /tmp/airflowtmpqsaf8yls/run_first_u48zoyw
+[2020-12-22 12:44:30,422] {bash_operator.py:115} INFO - Running command: echo $PWD
+[2020-12-22 12:44:30,427] {bash_operator.py:122} INFO - Output:
+[2020-12-22 12:44:30,428] {bash_operator.py:126} INFO - /tmp/airflowtmpqsaf8yls
+[2020-12-22 12:44:30,429] {bash_operator.py:130} INFO - Command exited with return code 0
+[2020-12-22 12:44:30,439] {taskinstance.py:1048} INFO - Marking task as SUCCESS.dag_id=loan_prediction_train_model, task_id=run_first, execution_date=20201222T124323, start_date=20201222T124430, end_date=20201222T124430
+[2020-12-22 12:44:40,278] {logging_mixin.py:112} INFO - [2020-12-22 12:44:40,278] {local_task_job.py:103} INFO - Task exited with return code 0

@@ -1,0 +1,75 @@
+[2020-12-21 15:24:07,129] {taskinstance.py:655} INFO - Dependencies all met for <TaskInstance: loan_prediction_train_model.preprocess_data 2020-12-21T15:06:04.546570+00:00 [queued]>
+[2020-12-21 15:24:07,369] {taskinstance.py:655} INFO - Dependencies all met for <TaskInstance: loan_prediction_train_model.preprocess_data 2020-12-21T15:06:04.546570+00:00 [queued]>
+[2020-12-21 15:24:07,369] {taskinstance.py:866} INFO - 
+--------------------------------------------------------------------------------
+[2020-12-21 15:24:07,369] {taskinstance.py:867} INFO - Starting attempt 10 of 12
+[2020-12-21 15:24:07,369] {taskinstance.py:868} INFO - 
+--------------------------------------------------------------------------------
+[2020-12-21 15:24:07,566] {taskinstance.py:887} INFO - Executing <Task(LivyBatchOperator): preprocess_data> on 2020-12-21T15:06:04.546570+00:00
+[2020-12-21 15:24:07,576] {standard_task_runner.py:53} INFO - Started process 385 to run task
+[2020-12-21 15:24:08,048] {logging_mixin.py:112} INFO - Running %s on host %s <TaskInstance: loan_prediction_train_model.preprocess_data 2020-12-21T15:06:04.546570+00:00 [running]> dcb43f18a24b
+[2020-12-21 15:24:08,096] {logging_mixin.py:112} INFO - [2020-12-21 15:24:08,095] {batch.py:214} INFO - Submitting the batch to Livy... Payload:
+{
+  "file": "local:/dist/main.py",
+  "args": [
+    "-job=preprocess_data",
+    "-phase=train",
+    "-mode=aws",
+    "-awsKey=AKIAUW4FKHTMR2UR3INH",
+    "-awsSecretKey=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",
+    "-s3Bucket=alanchn31-loan-default-prediction"
+  ],
+  "pyFiles": [
+    "local:/dist/src.zip"
+  ],
+  "name": "preprocess_data_scheduled__2020-12-21T15:06:04.546570+00:00"
+}
+[2020-12-21 15:24:08,133] {logging_mixin.py:112} INFO - [2020-12-21 15:24:08,127] {base_hook.py:84} INFO - Using connection to: id: livy. Host: 3.238.254.96, Port: 8998, Schema: None, Login: None, Password: None, extra: None
+[2020-12-21 15:24:08,135] {logging_mixin.py:112} INFO - [2020-12-21 15:24:08,135] {http_hook.py:136} INFO - Sending 'POST' to url: http://3.238.254.96:8998/batches
+[2020-12-21 15:24:12,238] {logging_mixin.py:112} INFO - [2020-12-21 15:24:12,238] {batch.py:166} INFO - Batch successfully submitted with id = 0.
+[2020-12-21 15:24:12,240] {logging_mixin.py:112} INFO - [2020-12-21 15:24:12,240] {batch.py:80} INFO - Getting batch 0 status...
+[2020-12-21 15:24:12,248] {logging_mixin.py:112} INFO - [2020-12-21 15:24:12,248] {base_hook.py:84} INFO - Using connection to: id: livy. Host: 3.238.254.96, Port: 8998, Schema: None, Login: None, Password: None, extra: None
+[2020-12-21 15:24:12,250] {logging_mixin.py:112} INFO - [2020-12-21 15:24:12,250] {http_hook.py:136} INFO - Sending 'GET' to url: http://3.238.254.96:8998/batches/0
+[2020-12-21 15:24:12,371] {logging_mixin.py:112} INFO - [2020-12-21 15:24:12,370] {batch.py:90} INFO - Batch 0 has not finished yet (state is 'starting')
+[2020-12-21 15:24:32,389] {logging_mixin.py:112} INFO - [2020-12-21 15:24:32,389] {batch.py:80} INFO - Getting batch 0 status...
+[2020-12-21 15:24:32,398] {logging_mixin.py:112} INFO - [2020-12-21 15:24:32,397] {base_hook.py:84} INFO - Using connection to: id: livy. Host: 3.238.254.96, Port: 8998, Schema: None, Login: None, Password: None, extra: None
+[2020-12-21 15:24:32,400] {logging_mixin.py:112} INFO - [2020-12-21 15:24:32,400] {http_hook.py:136} INFO - Sending 'GET' to url: http://3.238.254.96:8998/batches/0
+[2020-12-21 15:24:32,413] {logging_mixin.py:112} INFO - [2020-12-21 15:24:32,412] {batch.py:90} INFO - Batch 0 has not finished yet (state is 'starting')
+[2020-12-21 15:24:52,433] {logging_mixin.py:112} INFO - [2020-12-21 15:24:52,432] {batch.py:80} INFO - Getting batch 0 status...
+[2020-12-21 15:24:52,443] {logging_mixin.py:112} INFO - [2020-12-21 15:24:52,443] {base_hook.py:84} INFO - Using connection to: id: livy. Host: 3.238.254.96, Port: 8998, Schema: None, Login: None, Password: None, extra: None
+[2020-12-21 15:24:52,444] {logging_mixin.py:112} INFO - [2020-12-21 15:24:52,444] {http_hook.py:136} INFO - Sending 'GET' to url: http://3.238.254.96:8998/batches/0
+[2020-12-21 15:24:52,468] {logging_mixin.py:112} INFO - [2020-12-21 15:24:52,467] {batch.py:90} INFO - Batch 0 has not finished yet (state is 'starting')
+[2020-12-21 15:25:12,485] {logging_mixin.py:112} INFO - [2020-12-21 15:25:12,485] {batch.py:80} INFO - Getting batch 0 status...
+[2020-12-21 15:25:12,499] {logging_mixin.py:112} INFO - [2020-12-21 15:25:12,498] {base_hook.py:84} INFO - Using connection to: id: livy. Host: 3.238.254.96, Port: 8998, Schema: None, Login: None, Password: None, extra: None
+[2020-12-21 15:25:12,500] {logging_mixin.py:112} INFO - [2020-12-21 15:25:12,500] {http_hook.py:136} INFO - Sending 'GET' to url: http://3.238.254.96:8998/batches/0
+[2020-12-21 15:25:12,522] {logging_mixin.py:112} INFO - [2020-12-21 15:25:12,522] {batch.py:299} INFO - --------------------------------------------------Full log for batch 0--------------------------------------------------
+[2020-12-21 15:25:12,543] {logging_mixin.py:112} INFO - [2020-12-21 15:25:12,542] {base_hook.py:84} INFO - Using connection to: id: livy. Host: 3.238.254.96, Port: 8998, Schema: None, Login: None, Password: None, extra: None
+[2020-12-21 15:25:12,544] {logging_mixin.py:112} INFO - [2020-12-21 15:25:12,544] {http_hook.py:136} INFO - Sending 'GET' to url: http://3.238.254.96:8998/batches/0/log?from=0&size=100
+[2020-12-21 15:25:12,756] {logging_mixin.py:112} INFO - [2020-12-21 15:25:12,755] {batch.py:309} INFO - stdout: 
+[2020-12-21 15:25:12,756] {logging_mixin.py:112} INFO - [2020-12-21 15:25:12,756] {batch.py:309} INFO - 2020-12-21 15:24:16,091 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[2020-12-21 15:25:12,756] {logging_mixin.py:112} INFO - [2020-12-21 15:25:12,756] {batch.py:309} INFO - python: can't open file '/dist/main.py': [Errno 2] No such file or directory
+[2020-12-21 15:25:12,763] {logging_mixin.py:112} INFO - [2020-12-21 15:25:12,763] {batch.py:309} INFO - 2020-12-21 15:24:17,276 INFO util.ShutdownHookManager: Shutdown hook called
+[2020-12-21 15:25:12,764] {logging_mixin.py:112} INFO - [2020-12-21 15:25:12,763] {batch.py:309} INFO - 2020-12-21 15:24:17,278 INFO util.ShutdownHookManager: Deleting directory /tmp/spark-4aa7bc1b-8530-4ec9-ab63-7b9e4f554352
+[2020-12-21 15:25:12,764] {logging_mixin.py:112} INFO - [2020-12-21 15:25:12,764] {batch.py:309} INFO - 
+stderr: 
+[2020-12-21 15:25:12,764] {logging_mixin.py:112} INFO - [2020-12-21 15:25:12,764] {batch.py:309} INFO - 
+YARN Diagnostics: 
+[2020-12-21 15:25:12,765] {logging_mixin.py:112} INFO - [2020-12-21 15:25:12,765] {batch.py:309} INFO - spark-submit start failed
+[2020-12-21 15:25:12,765] {logging_mixin.py:112} INFO - [2020-12-21 15:25:12,765] {batch.py:318} INFO - --------------------------------------------------End of full log for batch 0--------------------------------------------------
+[2020-12-21 15:25:12,765] {logging_mixin.py:112} INFO - [2020-12-21 15:25:12,765] {batch.py:335} INFO - Closing batch with id = 0
+[2020-12-21 15:25:12,809] {logging_mixin.py:112} INFO - [2020-12-21 15:25:12,809] {base_hook.py:84} INFO - Using connection to: id: livy. Host: 3.238.254.96, Port: 8998, Schema: None, Login: None, Password: None, extra: None
+[2020-12-21 15:25:12,810] {logging_mixin.py:112} INFO - [2020-12-21 15:25:12,810] {http_hook.py:136} INFO - Sending 'DELETE' to url: http://3.238.254.96:8998/batches/0
+[2020-12-21 15:25:12,844] {logging_mixin.py:112} INFO - [2020-12-21 15:25:12,844] {batch.py:340} INFO - Batch 0 has been closed
+[2020-12-21 15:25:12,867] {taskinstance.py:1128} ERROR - Batch 0 failed with state 'dead'
+Traceback (most recent call last):
+  File "/opt/bitnami/python/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 966, in _run_raw_task
+    result = task_copy.execute(context=context)
+  File "/usr/local/airflow/plugins/airflow_livy/batch.py", line 173, in execute
+    ).execute(context)
+  File "/opt/bitnami/python/lib/python3.6/site-packages/airflow/sensors/base_sensor_operator.py", line 107, in execute
+    while not self.poke(context):
+  File "/usr/local/airflow/plugins/airflow_livy/batch.py", line 96, in poke
+    raise AirflowException(f"Batch {self.batch_id} failed with state '{state}'")
+airflow.exceptions.AirflowException: Batch 0 failed with state 'dead'
+[2020-12-21 15:25:12,877] {taskinstance.py:1151} INFO - Marking task as UP_FOR_RETRY
+[2020-12-21 15:25:17,389] {logging_mixin.py:112} INFO - [2020-12-21 15:25:17,389] {local_task_job.py:103} INFO - Task exited with return code 1

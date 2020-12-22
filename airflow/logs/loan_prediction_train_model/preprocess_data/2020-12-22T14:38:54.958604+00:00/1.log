@@ -1,0 +1,55 @@
+[2020-12-22 14:38:58,201] {taskinstance.py:655} INFO - Dependencies all met for <TaskInstance: loan_prediction_train_model.preprocess_data 2020-12-22T14:38:54.958604+00:00 [queued]>
+[2020-12-22 14:38:58,215] {taskinstance.py:655} INFO - Dependencies all met for <TaskInstance: loan_prediction_train_model.preprocess_data 2020-12-22T14:38:54.958604+00:00 [queued]>
+[2020-12-22 14:38:58,215] {taskinstance.py:866} INFO - 
+--------------------------------------------------------------------------------
+[2020-12-22 14:38:58,215] {taskinstance.py:867} INFO - Starting attempt 1 of 6
+[2020-12-22 14:38:58,216] {taskinstance.py:868} INFO - 
+--------------------------------------------------------------------------------
+[2020-12-22 14:38:58,227] {taskinstance.py:887} INFO - Executing <Task(LivyBatchOperator): preprocess_data> on 2020-12-22T14:38:54.958604+00:00
+[2020-12-22 14:38:58,230] {standard_task_runner.py:53} INFO - Started process 2057 to run task
+[2020-12-22 14:38:58,288] {logging_mixin.py:112} INFO - Running %s on host %s <TaskInstance: loan_prediction_train_model.preprocess_data 2020-12-22T14:38:54.958604+00:00 [running]> 6e29624e1b8e
+[2020-12-22 14:38:58,313] {logging_mixin.py:112} INFO - [2020-12-22 14:38:58,312] {batch.py:214} INFO - Submitting the batch to Livy... Payload:
+{
+  "file": "s3a://alanchn31-loan-default-prediction/dist/main.py",
+  "args": [
+    "--job",
+    "preprocess_data",
+    "--phase",
+    "train",
+    "--mode",
+    "aws",
+    "--awsKey",
+    "AKIAUW4FKHTMR2UR3INH",
+    "--awsSecretKey",
+    "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",
+    "--s3Bucket",
+    "alanchn31-loan-default-prediction"
+  ],
+  "pyFiles": [
+    "s3a://alanchn31-loan-default-prediction/dist/src.zip"
+  ],
+  "name": "preprocess_data_scheduled__2020-12-22T14:38:54.958604+00:00"
+}
+[2020-12-22 14:38:58,327] {taskinstance.py:1128} ERROR - The conn_id `livy` isn't defined
+Traceback (most recent call last):
+  File "/opt/bitnami/python/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 966, in _run_raw_task
+    result = task_copy.execute(context=context)
+  File "/usr/local/airflow/plugins/airflow_livy/batch.py", line 165, in execute
+    self.submit_batch()
+  File "/usr/local/airflow/plugins/airflow_livy/batch.py", line 218, in submit_batch
+    LIVY_ENDPOINT, json.dumps(payload), headers
+  File "/opt/bitnami/python/lib/python3.6/site-packages/airflow/hooks/http_hook.py", line 105, in run
+    session = self.get_conn(headers)
+  File "/opt/bitnami/python/lib/python3.6/site-packages/airflow/hooks/http_hook.py", line 62, in get_conn
+    conn = self.get_connection(self.http_conn_id)
+  File "/opt/bitnami/python/lib/python3.6/site-packages/airflow/hooks/base_hook.py", line 81, in get_connection
+    conn = random.choice(list(cls.get_connections(conn_id)))
+  File "/opt/bitnami/python/lib/python3.6/site-packages/airflow/hooks/base_hook.py", line 76, in get_connections
+    conns = cls._get_connections_from_db(conn_id)
+  File "/opt/bitnami/python/lib/python3.6/site-packages/airflow/utils/db.py", line 74, in wrapper
+    return func(*args, **kwargs)
+  File "/opt/bitnami/python/lib/python3.6/site-packages/airflow/hooks/base_hook.py", line 59, in _get_connections_from_db
+    "The conn_id `{0}` isn't defined".format(conn_id))
+airflow.exceptions.AirflowException: The conn_id `livy` isn't defined
+[2020-12-22 14:38:58,331] {taskinstance.py:1151} INFO - Marking task as UP_FOR_RETRY
+[2020-12-22 14:39:08,194] {logging_mixin.py:112} INFO - [2020-12-22 14:39:08,194] {local_task_job.py:103} INFO - Task exited with return code 1
