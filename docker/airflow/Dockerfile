@@ -78,6 +78,8 @@ RUN set -ex \
 
 COPY docker/airflow/entrypoint.sh /entrypoint.sh
 
+RUN chmod +x /entrypoint.sh
+
 COPY airflow/config/airflow.cfg ${AIRFLOW_USER_HOME}/airflow.cfg
 
 RUN chown -R airflow: ${AIRFLOW_USER_HOME}

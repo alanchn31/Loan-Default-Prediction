@@ -18,4 +18,4 @@ COPY . /opt
 # Expose port
 EXPOSE 8080 7077 8998
 
-CMD ["/bin/bash", "/master.sh"]
+CMD ["/bin/bash", "/worker.sh"]
