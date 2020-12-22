@@ -1,0 +1,86 @@
+{
+    "source_data_path": "src/data/inputs/loan_default.csv",
+    "s3_source_data_path": "s3a://{}/data/inputs/loan_default.csv",
+    "schema": [
+        "ID IntegerType()",
+        "DISBURSED_VALUE IntegerType()",
+        "ASSET_COST IntegerType()",
+        "LOAN_TO_VALUE DoubleType()",
+        "BRANCH_ID IntegerType()",
+        "SUPPLIER_ID IntegerType()",
+        "MANUFACTURER_ID IntegerType()",
+        "PINCODE IntegerType()",
+        "DOB StringType()",
+        "EMP_TYPE StringType()",
+        "DISBURSED_DATE StringType()",
+        "REGION_ID IntegerType()",
+        "EMPLOYEE_CODE_ID IntegerType()",
+        "MOBILENO_AVL_FLAG IntegerType()",
+        "ID1_FLAG IntegerType()",
+        "ID2_FLAG IntegerType()",
+        "ID3_FLAG IntegerType()",
+        "ID4_FLAG IntegerType()",
+        "ID5_FLAG IntegerType()",
+        "BUREAU_SCORE IntegerType()",
+        "SCORE_CATEGORY StringType()",
+        "PRI_ACCS IntegerType()",
+        "ACTIVE_ACCS IntegerType()",
+        "OVERDUE_ACCS IntegerType()",
+        "TOTAL_BALANCE_OUTSTANDING IntegerType()",
+        "TOTAL_SANCTIONED_AMT IntegerType()",
+        "TOTAL_DISBURSED_AMT IntegerType()",
+        "SEC_ACCS IntegerType()",
+        "SEC_ACTIVE_ACCS IntegerType()",
+        "SEC_OVERDUE_ACCS IntegerType()",
+        "SEC_TOTAL_BALANCE_OUTSTANDING IntegerType()",
+        "SEC_TOTAL_SANCTIONED_AMT IntegerType()",
+        "SEC_TOTAL_DISBURSED_AMT IntegerType()",
+        "PRI_EMI IntegerType()",
+        "SEC_EMI IntegerType()",
+        "LOANS_6_MTHS IntegerType()",
+        "LOANS_DEFAULT_6_MTHS IntegerType()",
+        "AVG_LOAN_TENURE StringType()",
+        "CREDIT_HIST_LEN StringType()",
+        "INQUIRIES IntegerType()",
+        "DEFAULT IntegerType()"
+    ],
+    "id_col": "ID",
+    "impute_cat_cols": {"EMP_TYPE": "missing"},
+    "impute_numerical_cols": {},
+    "date_str_cols": {
+        "DOB": "19",
+        "DISBURSED_DATE": "20"
+    },
+    "age_cols": [
+        {
+            "start": "DOB",
+            "end": "DISBURSED_DATE",
+            "output_col": "BORROWER_AGE"
+        }
+    ],
+    "tenure_cols": ["CREDIT_HIST_LEN", "AVG_LOAN_TENURE"],
+    "str_replace_cols": {
+        "SCORE_CATEGORY": {
+            "pattern": "Not Scored: (.*)",
+            "replacement": "Not Scored"
+        }
+    },
+    "drop_cols": ["ID", "MANUFACTURER_ID", "BRANCH_ID", "SUPPLIER_ID",
+                  "PINCODE", "EMPLOYEE_CODE_ID", "DISBURSED_DATE",
+                  "DOB"],
+    "processed_data_dir": "src/data/processed/",
+    "s3_processed_data_dir": "s3a://{}/data/processed/",
+    "str_cat_cols": ["SCORE_CATEGORY", "EMP_TYPE"],
+    "test_size": 0.2,
+    "seed": 42,
+    "cat_cols": ["REGION_ID"],
+    "target_col": "DEFAULT",
+    "model_hyperparams": {
+        "maxIter": 10,
+        "featuresCol": "features"
+    },
+    "model_path": "models/models/gbt",
+    "model_log_dir": "models/logs/",
+    "s3_model_path": "s3a://{}/models/models/gbt",
+    "s3_model_log_dir": "s3a://{}/models/logs/"
+}

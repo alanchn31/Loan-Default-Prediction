@@ -3,6 +3,7 @@ import sys
 import json
 import importlib
 import argparse
+from pyspark import SparkFiles
 from pyspark.sql import SparkSession
 
 
@@ -20,7 +21,7 @@ def _parse_arguments():
     return parser.parse_args()
 
 
-def create_spark_session(config, mode, aws_key, aws_secret_key):
+def create_spark_session(mode, aws_key, aws_secret_key):
     """
     Description: Creates spark session.
     Returns:
@@ -28,12 +29,12 @@ def create_spark_session(config, mode, aws_key, aws_secret_key):
     """
     if mode == "local":
          spark = SparkSession.builder \
-                        .appName(config.get("app_name")) \
+                        .appName("LoanDefaultPrediction") \
                         .getOrCreate()
     else:
         spark = SparkSession.builder \
                             .config("spark.executor.heartbeatInterval", "40s") \
-                            .appName(config.get("app_name")) \
+                            .appName("LoanDefaultPrediction") \
                             .getOrCreate()
         
         spark.sparkContext._jsc.hadoopConfiguration().set("fs.s3a.impl",
@@ -52,10 +53,28 @@ def main():
     """
     args = _parse_arguments()
 
-    with open("src/config.json", "r") as config_file:
-        config = json.load(config_file)
+    spark = create_spark_session(args.mode, args.awsKey, args.awsSecretKey)
+    log4j = spark._jvm.org.apache.log4j
+    conf = spark.sparkContext.getConf()
+    app_id = conf.get('spark.app.id')
+    app_name = conf.get('spark.app.name')
+    message_prefix = '<' + app_name + ' ' + app_id + '>'
+    spark_logger = log4j.LogManager.getLogger(message_prefix)
 
-    spark = create_spark_session(config, args.mode, args.awsKey, args.awsSecretKey)
+    spark_files_dir = SparkFiles.getRootDirectory()
+    # ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
+    config_files = [filename
+                    for filename in os.listdir(spark_files_dir)
+                    if filename.endswith('config.json')]
+
+    if config_files:
+        path_to_config_file = os.path.join(spark_files_dir, config_files[0])
+        with open(path_to_config_file, 'r') as config_file:
+            config = json.load(config_file)
+        spark_logger.warn('loaded config from ' + config_files[0])
+    else:
+        spark_logger.warn('no config file found')
+        config = None
 
     job_module = importlib.import_module(f"jobs.{args.job}")
     if args.phase:

@@ -3,6 +3,7 @@ import sys
 import json
 import importlib
 import argparse
+from pyspark import SparkFiles
 from pyspark.sql import SparkSession
 
 
@@ -41,7 +42,7 @@ def create_spark_session(config, mode, aws_key, aws_secret_key):
         spark.sparkContext._jsc.hadoopConfiguration().set("fs.s3a.access.key", aws_key)
         spark.sparkContext._jsc.hadoopConfiguration().set("fs.s3a.secret.key", aws_secret_key)
         spark.sparkContext._jsc.hadoopConfiguration().set("fs.s3a.endpoint", "s3.amazonaws.com")
-        spark.sparkContext._jsc.hadoopConfiguration().set("fs.s3a.connection.timeout", "100")
+        spark.sparkContext._jsc.hadoopConfiguration().set("fs.s3a.connection.timeout", "1000")
         spark.sparkContext._jsc.hadoopConfiguration().set("fs.s3a.connection.maximum", "5000")
     return spark
 
@@ -52,8 +53,19 @@ def main():
     """
     args = _parse_arguments()
 
-    with open("src/config.json", "r") as config_file:
-        config = json.load(config_file)
+    spark_files_dir = SparkFiles.getRootDirectory()
+    config_files = [filename
+                    for filename in listdir(spark_files_dir)
+                    if filename.endswith('config.json')]
+
+    if config_files:
+        path_to_config_file = path.join(spark_files_dir, config_files[0])
+        with open(path_to_config_file, 'r') as config_file:
+            config = json.load(config_file)
+        spark_logger.warn('loaded config from ' + config_files[0])
+    else:
+        spark_logger.warn('no config file found')
+        config = None
 
     spark = create_spark_session(config, args.mode, args.awsKey, args.awsSecretKey)
 
