@@ -23,7 +23,7 @@ default_args = {
     'retry_delay': timedelta(minutes=1),
 }
 
-with DAG(dag_id='loan_prediction_train_model', default_args=default_args,
+with DAG(dag_id='loan_prediction_model_predict', default_args=default_args,
          description='"Run Spark job via Livy Batches \
                       to preprocess data and train model',
          schedule_interval='@once') as dag:
@@ -35,7 +35,7 @@ with DAG(dag_id='loan_prediction_train_model', default_args=default_args,
         files=[config_file_path],
         arguments=[
             "--job", "preprocess_data",
-            "--phase", "train",
+            "--phase", "predict",
             "--mode", "aws",
             "--awsKey", aws_config['awsKey'],
             "--awsSecretKey", aws_config['awsSecretKey'],
@@ -44,19 +44,19 @@ with DAG(dag_id='loan_prediction_train_model', default_args=default_args,
         task_id="preprocess_data"
     )
 
-    train_model_step = LivyBatchOperator(
-        name="train_model_{{ run_id }}",
+    model_predict_step = LivyBatchOperator(
+        name="model_predict_{{ run_id }}",
         file=main_file_path,
         py_files=[pyfiles_path],
         arguments=[
-            "--job", "train_model",
-            "--phase", "train",
+            "--job", "inference",
+            "--phase", "predict",
             "--mode", "aws",
             "--awsKey", aws_config['awsKey'],
             "--awsSecretKey", aws_config['awsSecretKey'],
             "--s3Bucket", aws_config['s3Bucket']
         ],
-        task_id="train_model"
+        task_id="model_predict"
     )
 
-    preprocess_data_step >> train_model_step
+    preprocess_data_step >> model_predict_step

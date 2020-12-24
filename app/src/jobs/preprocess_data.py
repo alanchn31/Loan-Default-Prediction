@@ -15,14 +15,17 @@ from pyspark.sql import SparkSession
 from shared.utils import read_schema
 
 
-def _read_data(spark, config, mode, s3_bucket):
+def _read_data(spark, config, mode, phase, s3_bucket):
     schema_lst = config.get("schema")
     schema = read_schema(schema_lst)
     if mode == "local":
         file_path = config.get('source_data_path')
     else:
         file_path = config.get('s3_source_data_path').format(s3_bucket)
-        print(file_path)
+    if phase == "train":
+        file_path += config.get('train_data_file')
+    else:
+        file_path += config.get('pred_data_file')
     return spark.read.csv(file_path,
                           header=True,
                           schema=schema)
@@ -30,7 +33,7 @@ def _read_data(spark, config, mode, s3_bucket):
 
 def run_job(spark, config, mode, s3_bucket=None, phase=None):
     """ Runs Data Preparation job"""
-    raw_df = _read_data(spark, config, mode, s3_bucket)
+    raw_df = _read_data(spark, config, mode, phase, s3_bucket)
     phase = 'train' if "DEFAULT" in raw_df.columns else 'test'
     df = Pipe([
         IF(IF.Predicate.has_column('DEFAULT'), then=[

@@ -1,4 +1,4 @@
-FROM panovvv/hadoop-hive-spark:2.5
+FROM panovvv/livy:2.5
 LABEL maintainer "Alan <alanchn31@gmail.com>"
 
 # COPY . /
@@ -20,8 +20,3 @@ RUN apk add --no-cache bash git openssh
 COPY requirements.txt /opt/requirements.txt
 RUN pip install -r /opt/requirements.txt
 COPY . /opt
-
-# Expose port
-EXPOSE 8080 7077 8998
-
-CMD ["/bin/bash", "/master.sh"]

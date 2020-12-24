@@ -6,9 +6,15 @@ LABEL maintainer "Alan <alanchn31@gmail.com>"
 # RUN chmod +x /master.sh
 # RUN chmod +x /entrypoint.sh
 
-RUN apk add --update --no-cache python3 && ln -sf python3 /usr/bin/python
+ENV PYTHONPATH=/usr/bin/python3
+ENV PYSPARK_PYTHON=/usr/bin/python3
+
+RUN apk add --update --no-cache python3 && ln -sf python3 /usr/bin/python \ 
+    && ln -s /lib64/ld-linux-x86-64.so.2 /lib/ld-linux-x86-64.so.2
 RUN python3 -m ensurepip
 RUN pip3 install --no-cache --upgrade pip setuptools
+
+RUN apk update && apk add --no-cache libc6-compat
 
 RUN apk add --no-cache bash git openssh
 COPY requirements.txt /opt/requirements.txt

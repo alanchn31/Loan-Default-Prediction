@@ -8,7 +8,7 @@ from pyspark.mllib.evaluation import MulticlassMetrics
 from shared.utils import check_numerical_dtype
 
 
-def _read_data(spark, config):
+def _read_data(spark, config, mode):
     if mode == "local":
         return spark.read.parquet(config['processed_data_dir'] + "train.parquet")
     else:

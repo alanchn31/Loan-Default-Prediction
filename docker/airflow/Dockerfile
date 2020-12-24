@@ -85,6 +85,7 @@ COPY airflow/config/airflow.cfg ${AIRFLOW_USER_HOME}/airflow.cfg
 RUN chown -R airflow: ${AIRFLOW_USER_HOME}
 RUN chmod -R o+rx $SPARK_HOME/jars
 
+
 RUN echo "EXPORT HADOOP_OPTIONAL_TOOLS=hadoop-aws" >> $HADOOP_CONF_DIR/hadoop-env.sh
 
 EXPOSE 8080 5555 8793
