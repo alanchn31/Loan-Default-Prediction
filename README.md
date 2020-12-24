@@ -42,7 +42,7 @@
 ---
 * AUC_ROC: 0.625
 
-## Set-up
+## Set-up (Local)
 ---
 Note that this project requires spark to be installed on a local system. 
 
@@ -56,3 +56,49 @@ Note that this project requires spark to be installed on a local system.
 
 * Running pytest:  
     * Run ```make test``` (in app dir)
+
+## Set-up (AWS)
+---
+Note that this project requires spark to be installed on a local system. 
+
+* Prerequisites:
+    * An AWS Account, with a S3 bucket set up
+    * EC2 instance (must have permission access to S3)
+    * AWS cli installed locally
+
+
+* Run the following commands:  
+    1. Run ```make build``` to move all dependencies for spark job to dist/ folder
+    2. Run ```make package_s3``` to move packaged dependencies to s3 bucket folder dist
+
+* Run jobs on EC2 using Airflow and Livy:  
+    * To set up Spark, Airflow and Livy, run ```docker-compose build``` at home dir (on EC2 ssh terminal).
+    * After ```docker-compose build``` runs successfully, run ```docker-compose up```
+    * Check on ec2 address: http://ec2-X-XXX-X-XXX.compute-1.amazonaws.com:9001/, airflow should be up and running, change port to 8998, livy should be up and running
+
+* Variables configuration:
+
+    * On airflow UI, set the following variables:
+        1. aws_config:
+            ```json
+            {
+                "awsKey": "Input your user's aws key",
+                "awsSecretKey": "Input your user's aws secret key",
+                "s3Bucket": "Input your s3 bucket for this project"
+            }
+            ```
+        
+        2. main_file_path:
+            ```"main_file_path": "s3a://{YOUR_S3_BUCKET}/dist/main.py```
+
+        3. pyfile_path:
+            ```"pyfiles_path": "s3a://{YOUR_S3_BUCKET}/dist/src.zip``` 
+
+        4. config_file_path:
+            ```"config_file_path": "s3a://{YOUR_S3_BUCKET}/dist/config.json``` 
+
+    * On airflow UI, also set up a HttpHook to livy:
+
+        ```"conn_id": "livy", "host": "http://ec2-X-XXX-X-XXX.compute-1.amazonaws.com", "port": 8998```
+
+    * Now airflow DAG should be able to run on UI 

@@ -1,7 +1,8 @@
 {
-    "app_name": "LoanDefaultPrediction",
-    "source_data_path": "src/data/inputs/loan_default.csv",
-    "s3_source_data_path": "s3a://{}/data/inputs/loan_default.csv",
+    "source_data_path": "src/data/inputs/",
+    "s3_source_data_path": "s3a://{}/data/inputs/",
+    "train_data_file": "loan_default.csv",
+    "pred_data_file": "loan_default.csv",
     "schema": [
         "ID IntegerType()",
         "DISBURSED_VALUE IntegerType()",

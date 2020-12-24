@@ -4,5 +4,9 @@ __pycache__/
 .pytest_cache/
 .coverage
 app/data/processed
-models/
+models/  
 venv/
+init.sql/
+livy_batches/
+zeppelin_notebooks/
+airflow/logs/
