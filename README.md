@@ -42,6 +42,112 @@
 ![Screenshot](docs/images/modelling_architecture.PNG)
 
 
+## Folder Structure
+---
+```bash
+.
+├── LICENSE
+├── Makefile
+├── README.md
+├── airflow
+│   ├── __init__.py
+│   ├── config
+│   │   └── airflow.cfg
+│   ├── dags
+│   │   ├── __init__.py
+│   │   ├── model_inference_dag.py          # Airflow DAG for model inferencing
+│   │   └── model_train_dag.py              # Airflow DAG for model training
+│   ├── logs
+│   └── plugins
+│       ├── __init__.py
+│       └── airflow_livy
+│           ├── __init__.py
+│           ├── batch.py                    # Custom Airflow Livy operator (for batch)
+│           └── session.py                  # Custom Airflow Livy operator (for session)
+├── app
+│   ├── Makefile                            
+│   ├── config.json
+│   ├── dist
+│   │   ├── config.json
+│   │   ├── main.py
+│   │   └── src.zip
+│   ├── main.py
+│   ├── src
+│   │   ├── __init__.py
+│   │   ├── conftest.py
+│   │   ├── data
+│   │   │   ├── inputs
+│   │   │   │   └── loan_default.csv
+│   │   ├── jobs
+│   │   │   ├── __init__py
+│   │   │   ├── inference.py                # Spark Job defined for inferencing
+│   │   │   ├── preprocess_data.py          # Spark Job defined for data preprocessing
+│   │   │   └── train_model.py              # Spark Job defined for training pyspark.ml GBT model
+│   │   ├── models
+│   │   │   ├── logs
+│   │   │   └── models
+│   │   ├── pipe
+│   │   │   ├── IF.py
+│   │   │   ├── __init__.py
+│   │   │   └── pipe.py
+│   │   ├── shared
+│   │   │   ├── __init__.py
+│   │   │   └── utils.py
+│   │   └── transformers
+│   │       ├── __init__.py
+│   │       ├── convert_str_to_date.py
+│   │       ├── drop_columns.py
+│   │       ├── extract_time_period_mths.py
+│   │       ├── get_age.py
+│   │       ├── impute_cat_missing_vals.py
+│   │       ├── remove_duplicates.py
+│   │       └── replace_str_regex.py
+│   └── tests
+│       └── transformers
+│           ├── test_convert_str_to_date.py
+│           ├── test_drop_columns.py
+│           ├── test_extract_time_period_mths.py
+│           ├── test_get_age.py
+│           ├── test_impute_cat_missing_vals.py
+│           ├── test_remove_duplicates.py
+│           └── test_replace_str_regex.py
+├── data
+├── docker
+│   ├── airflow
+│   │   ├── Dockerfile
+│   │   ├── conf
+│   │   │   ├── hadoop
+│   │   │   │   ├── core-site.xml
+│   │   │   │   ├── hadoop-env.sh
+│   │   │   │   ├── hdfs-site.xml
+│   │   │   │   ├── mapred-site.xml
+│   │   │   │   ├── workers
+│   │   │   │   └── yarn-site.xml
+│   │   │   └── spark
+│   │   │       └── spark-defaults.conf
+│   │   └── entrypoint.sh
+│   ├── hive
+│   │   └── init.sql
+│   ├── livy
+│   │   └── Dockerfile
+│   ├── master
+│   │   ├── Dockerfile
+│   │   └── master.sh
+│   └── worker
+│       ├── Dockerfile
+│       └── worker.sh
+├── docker-compose.yml
+├── docs
+│   └── images
+│       ├── modelling_architecture.PNG
+│       ├── project_icon.PNG
+│       └── technical_architecture.PNG
+├── notebooks
+│   └── Loan Default Classification.ipynb			# Jupyter Notebook containing exploration
+├── requirements.txt
+── setup.py
+```
+
 ## Results
 ---
 * AUC_ROC: 0.625
