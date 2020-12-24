@@ -32,6 +32,10 @@
 
 * As data is imbalanced, (about 80% of labels are non-default while 20% are defaults), our main metric of evaluating our trained model will be the AUC_ROC
 
+## Technical Architecture
+---
+![TechArch](docs/images/technical_architecture.PNG)
+
 
 ## Architecture of Model Training Pipeline
 ---
