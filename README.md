@@ -163,6 +163,8 @@ Note that this project requires spark to be installed on a local system.
     1. Run ```make build``` to move all dependencies for spark job to dist/ folder
     2. Run ```make preprocess_train``` to submit spark job to preprocess training data
     3. Run ```make train_model``` to submit spark job to train our model on preprocessed training data
+    4. Run ```make preprocess_predict``` to submit spark job to preprocess data to be inferred by model
+    5. Run ```make model_predict``` to submit spark job for model to infer on preprocessed inference data
 
 * Running pytest:  
     * Run ```make test``` (in app dir)
