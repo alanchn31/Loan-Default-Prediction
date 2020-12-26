@@ -24,5 +24,19 @@ train_model_aws:
 	spark-submit --py-files dist/src.zip main.py --job train_model --mode aws --phase train \
 	--awsKey ${AWS_KEY} --awsSecretKey ${AWS_SECRET_KEY} --s3Bucket ${S3_BUCKET}
 
+preprocess_predict:
+	spark-submit --py-files dist/src.zip main.py --job preprocess_data --mode local --phase predict
+
+preprocess_predict_aws:
+	spark-submit --py-files dist/src.zip main.py --job preprocess_data --mode aws --phase predict \
+	--awsKey ${AWS_KEY} --awsSecretKey ${AWS_SECRET_KEY} --s3Bucket ${S3_BUCKET}
+
+model_predict:
+	spark-submit --py-files dist/src.zip main.py --job inference --mode local --phase predict
+
+model_predict_aws:
+	spark-submit --py-files dist/src.zip main.py --job inference --mode aws --phase predict \
+	--awsKey ${AWS_KEY} --awsSecretKey ${AWS_SECRET_KEY} --s3Bucket ${S3_BUCKET}
+
 test:
 	python -m pytest  --cov src/tests/transformers
